@@ -16,6 +16,11 @@ service Query {
   rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/vault/v1/params";
   }
+
+  // Spawn is a rate-limited query that spawns a new vault with unclaimed state.
+  rpc Spawn(QuerySpawnRequest) returns (QuerySpawnResponse) {
+    option (google.api.http).get = "/dwn/v1/spawn";
+  }
 }
 
 // ╭──────────────────────────────────────────────────────────╮
@@ -29,4 +34,16 @@ message QueryParamsRequest {}
 message QueryParamsResponse {
   // params defines the parameters of the module.
   Params params = 1;
+}
+
+// QuerySpawnRequest is the request type for the Query/Spawn RPC method.
+message QuerySpawnRequest {}
+
+// QuerySpawnResponse is the response type for the Query/Spawn RPC method.
+message QuerySpawnResponse {
+  // Cid of the new vault.
+  string cid = 1;
+
+  // Address of the new vault.
+  string address = 2;
 }

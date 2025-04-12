@@ -28,3 +28,10 @@ func (k Querier) Params(c context.Context, req *types.QueryParamsRequest) (*type
 
 	return &types.QueryParamsResponse{Params: &p}, nil
 }
+
+// Spawn implements types.QueryServer.
+func (k Querier) Spawn(goCtx context.Context, req *types.QuerySpawnRequest) (*types.QuerySpawnResponse, error) {
+	// ctx := sdk.UnwrapSDKContext(goCtx)
+	panic("Spawn is unimplemented")
+	return &types.QuerySpawnResponse{}, nil
+}
