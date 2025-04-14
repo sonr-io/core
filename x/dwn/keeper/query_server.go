@@ -20,12 +20,10 @@ func NewQuerier(keeper Keeper) Querier {
 
 func (k Querier) Params(c context.Context, req *types.QueryParamsRequest) (*types.QueryParamsResponse, error) {
 	ctx := sdk.UnwrapSDKContext(c)
-
 	p, err := k.Keeper.Params.Get(ctx)
 	if err != nil {
 		return nil, err
 	}
-
 	return &types.QueryParamsResponse{Params: &p}, nil
 }
 
