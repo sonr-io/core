@@ -32,3 +32,9 @@ func (k Querier) Spawn(goCtx context.Context, req *types.QuerySpawnRequest) (*ty
 	// ctx := sdk.UnwrapSDKContext(goCtx)
 	return &types.QuerySpawnResponse{}, nil
 }
+
+// Check implements types.QueryServer.
+func (k Querier) Check(goCtx context.Context, req *types.QueryCheckRequest) (*types.QueryCheckResponse, error) {
+	// ctx := sdk.UnwrapSDKContext(goCtx)
+	return &types.QueryCheckResponse{}, nil
+}

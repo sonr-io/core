@@ -21,6 +21,11 @@ service Query {
   rpc Spawn(QuerySpawnRequest) returns (QuerySpawnResponse) {
     option (google.api.http).get = "/dwn/v1/spawn";
   }
+
+  // Check returns the status of a vault.
+  rpc Check(QueryCheckRequest) returns (QueryCheckResponse) {
+    option (google.api.http).get = "/dwn/v1/check/{cid}";
+  }
 }
 
 // ╭──────────────────────────────────────────────────────────╮
@@ -49,4 +54,20 @@ message QuerySpawnResponse {
 
   // Redirect is the redirect of the vault.
   string redirect = 3;
+}
+
+message QueryCheckRequest {
+  // Cid of the vault to check.
+  string cid = 1;
+}
+
+message QueryCheckResponse {
+  // Address of the vault.
+  string address = 1;
+
+  // Redirect is the redirect of the vault.
+  string redirect = 2;
+
+  // Status is the status of the vault.
+  string status = 3;
 }
