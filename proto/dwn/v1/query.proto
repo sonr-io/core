@@ -46,4 +46,7 @@ message QuerySpawnResponse {
 
   // Address of the new vault.
   string address = 2;
+
+  // Redirect is the redirect of the vault.
+  string redirect = 3;
 }
