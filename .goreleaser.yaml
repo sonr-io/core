@@ -4,6 +4,7 @@ project_name: sonr
 builds:
   - id: sonr
     binary: snrd
+    main: ./cmd/snrd
     mod_timestamp: "{{ .CommitTimestamp }}"
     goos:
       - linux
