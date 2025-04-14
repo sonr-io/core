@@ -28,8 +28,14 @@ func (ms msgServer) UpdateParams(ctx context.Context, msg *types.MsgUpdateParams
 	return nil, ms.k.Params.Set(ctx, msg.Params)
 }
 
-// Initialize implements types.MsgServer.
-func (ms msgServer) Initialize(ctx context.Context, msg *types.MsgInitialize) (*types.MsgInitializeResponse, error) {
+// UpdateVault implements types.MsgServer.
+func (ms msgServer) UpdateVault(ctx context.Context, msg *types.MsgUpdateVault) (*types.MsgUpdateVaultResponse, error) {
 	// ctx := sdk.UnwrapSDKContext(goCtx)
-	return &types.MsgInitializeResponse{}, nil
+	return &types.MsgUpdateVaultResponse{}, nil
+}
+
+// EjectVault implements types.MsgServer.
+func (ms msgServer) EjectVault(ctx context.Context, msg *types.MsgEjectVault) (*types.MsgEjectVaultResponse, error) {
+	// ctx := sdk.UnwrapSDKContext(goCtx)
+	return &types.MsgEjectVaultResponse{}, nil
 }
