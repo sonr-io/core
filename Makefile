@@ -83,11 +83,11 @@ ifeq ($(OS),Windows_NT)
 	$(error wasmd server not supported. Use "make build-windows-client" for client)
 	exit 1
 else
-	go build -mod=readonly $(BUILD_FLAGS) -o bin/snrd .
+	go build -mod=readonly $(BUILD_FLAGS) -o bin/snrd ./cmd/snrd
 endif
 
 build-windows-client: go.sum
-	GOOS=windows GOARCH=amd64 go build -mod=readonly $(BUILD_FLAGS) -o bin/snrd.exe .
+	GOOS=windows GOARCH=amd64 go build -mod=readonly $(BUILD_FLAGS) -o bin/snrd.exe ./cmd/snrd
 
 build-contract-tests-hooks:
 ifeq ($(OS),Windows_NT)
@@ -97,7 +97,7 @@ else
 endif
 
 install: go.sum
-	go install -mod=readonly $(BUILD_FLAGS) .
+	go install -mod=readonly $(BUILD_FLAGS) ./cmd/snrd
 
 ########################################
 ### Tools & dependencies
