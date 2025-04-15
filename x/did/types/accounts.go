@@ -9,8 +9,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/address"
 
-	"github.com/sonr-io/snrd/internal/accounts"
-	"github.com/sonr-io/snrd/internal/transaction"
+	"github.com/sonr-io/core/internal/accounts"
+	"github.com/sonr-io/core/internal/transaction"
 )
 
 var (

@@ -16,7 +16,7 @@ ROOT ?= $(shell git rev-parse --show-toplevel)
 
 # for dockerized protobuf tools
 DOCKER := $(shell which docker)
-HTTPS_GIT := github.com/sonr-io/snrd.git
+HTTPS_GIT := github.com/sonr-io/core.git
 
 export GO111MODULE = on
 
@@ -388,4 +388,3 @@ help:
 		"  ictest-ibc          : IBC end-to-end test"
 
 .PHONY: help
-

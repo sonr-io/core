@@ -4,7 +4,7 @@ package dwn.v1;
 import "google/api/annotations.proto";
 import "dwn/v1/genesis.proto";
 
-option go_package = "github.com/sonr-io/snrd/x/dwn/types";
+option go_package = "github.com/sonr-io/core/x/dwn/types";
 
 // ╭─────────────────────────────────────────────────────────╮
 // │                  RPC Query Service                      │

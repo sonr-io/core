@@ -7,7 +7,7 @@ import (
 	svrcmd "github.com/cosmos/cosmos-sdk/server/cmd"
 	_ "github.com/joho/godotenv/autoload"
 
-	"github.com/sonr-io/snrd/app"
+	"github.com/sonr-io/core/app"
 )
 
 func main() {

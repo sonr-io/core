@@ -5,7 +5,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/sonr-io/snrd/x/dwn/types"
+	snrctx "github.com/sonr-io/core/internal/snrctx"
+	"github.com/sonr-io/core/x/dwn/types"
 )
 
 var _ types.QueryServer = Querier{}
@@ -35,6 +36,8 @@ func (k Querier) Spawn(goCtx context.Context, req *types.QuerySpawnRequest) (*ty
 
 // Check implements types.QueryServer.
 func (k Querier) Check(goCtx context.Context, req *types.QueryCheckRequest) (*types.QueryCheckResponse, error) {
-	// ctx := sdk.UnwrapSDKContext(goCtx)
-	return &types.QueryCheckResponse{}, nil
+	ctx := snrctx.FromGoContext(goCtx)
+	return &types.QueryCheckResponse{
+		Address: ctx.Addr.String(),
+	}, nil
 }

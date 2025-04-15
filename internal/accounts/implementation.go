@@ -9,8 +9,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	gogoproto "github.com/cosmos/gogoproto/proto"
 
-	"github.com/sonr-io/snrd/internal/appmodule"
-	"github.com/sonr-io/snrd/internal/transaction"
+	"github.com/sonr-io/core/internal/appmodule"
+	"github.com/sonr-io/core/internal/transaction"
 )
 
 // Dependencies are passed to the constructor of a smart account.

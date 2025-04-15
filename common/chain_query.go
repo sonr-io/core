@@ -2,9 +2,9 @@ package common
 
 import (
 	bankv1beta1 "cosmossdk.io/api/cosmos/bank/v1beta1"
-	didv1 "github.com/sonr-io/snrd/api/did/v1"
-	dwnv1 "github.com/sonr-io/snrd/api/dwn/v1"
-	svcv1 "github.com/sonr-io/snrd/api/svc/v1"
+	didv1 "github.com/sonr-io/core/api/did/v1"
+	dwnv1 "github.com/sonr-io/core/api/dwn/v1"
+	svcv1 "github.com/sonr-io/core/api/svc/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
