@@ -3,9 +3,7 @@ package keeper
 import (
 	"context"
 
-	sdk "github.com/cosmos/cosmos-sdk/types"
-
-	snrctx "github.com/sonr-io/core/internal/snrctx"
+	snrctx "github.com/sonr-io/core/ctx"
 	"github.com/sonr-io/core/x/dwn/types"
 )
 
@@ -20,8 +18,8 @@ func NewQuerier(keeper Keeper) Querier {
 }
 
 func (k Querier) Params(c context.Context, req *types.QueryParamsRequest) (*types.QueryParamsResponse, error) {
-	ctx := sdk.UnwrapSDKContext(c)
-	p, err := k.Keeper.Params.Get(ctx)
+	ctx := snrctx.FromGoContext(c)
+	p, err := k.Keeper.Params.Get(ctx.SDKContext())
 	if err != nil {
 		return nil, err
 	}
@@ -38,6 +36,6 @@ func (k Querier) Spawn(goCtx context.Context, req *types.QuerySpawnRequest) (*ty
 func (k Querier) Check(goCtx context.Context, req *types.QueryCheckRequest) (*types.QueryCheckResponse, error) {
 	ctx := snrctx.FromGoContext(goCtx)
 	return &types.QueryCheckResponse{
-		Address: ctx.Addr.String(),
+		Address: ctx.Peer().Addr.String(),
 	}, nil
 }
