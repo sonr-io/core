@@ -1,4 +1,4 @@
-# `sonr` - Sonr Chain
+# `core` - Sonr Chain
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/sonr-io/core.svg)](https://pkg.go.dev/github.com/sonr-io/core)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/onsonr/sonr)
