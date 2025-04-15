@@ -12,6 +12,7 @@ import (
 	"github.com/onsonr/sonr/crypto/ucan"
 )
 
+// IPFSTokenStore is an interface for token stores that use IPFS to store tokens
 type IPFSTokenStore interface {
 	ucan.TokenStore
 	ResolveCIDBytes(ctx context.Context, id cid.Cid) ([]byte, error)
@@ -34,6 +35,7 @@ func NewUCANStore(ipfsClient IPFS) IPFSTokenStore {
 	}
 }
 
+// PutToken stores a token in IPFS and updates the cache
 func (st *ipfsUCANStore) PutToken(ctx context.Context, key string, raw string) error {
 	// Validate token format
 	p := &jwt.Parser{
@@ -57,6 +59,7 @@ func (st *ipfsUCANStore) PutToken(ctx context.Context, key string, raw string) e
 	return nil
 }
 
+// RawToken retrieves a token from the cache or IPFS
 func (st *ipfsUCANStore) RawToken(ctx context.Context, key string) (string, error) {
 	st.Lock()
 	cid, exists := st.cache[key]
@@ -75,6 +78,7 @@ func (st *ipfsUCANStore) RawToken(ctx context.Context, key string) (string, erro
 	return string(data), nil
 }
 
+// DeleteToken deletes a token from the cache and IPFS
 func (st *ipfsUCANStore) DeleteToken(ctx context.Context, key string) error {
 	st.Lock()
 	defer st.Unlock()
@@ -93,6 +97,7 @@ func (st *ipfsUCANStore) DeleteToken(ctx context.Context, key string) error {
 	return nil
 }
 
+// ListTokens returns a list of tokens from the cache and IPFS
 func (st *ipfsUCANStore) ListTokens(ctx context.Context, offset, limit int) ([]ucan.RawToken, error) {
 	st.Lock()
 	defer st.Unlock()
@@ -125,6 +130,7 @@ func (st *ipfsUCANStore) ListTokens(ctx context.Context, offset, limit int) ([]u
 	return tokens[offset:end], nil
 }
 
+// ResolveCIDBytes retrieves a CID bytes from the cache or IPFS
 func (st *ipfsUCANStore) ResolveCIDBytes(ctx context.Context, id cid.Cid) ([]byte, error) {
 	data, err := st.ipfs.Get(id.String())
 	if err != nil {
@@ -133,6 +139,7 @@ func (st *ipfsUCANStore) ResolveCIDBytes(ctx context.Context, id cid.Cid) ([]byt
 	return data, nil
 }
 
+// ResolveDIDKey retrieves a DID key from the cache or IPFS
 func (st *ipfsUCANStore) ResolveDIDKey(ctx context.Context, did string) (keys.DID, error) {
 	id, err := keys.Parse(did)
 	if err != nil {
