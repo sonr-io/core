@@ -3,8 +3,8 @@ package keeper
 import (
 	"context"
 
-	"github.com/sonr-io/core/common"
 	snrctx "github.com/sonr-io/core/internal"
+	"github.com/sonr-io/core/internal/common"
 	"github.com/sonr-io/core/x/dwn/types"
 )
 

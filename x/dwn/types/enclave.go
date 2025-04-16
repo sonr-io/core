@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 
 	"github.com/cosmos/cosmos-sdk/types/bech32"
-	"github.com/sonr-io/core/common"
+	"github.com/sonr-io/core/internal/common"
 	"github.com/sonr-io/crypto/mpc"
 )
 
@@ -51,4 +51,8 @@ func getSonrAddress(enclave mpc.Enclave) (string, error) {
 		return "", err
 	}
 	return bech32.ConvertAndEncode("idx", pkBz)
+}
+
+func NewIPFSClient() (common.IPFS, error) {
+	return common.NewIPFS()
 }

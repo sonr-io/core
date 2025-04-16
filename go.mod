@@ -85,6 +85,7 @@ require (
 	github.com/ipfs/kubo v0.34.1
 	github.com/labstack/echo/v4 v4.13.3
 	github.com/onsonr/sonr v0.6.3
+	github.com/sonr-io/crypto v0.8.0
 )
 
 require (
@@ -309,7 +310,6 @@ require (
 	github.com/sagikazarmark/slog-shim v0.1.0 // indirect
 	github.com/samber/lo v1.47.0 // indirect
 	github.com/sasha-s/go-deadlock v0.3.1 // indirect
-	github.com/sonr-io/crypto v0.8.0 // indirect
 	github.com/sourcegraph/conc v0.3.0 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
 	github.com/spf13/afero v1.11.0 // indirect
