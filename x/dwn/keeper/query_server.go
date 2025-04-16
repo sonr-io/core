@@ -3,7 +3,7 @@ package keeper
 import (
 	"context"
 
-	snrctx "github.com/sonr-io/core/ctx"
+	snrctx "github.com/sonr-io/core/internal"
 	"github.com/sonr-io/core/x/dwn/types"
 )
 
