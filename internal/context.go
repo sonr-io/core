@@ -10,6 +10,7 @@ import (
 type SonrContext interface {
 	SDKContext() sdk.Context
 	Peer() *peer.Peer
+	IPFSRedirectURL(cid string) string
 }
 
 // Context is a wrapper around the Cosmos SDK context that provides additional
@@ -25,6 +26,10 @@ func (c sonrContext) SDKContext() sdk.Context {
 
 func (c sonrContext) Peer() *peer.Peer {
 	return c.peer
+}
+
+func (c sonrContext) IPFSRedirectURL(cid string) string {
+	return "http://ipfs.sonr.land/ipfs/" + cid
 }
 
 // NewContext creates a new context with the given Cosmos SDK context and peer
