@@ -85,7 +85,7 @@ require (
 	github.com/ipfs/kubo v0.34.1
 	github.com/labstack/echo/v4 v4.13.3
 	github.com/onsonr/sonr v0.6.3
-	github.com/sonr-io/crypto v0.10.0
+	github.com/sonr-io/crypto v0.11.0
 )
 
 require (
