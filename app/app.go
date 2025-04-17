@@ -128,7 +128,6 @@ import (
 	ibctransfertypes "github.com/cosmos/ibc-go/v8/modules/apps/transfer/types"
 	ibc "github.com/cosmos/ibc-go/v8/modules/core"
 	ibcclienttypes "github.com/cosmos/ibc-go/v8/modules/core/02-client/types" //nolint
-	ibcconnectiontypes "github.com/cosmos/ibc-go/v8/modules/core/03-connection/types"
 	ibcchanneltypes "github.com/cosmos/ibc-go/v8/modules/core/04-channel/types"
 	porttypes "github.com/cosmos/ibc-go/v8/modules/core/05-port/types"
 	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
@@ -1181,7 +1180,9 @@ func GetDefaultBypassFeeMessages() []string {
 		sdk.MsgTypeURL(&ibcchanneltypes.MsgChannelOpenTry{}),
 		sdk.MsgTypeURL(&ibcchanneltypes.MsgChannelOpenConfirm{}),
 		sdk.MsgTypeURL(&ibcchanneltypes.MsgChannelOpenAck{}),
-		sdk.MsgTypeURL(&didtypes.MsgLinkAuthentication{}),
+		sdk.MsgTypeURL(&didtypes.MsgRegisterController{}),
+		sdk.MsgTypeURL(&didtypes.MsgLinkVerificationMethod{}),
+		sdk.MsgTypeURL(&didtypes.MsgUnlinkVerificationMethod{}),
 	}
 }
 
@@ -1463,7 +1464,7 @@ func initParamsKeeper(
 
 	// register the IBC key tables for legacy param subspaces
 	keyTable := ibcclienttypes.ParamKeyTable()
-	keyTable.RegisterParamSet(&ibcconnectiontypes.Params{})
+	// keyTable.RegisterParamSet(&ibcconnectiontypes.Params{})
 	paramsKeeper.Subspace(ibcexported.ModuleName).WithKeyTable(keyTable)
 	paramsKeeper.Subspace(ibctransfertypes.ModuleName).
 		WithKeyTable(ibctransfertypes.ParamKeyTable())
