@@ -1973,6 +1973,8 @@ github.com/smartystreets/goconvey v1.7.2 h1:9RBaZCeXEQ3UselpuwUQHltGVXvdwm6cv1hg
 github.com/smartystreets/goconvey v1.7.2/go.mod h1:Vw0tHAZW6lzCRk3xgdin6fKYcG+G3Pg9vgXWeJpQFMM=
 github.com/sonr-io/crypto v0.8.0 h1:keicHJWu6y+KVkrYgmI54vRVroF0+mIC0JzbIbgzRgQ=
 github.com/sonr-io/crypto v0.8.0/go.mod h1:IyerhVPf5ZFodZTluKTbeFqZ1jk0GSHbC5/rY030LrQ=
+github.com/sonr-io/crypto v0.10.0 h1:9AZxqkavCUO8HLbGzhfl/sAhytNZ8cG79+6A7pClwkI=
+github.com/sonr-io/crypto v0.10.0/go.mod h1:IyerhVPf5ZFodZTluKTbeFqZ1jk0GSHbC5/rY030LrQ=
 github.com/sourcegraph/annotate v0.0.0-20160123013949-f4cad6c6324d/go.mod h1:UdhH50NIW0fCiwBSr0co2m7BnFLdv4fQTgdqdJTHFeE=
 github.com/sourcegraph/conc v0.3.0 h1:OQTbbt6P72L20UqAkXXuLOj79LfEanQ+YQFNpLA9ySo=
 github.com/sourcegraph/conc v0.3.0/go.mod h1:Sdozi7LEKbFPqYX2/J+iBAM6HpqSLTASQIKqDmF7Mt0=

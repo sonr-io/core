@@ -29,7 +29,6 @@ func (k Querier) Params(c context.Context, req *types.QueryParamsRequest) (*type
 
 // Spawn implements types.QueryServer.
 func (k Querier) Spawn(goCtx context.Context, req *types.QuerySpawnRequest) (*types.QuerySpawnResponse, error) {
-	// ctx := sdk.UnwrapSDKContext(goCtx)
 	ctx := snrctx.FromGoContext(goCtx)
 	enc, err := types.NewEnclave(ctx.SDKContext().ChainID())
 	if err != nil {
