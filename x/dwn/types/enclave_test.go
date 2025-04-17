@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/sonr-io/core/x/dwn/types"
+	"github.com/sonr-io/crypto/mpc"
 )
 
 // TestEnclave tests the enclave
@@ -29,8 +30,8 @@ func TestEnclaveFile(t *testing.T) {
 	t.Log(file.Name())
 }
 
-// TestEnclaveFileAdd tests the enclave file add
-func TestEnclaveFileAdd(t *testing.T) {
+// TestEnclaveIPFSAdd tests the enclave file add
+func TestEnclaveIPFSAdd(t *testing.T) {
 	enc, err := types.NewEnclave("test")
 	if err != nil {
 		t.Fatal(err)
@@ -52,4 +53,40 @@ func TestEnclaveFileAdd(t *testing.T) {
 		t.Fatal("cid is empty")
 	}
 	t.Log(cid)
+}
+
+func TestEnclaveIPFSGet(t *testing.T) {
+	enc, err := types.NewEnclave("test")
+	if err != nil {
+		t.Fatal(err)
+	}
+	client, err := types.NewIPFSClient()
+	if err != nil {
+		t.Fatal(err)
+	}
+	file, err := enc.File()
+	if err != nil {
+		t.Fatal(err)
+	}
+	cid, err := client.AddFile(file)
+	if err != nil {
+		panic(err)
+		// t.Fatal(err)
+	}
+	if cid == "" {
+		t.Fatal("cid is empty")
+	}
+	t.Log(cid)
+	got, err := client.Get(cid)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got == nil {
+		t.Fatal("got is nil")
+	}
+	e, err := mpc.ImportEnclave(mpc.WithEnclaveJSON(got))
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Log(e.PubKeyHex())
 }

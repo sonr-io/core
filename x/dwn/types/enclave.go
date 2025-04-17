@@ -2,7 +2,6 @@ package types
 
 import (
 	"encoding/hex"
-	"encoding/json"
 
 	"github.com/cosmos/cosmos-sdk/types/bech32"
 	"github.com/sonr-io/core/internal/common"
@@ -36,7 +35,7 @@ func NewEnclave(chainID string) (*Enclave, error) {
 
 // FileBytes returns the bytes of the enclave file
 func (e *Enclave) File() (common.File, error) {
-	bz, err := json.Marshal(e)
+	bz, err := e.Data.Serialize()
 	if err != nil {
 		return nil, err
 	}
