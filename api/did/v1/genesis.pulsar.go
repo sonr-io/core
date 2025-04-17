@@ -3777,12 +3777,12 @@ func (x *fastReflection_Document) ProtoMethods() *protoiface.Methods {
 }
 
 var (
-	md_VerificationMethod                       protoreflect.MessageDescriptor
-	fd_VerificationMethod_id                    protoreflect.FieldDescriptor
-	fd_VerificationMethod_controller            protoreflect.FieldDescriptor
-	fd_VerificationMethod_type                  protoreflect.FieldDescriptor
-	fd_VerificationMethod_public_key_base64     protoreflect.FieldDescriptor
-	fd_VerificationMethod_blockchain_account_id protoreflect.FieldDescriptor
+	md_VerificationMethod                   protoreflect.MessageDescriptor
+	fd_VerificationMethod_id                protoreflect.FieldDescriptor
+	fd_VerificationMethod_controller        protoreflect.FieldDescriptor
+	fd_VerificationMethod_type              protoreflect.FieldDescriptor
+	fd_VerificationMethod_public_key_base64 protoreflect.FieldDescriptor
+	fd_VerificationMethod_subject           protoreflect.FieldDescriptor
 )
 
 func init() {
@@ -3792,7 +3792,7 @@ func init() {
 	fd_VerificationMethod_controller = md_VerificationMethod.Fields().ByName("controller")
 	fd_VerificationMethod_type = md_VerificationMethod.Fields().ByName("type")
 	fd_VerificationMethod_public_key_base64 = md_VerificationMethod.Fields().ByName("public_key_base64")
-	fd_VerificationMethod_blockchain_account_id = md_VerificationMethod.Fields().ByName("blockchain_account_id")
+	fd_VerificationMethod_subject = md_VerificationMethod.Fields().ByName("subject")
 }
 
 var _ protoreflect.Message = (*fastReflection_VerificationMethod)(nil)
@@ -3884,9 +3884,9 @@ func (x *fastReflection_VerificationMethod) Range(f func(protoreflect.FieldDescr
 			return
 		}
 	}
-	if x.BlockchainAccountId != "" {
-		value := protoreflect.ValueOfString(x.BlockchainAccountId)
-		if !f(fd_VerificationMethod_blockchain_account_id, value) {
+	if x.Subject != "" {
+		value := protoreflect.ValueOfString(x.Subject)
+		if !f(fd_VerificationMethod_subject, value) {
 			return
 		}
 	}
@@ -3913,8 +3913,8 @@ func (x *fastReflection_VerificationMethod) Has(fd protoreflect.FieldDescriptor)
 		return x.Type_ != ""
 	case "did.v1.VerificationMethod.public_key_base64":
 		return x.PublicKeyBase64 != ""
-	case "did.v1.VerificationMethod.blockchain_account_id":
-		return x.BlockchainAccountId != ""
+	case "did.v1.VerificationMethod.subject":
+		return x.Subject != ""
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.VerificationMethod"))
@@ -3939,8 +3939,8 @@ func (x *fastReflection_VerificationMethod) Clear(fd protoreflect.FieldDescripto
 		x.Type_ = ""
 	case "did.v1.VerificationMethod.public_key_base64":
 		x.PublicKeyBase64 = ""
-	case "did.v1.VerificationMethod.blockchain_account_id":
-		x.BlockchainAccountId = ""
+	case "did.v1.VerificationMethod.subject":
+		x.Subject = ""
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.VerificationMethod"))
@@ -3969,8 +3969,8 @@ func (x *fastReflection_VerificationMethod) Get(descriptor protoreflect.FieldDes
 	case "did.v1.VerificationMethod.public_key_base64":
 		value := x.PublicKeyBase64
 		return protoreflect.ValueOfString(value)
-	case "did.v1.VerificationMethod.blockchain_account_id":
-		value := x.BlockchainAccountId
+	case "did.v1.VerificationMethod.subject":
+		value := x.Subject
 		return protoreflect.ValueOfString(value)
 	default:
 		if descriptor.IsExtension() {
@@ -4000,8 +4000,8 @@ func (x *fastReflection_VerificationMethod) Set(fd protoreflect.FieldDescriptor,
 		x.Type_ = value.Interface().(string)
 	case "did.v1.VerificationMethod.public_key_base64":
 		x.PublicKeyBase64 = value.Interface().(string)
-	case "did.v1.VerificationMethod.blockchain_account_id":
-		x.BlockchainAccountId = value.Interface().(string)
+	case "did.v1.VerificationMethod.subject":
+		x.Subject = value.Interface().(string)
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.VerificationMethod"))
@@ -4030,8 +4030,8 @@ func (x *fastReflection_VerificationMethod) Mutable(fd protoreflect.FieldDescrip
 		panic(fmt.Errorf("field type of message did.v1.VerificationMethod is not mutable"))
 	case "did.v1.VerificationMethod.public_key_base64":
 		panic(fmt.Errorf("field public_key_base64 of message did.v1.VerificationMethod is not mutable"))
-	case "did.v1.VerificationMethod.blockchain_account_id":
-		panic(fmt.Errorf("field blockchain_account_id of message did.v1.VerificationMethod is not mutable"))
+	case "did.v1.VerificationMethod.subject":
+		panic(fmt.Errorf("field subject of message did.v1.VerificationMethod is not mutable"))
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.VerificationMethod"))
@@ -4053,7 +4053,7 @@ func (x *fastReflection_VerificationMethod) NewField(fd protoreflect.FieldDescri
 		return protoreflect.ValueOfString("")
 	case "did.v1.VerificationMethod.public_key_base64":
 		return protoreflect.ValueOfString("")
-	case "did.v1.VerificationMethod.blockchain_account_id":
+	case "did.v1.VerificationMethod.subject":
 		return protoreflect.ValueOfString("")
 	default:
 		if fd.IsExtension() {
@@ -4140,7 +4140,7 @@ func (x *fastReflection_VerificationMethod) ProtoMethods() *protoiface.Methods {
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
-		l = len(x.BlockchainAccountId)
+		l = len(x.Subject)
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
@@ -4173,10 +4173,10 @@ func (x *fastReflection_VerificationMethod) ProtoMethods() *protoiface.Methods {
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
 		}
-		if len(x.BlockchainAccountId) > 0 {
-			i -= len(x.BlockchainAccountId)
-			copy(dAtA[i:], x.BlockchainAccountId)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.BlockchainAccountId)))
+		if len(x.Subject) > 0 {
+			i -= len(x.Subject)
+			copy(dAtA[i:], x.Subject)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Subject)))
 			i--
 			dAtA[i] = 0x2a
 		}
@@ -4387,7 +4387,7 @@ func (x *fastReflection_VerificationMethod) ProtoMethods() *protoiface.Methods {
 				iNdEx = postIndex
 			case 5:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field BlockchainAccountId", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Subject", wireType)
 				}
 				var stringLen uint64
 				for shift := uint(0); ; shift += 7 {
@@ -4415,7 +4415,7 @@ func (x *fastReflection_VerificationMethod) ProtoMethods() *protoiface.Methods {
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.BlockchainAccountId = string(dAtA[iNdEx:postIndex])
+				x.Subject = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
 			default:
 				iNdEx = preIndex
@@ -4776,11 +4776,11 @@ type VerificationMethod struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id                  string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Controller          string `protobuf:"bytes,2,opt,name=controller,proto3" json:"controller,omitempty"`
-	Type_               string `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
-	PublicKeyBase64     string `protobuf:"bytes,4,opt,name=public_key_base64,json=publicKeyBase64,proto3" json:"public_key_base64,omitempty"`
-	BlockchainAccountId string `protobuf:"bytes,5,opt,name=blockchain_account_id,json=blockchainAccountId,proto3" json:"blockchain_account_id,omitempty"`
+	Id              string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Controller      string `protobuf:"bytes,2,opt,name=controller,proto3" json:"controller,omitempty"`
+	Type_           string `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
+	PublicKeyBase64 string `protobuf:"bytes,4,opt,name=public_key_base64,json=publicKeyBase64,proto3" json:"public_key_base64,omitempty"`
+	Subject         string `protobuf:"bytes,5,opt,name=subject,proto3" json:"subject,omitempty"`
 }
 
 func (x *VerificationMethod) Reset() {
@@ -4831,9 +4831,9 @@ func (x *VerificationMethod) GetPublicKeyBase64() string {
 	return ""
 }
 
-func (x *VerificationMethod) GetBlockchainAccountId() string {
+func (x *VerificationMethod) GetSubject() string {
 	if x != nil {
-		return x.BlockchainAccountId
+		return x.Subject
 	}
 	return ""
 }
@@ -4891,7 +4891,7 @@ var file_did_v1_genesis_proto_rawDesc = []byte{
 	0x52, 0x14, 0x63, 0x61, 0x70, 0x61, 0x62, 0x69, 0x6c, 0x69, 0x74, 0x79, 0x49, 0x6e, 0x76, 0x6f,
 	0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
 	0x65, 0x18, 0x07, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x22, 0xb8, 0x01, 0x0a, 0x12, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f,
+	0x22, 0x9e, 0x01, 0x0a, 0x12, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f,
 	0x6e, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20,
 	0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1e, 0x0a, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72,
 	0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x63, 0x6f, 0x6e,
@@ -4899,19 +4899,17 @@ var file_did_v1_genesis_proto_rawDesc = []byte{
 	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x12, 0x2a, 0x0a, 0x11, 0x70,
 	0x75, 0x62, 0x6c, 0x69, 0x63, 0x5f, 0x6b, 0x65, 0x79, 0x5f, 0x62, 0x61, 0x73, 0x65, 0x36, 0x34,
 	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0f, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x63, 0x4b, 0x65,
-	0x79, 0x42, 0x61, 0x73, 0x65, 0x36, 0x34, 0x12, 0x32, 0x0a, 0x15, 0x62, 0x6c, 0x6f, 0x63, 0x6b,
-	0x63, 0x68, 0x61, 0x69, 0x6e, 0x5f, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x5f, 0x69, 0x64,
-	0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x13, 0x62, 0x6c, 0x6f, 0x63, 0x6b, 0x63, 0x68, 0x61,
-	0x69, 0x6e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x49, 0x64, 0x42, 0x7d, 0x0a, 0x0a, 0x63,
-	0x6f, 0x6d, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x42, 0x0c, 0x47, 0x65, 0x6e, 0x65, 0x73,
-	0x69, 0x73, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x28, 0x67, 0x69, 0x74, 0x68, 0x75,
-	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6f, 0x6e, 0x72, 0x2d, 0x69, 0x6f, 0x2f, 0x63, 0x6f,
-	0x72, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x69, 0x64, 0x2f, 0x76, 0x31, 0x3b, 0x64, 0x69,
-	0x64, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x44, 0x58, 0x58, 0xaa, 0x02, 0x06, 0x44, 0x69, 0x64, 0x2e,
-	0x56, 0x31, 0xca, 0x02, 0x06, 0x44, 0x69, 0x64, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x12, 0x44, 0x69,
-	0x64, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61,
-	0xea, 0x02, 0x07, 0x44, 0x69, 0x64, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+	0x79, 0x42, 0x61, 0x73, 0x65, 0x36, 0x34, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x75, 0x62, 0x6a, 0x65,
+	0x63, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x73, 0x75, 0x62, 0x6a, 0x65, 0x63,
+	0x74, 0x42, 0x7d, 0x0a, 0x0a, 0x63, 0x6f, 0x6d, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x42,
+	0x0c, 0x47, 0x65, 0x6e, 0x65, 0x73, 0x69, 0x73, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a,
+	0x28, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6f, 0x6e, 0x72,
+	0x2d, 0x69, 0x6f, 0x2f, 0x63, 0x6f, 0x72, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x69, 0x64,
+	0x2f, 0x76, 0x31, 0x3b, 0x64, 0x69, 0x64, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x44, 0x58, 0x58, 0xaa,
+	0x02, 0x06, 0x44, 0x69, 0x64, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x06, 0x44, 0x69, 0x64, 0x5c, 0x56,
+	0x31, 0xe2, 0x02, 0x12, 0x44, 0x69, 0x64, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65,
+	0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x07, 0x44, 0x69, 0x64, 0x3a, 0x3a, 0x56, 0x31,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (

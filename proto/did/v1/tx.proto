@@ -35,28 +35,35 @@ service Msg {
 message MsgRegisterController {
   option (cosmos.msg.v1.signer) = "controller";
   string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  string controller = 2 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  VerificationMethod authentication_credential = 2;
+  VerificationMethod assertion_dwn = 3;
+  VerificationMethod invocation_dwn = 4;
 }
 
 
 // MsgRegisterControllerResponse is the response type for the
 // RegisterController RPC.
 message MsgRegisterControllerResponse {
-  string did = 1;
+  string cid = 1;
+  string did = 2;
+  map<string, string> accounts = 3;
 }
 
 // MsgLinkVerificationMethod is the message type for the LinkVerificationMethod RPC.
 message MsgLinkVerificationMethod {
   string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
   string controller = 2 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  string verification_method = 3;
-  bytes key = 4;
-  string key_type = 5;
+  repeated VerificationMethod authentication = 3;
+  repeated VerificationMethod assertion = 4;
+  repeated VerificationMethod delegation = 5;
+  repeated VerificationMethod invocation = 6;
 }
 
 // MsgLinkVerificationMethodResponse is the response type for the
 // LinkVerificationMethod RPC.
 message MsgLinkVerificationMethodResponse {
+  bool success = 1;
+  Document document = 2;
 }
 
 
@@ -64,13 +71,18 @@ message MsgLinkVerificationMethodResponse {
 message MsgUnlinkVerificationMethod {
   string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
   string controller = 2 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-  string verification_method = 3;
+  repeated string authentication = 3;
+  repeated string assertion = 4;
+  repeated string delegation = 5;
+  repeated string invocation = 6;
 }
 
 
 // MsgUnlinkVerificationMethodResponse is the response type for the
 // UnlinkVerificationMethod RPC.
 message MsgUnlinkVerificationMethodResponse {
+  bool success = 1;
+  Document document = 2;
 } 
 
 // MsgExecuteTx is the message type for the ExecuteTx RPC.

@@ -349,6 +349,11 @@ push-docker:
 	@gum spin --show-error --title "[DOCKER] Pushing latest image..." -- docker push ghcr.io/onsonr/sonr:latest
 	@gum log --level info --time kitchen "[DOCKER] Docker images pushed successfully."
 
+push-buf:
+	@cd proto && gum spin --show-error --title "[BUF] Building protobufs..." -- buf build
+	@cd proto && gum spin --show-error --title "[BUF] Pushing protobufs..." -- buf push
+	@gum log --level info --time kitchen "[BUF] Protobufs pushed successfully."
+
 release:
 	@gum spin --show-error --title "[RELEASE] Running cz:bump..." -- devbox run cz:bump
 	@gum log --level info --time kitchen "[RELEASE] Release completed successfully."

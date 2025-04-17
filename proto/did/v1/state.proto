@@ -94,7 +94,7 @@ message Authorization {
   string public_key_base64 = 4;
 
   // DIDType is the DID type
-  string did_type = 5;
+  string origin = 5;
 
   // CreationBlock is the block number of the creation of the authentication
   int64 creation_block = 6;
