@@ -128,21 +128,20 @@ import (
 	ibctransfertypes "github.com/cosmos/ibc-go/v8/modules/apps/transfer/types"
 	ibc "github.com/cosmos/ibc-go/v8/modules/core"
 	ibcclienttypes "github.com/cosmos/ibc-go/v8/modules/core/02-client/types" //nolint
-	ibcconnectiontypes "github.com/cosmos/ibc-go/v8/modules/core/03-connection/types"
 	ibcchanneltypes "github.com/cosmos/ibc-go/v8/modules/core/04-channel/types"
 	porttypes "github.com/cosmos/ibc-go/v8/modules/core/05-port/types"
 	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
 	ibckeeper "github.com/cosmos/ibc-go/v8/modules/core/keeper"
 	ibctm "github.com/cosmos/ibc-go/v8/modules/light-clients/07-tendermint"
-	did "github.com/sonr-io/snrd/x/did"
-	didkeeper "github.com/sonr-io/snrd/x/did/keeper"
-	didtypes "github.com/sonr-io/snrd/x/did/types"
-	dwn "github.com/sonr-io/snrd/x/dwn"
-	dwnkeeper "github.com/sonr-io/snrd/x/dwn/keeper"
-	dwntypes "github.com/sonr-io/snrd/x/dwn/types"
-	svc "github.com/sonr-io/snrd/x/svc"
-	svckeeper "github.com/sonr-io/snrd/x/svc/keeper"
-	svctypes "github.com/sonr-io/snrd/x/svc/types"
+	did "github.com/sonr-io/core/x/did"
+	didkeeper "github.com/sonr-io/core/x/did/keeper"
+	didtypes "github.com/sonr-io/core/x/did/types"
+	dwn "github.com/sonr-io/core/x/dwn"
+	dwnkeeper "github.com/sonr-io/core/x/dwn/keeper"
+	dwntypes "github.com/sonr-io/core/x/dwn/types"
+	svc "github.com/sonr-io/core/x/svc"
+	svckeeper "github.com/sonr-io/core/x/svc/keeper"
+	svctypes "github.com/sonr-io/core/x/svc/types"
 	"github.com/spf13/cast"
 	globalfee "github.com/strangelove-ventures/globalfee/x/globalfee"
 	globalfeekeeper "github.com/strangelove-ventures/globalfee/x/globalfee/keeper"
@@ -1181,7 +1180,9 @@ func GetDefaultBypassFeeMessages() []string {
 		sdk.MsgTypeURL(&ibcchanneltypes.MsgChannelOpenTry{}),
 		sdk.MsgTypeURL(&ibcchanneltypes.MsgChannelOpenConfirm{}),
 		sdk.MsgTypeURL(&ibcchanneltypes.MsgChannelOpenAck{}),
-		sdk.MsgTypeURL(&didtypes.MsgLinkAuthentication{}),
+		sdk.MsgTypeURL(&didtypes.MsgRegisterController{}),
+		sdk.MsgTypeURL(&didtypes.MsgLinkVerificationMethod{}),
+		sdk.MsgTypeURL(&didtypes.MsgUnlinkVerificationMethod{}),
 	}
 }
 
@@ -1463,7 +1464,7 @@ func initParamsKeeper(
 
 	// register the IBC key tables for legacy param subspaces
 	keyTable := ibcclienttypes.ParamKeyTable()
-	keyTable.RegisterParamSet(&ibcconnectiontypes.Params{})
+	// keyTable.RegisterParamSet(&ibcconnectiontypes.Params{})
 	paramsKeeper.Subspace(ibcexported.ModuleName).WithKeyTable(keyTable)
 	paramsKeeper.Subspace(ibctransfertypes.ModuleName).
 		WithKeyTable(ibctransfertypes.ParamKeyTable())

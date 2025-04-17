@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/sonr-io/snrd/x/dwn/types"
+	"github.com/sonr-io/core/x/dwn/types"
 )
 
 func TestParams(t *testing.T) {

@@ -1,4 +1,4 @@
-package cmd
+package main
 
 // DONTCOVER
 
@@ -39,7 +39,7 @@ import (
 	genutiltypes "github.com/cosmos/cosmos-sdk/x/genutil/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/sonr-io/snrd/app"
+	"github.com/sonr-io/core/app"
 )
 
 var (

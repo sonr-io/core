@@ -20,6 +20,8 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	Query_Params_FullMethodName = "/dwn.v1.Query/Params"
+	Query_Spawn_FullMethodName  = "/dwn.v1.Query/Spawn"
+	Query_Check_FullMethodName  = "/dwn.v1.Query/Check"
 )
 
 // QueryClient is the client API for Query service.
@@ -30,6 +32,10 @@ const (
 type QueryClient interface {
 	// Params queries all parameters of the module.
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
+	// Spawn is a rate-limited query that spawns a new vault with unclaimed state.
+	Spawn(ctx context.Context, in *QuerySpawnRequest, opts ...grpc.CallOption) (*QuerySpawnResponse, error)
+	// Check returns the status of a vault.
+	Check(ctx context.Context, in *QueryCheckRequest, opts ...grpc.CallOption) (*QueryCheckResponse, error)
 }
 
 type queryClient struct {
@@ -50,6 +56,26 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 	return out, nil
 }
 
+func (c *queryClient) Spawn(ctx context.Context, in *QuerySpawnRequest, opts ...grpc.CallOption) (*QuerySpawnResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(QuerySpawnResponse)
+	err := c.cc.Invoke(ctx, Query_Spawn_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) Check(ctx context.Context, in *QueryCheckRequest, opts ...grpc.CallOption) (*QueryCheckResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(QueryCheckResponse)
+	err := c.cc.Invoke(ctx, Query_Check_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 // All implementations must embed UnimplementedQueryServer
 // for forward compatibility.
@@ -58,6 +84,10 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 type QueryServer interface {
 	// Params queries all parameters of the module.
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
+	// Spawn is a rate-limited query that spawns a new vault with unclaimed state.
+	Spawn(context.Context, *QuerySpawnRequest) (*QuerySpawnResponse, error)
+	// Check returns the status of a vault.
+	Check(context.Context, *QueryCheckRequest) (*QueryCheckResponse, error)
 	mustEmbedUnimplementedQueryServer()
 }
 
@@ -70,6 +100,12 @@ type UnimplementedQueryServer struct{}
 
 func (UnimplementedQueryServer) Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
+}
+func (UnimplementedQueryServer) Spawn(context.Context, *QuerySpawnRequest) (*QuerySpawnResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Spawn not implemented")
+}
+func (UnimplementedQueryServer) Check(context.Context, *QueryCheckRequest) (*QueryCheckResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Check not implemented")
 }
 func (UnimplementedQueryServer) mustEmbedUnimplementedQueryServer() {}
 func (UnimplementedQueryServer) testEmbeddedByValue()               {}
@@ -110,6 +146,42 @@ func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_Spawn_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QuerySpawnRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Spawn(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_Spawn_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Spawn(ctx, req.(*QuerySpawnRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_Check_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryCheckRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Check(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Query_Check_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Check(ctx, req.(*QueryCheckRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Query_ServiceDesc is the grpc.ServiceDesc for Query service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -120,6 +192,14 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Params",
 			Handler:    _Query_Params_Handler,
+		},
+		{
+			MethodName: "Spawn",
+			Handler:    _Query_Spawn_Handler,
+		},
+		{
+			MethodName: "Check",
+			Handler:    _Query_Check_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

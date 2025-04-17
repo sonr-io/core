@@ -16,16 +16,6 @@ type PubKeyI interface {
 	// GetJwk() *commonv1.JSONWebKey
 }
 
-type PubKeyG[T any] interface {
-	*T
-	PublicKey
-}
-
-type pubKeyImpl struct {
-	decode   func(b []byte) (PublicKey, error)
-	validate func(key PublicKey) error
-}
-
 //	func WithSecp256K1PubKey() Option {
 //		return WithPubKeyWithValidationFunc(func(pt *secp256k1.PubKey) error {
 //			_, err := dcrd_secp256k1.ParsePubKey(pt.Key)

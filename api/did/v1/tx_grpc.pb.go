@@ -19,12 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Msg_ExecuteTx_FullMethodName            = "/did.v1.Msg/ExecuteTx"
-	Msg_LinkAssertion_FullMethodName        = "/did.v1.Msg/LinkAssertion"
-	Msg_LinkAuthentication_FullMethodName   = "/did.v1.Msg/LinkAuthentication"
-	Msg_UnlinkAssertion_FullMethodName      = "/did.v1.Msg/UnlinkAssertion"
-	Msg_UnlinkAuthentication_FullMethodName = "/did.v1.Msg/UnlinkAuthentication"
-	Msg_UpdateParams_FullMethodName         = "/did.v1.Msg/UpdateParams"
+	Msg_ExecuteTx_FullMethodName                = "/did.v1.Msg/ExecuteTx"
+	Msg_RegisterController_FullMethodName       = "/did.v1.Msg/RegisterController"
+	Msg_LinkVerificationMethod_FullMethodName   = "/did.v1.Msg/LinkVerificationMethod"
+	Msg_UnlinkVerificationMethod_FullMethodName = "/did.v1.Msg/UnlinkVerificationMethod"
+	Msg_UpdateParams_FullMethodName             = "/did.v1.Msg/UpdateParams"
 )
 
 // MsgClient is the client API for Msg service.
@@ -36,14 +35,12 @@ type MsgClient interface {
 	// ExecuteTx executes a transaction on the Sonr Blockchain. It leverages
 	// Macaroon for verification.
 	ExecuteTx(ctx context.Context, in *MsgExecuteTx, opts ...grpc.CallOption) (*MsgExecuteTxResponse, error)
+	// RegisterController registers a controller.
+	RegisterController(ctx context.Context, in *MsgRegisterController, opts ...grpc.CallOption) (*MsgRegisterControllerResponse, error)
 	// LinkAssertion links an assertion to a controller.
-	LinkAssertion(ctx context.Context, in *MsgLinkAssertion, opts ...grpc.CallOption) (*MsgLinkAssertionResponse, error)
-	// LinkAuthentication links an authentication to a controller.
-	LinkAuthentication(ctx context.Context, in *MsgLinkAuthentication, opts ...grpc.CallOption) (*MsgLinkAuthenticationResponse, error)
+	LinkVerificationMethod(ctx context.Context, in *MsgLinkVerificationMethod, opts ...grpc.CallOption) (*MsgLinkVerificationMethodResponse, error)
 	// UnlinkAssertion unlinks an assertion from a controller.
-	UnlinkAssertion(ctx context.Context, in *MsgUnlinkAssertion, opts ...grpc.CallOption) (*MsgUnlinkAssertionResponse, error)
-	// UnlinkAuthentication unlinks an authentication from a controller.
-	UnlinkAuthentication(ctx context.Context, in *MsgUnlinkAuthentication, opts ...grpc.CallOption) (*MsgUnlinkAuthenticationResponse, error)
+	UnlinkVerificationMethod(ctx context.Context, in *MsgUnlinkVerificationMethod, opts ...grpc.CallOption) (*MsgUnlinkVerificationMethodResponse, error)
 	// UpdateParams defines a governance operation for updating the parameters.
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
 }
@@ -66,40 +63,30 @@ func (c *msgClient) ExecuteTx(ctx context.Context, in *MsgExecuteTx, opts ...grp
 	return out, nil
 }
 
-func (c *msgClient) LinkAssertion(ctx context.Context, in *MsgLinkAssertion, opts ...grpc.CallOption) (*MsgLinkAssertionResponse, error) {
+func (c *msgClient) RegisterController(ctx context.Context, in *MsgRegisterController, opts ...grpc.CallOption) (*MsgRegisterControllerResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MsgLinkAssertionResponse)
-	err := c.cc.Invoke(ctx, Msg_LinkAssertion_FullMethodName, in, out, cOpts...)
+	out := new(MsgRegisterControllerResponse)
+	err := c.cc.Invoke(ctx, Msg_RegisterController_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *msgClient) LinkAuthentication(ctx context.Context, in *MsgLinkAuthentication, opts ...grpc.CallOption) (*MsgLinkAuthenticationResponse, error) {
+func (c *msgClient) LinkVerificationMethod(ctx context.Context, in *MsgLinkVerificationMethod, opts ...grpc.CallOption) (*MsgLinkVerificationMethodResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MsgLinkAuthenticationResponse)
-	err := c.cc.Invoke(ctx, Msg_LinkAuthentication_FullMethodName, in, out, cOpts...)
+	out := new(MsgLinkVerificationMethodResponse)
+	err := c.cc.Invoke(ctx, Msg_LinkVerificationMethod_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *msgClient) UnlinkAssertion(ctx context.Context, in *MsgUnlinkAssertion, opts ...grpc.CallOption) (*MsgUnlinkAssertionResponse, error) {
+func (c *msgClient) UnlinkVerificationMethod(ctx context.Context, in *MsgUnlinkVerificationMethod, opts ...grpc.CallOption) (*MsgUnlinkVerificationMethodResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MsgUnlinkAssertionResponse)
-	err := c.cc.Invoke(ctx, Msg_UnlinkAssertion_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *msgClient) UnlinkAuthentication(ctx context.Context, in *MsgUnlinkAuthentication, opts ...grpc.CallOption) (*MsgUnlinkAuthenticationResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(MsgUnlinkAuthenticationResponse)
-	err := c.cc.Invoke(ctx, Msg_UnlinkAuthentication_FullMethodName, in, out, cOpts...)
+	out := new(MsgUnlinkVerificationMethodResponse)
+	err := c.cc.Invoke(ctx, Msg_UnlinkVerificationMethod_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -125,14 +112,12 @@ type MsgServer interface {
 	// ExecuteTx executes a transaction on the Sonr Blockchain. It leverages
 	// Macaroon for verification.
 	ExecuteTx(context.Context, *MsgExecuteTx) (*MsgExecuteTxResponse, error)
+	// RegisterController registers a controller.
+	RegisterController(context.Context, *MsgRegisterController) (*MsgRegisterControllerResponse, error)
 	// LinkAssertion links an assertion to a controller.
-	LinkAssertion(context.Context, *MsgLinkAssertion) (*MsgLinkAssertionResponse, error)
-	// LinkAuthentication links an authentication to a controller.
-	LinkAuthentication(context.Context, *MsgLinkAuthentication) (*MsgLinkAuthenticationResponse, error)
+	LinkVerificationMethod(context.Context, *MsgLinkVerificationMethod) (*MsgLinkVerificationMethodResponse, error)
 	// UnlinkAssertion unlinks an assertion from a controller.
-	UnlinkAssertion(context.Context, *MsgUnlinkAssertion) (*MsgUnlinkAssertionResponse, error)
-	// UnlinkAuthentication unlinks an authentication from a controller.
-	UnlinkAuthentication(context.Context, *MsgUnlinkAuthentication) (*MsgUnlinkAuthenticationResponse, error)
+	UnlinkVerificationMethod(context.Context, *MsgUnlinkVerificationMethod) (*MsgUnlinkVerificationMethodResponse, error)
 	// UpdateParams defines a governance operation for updating the parameters.
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
 	mustEmbedUnimplementedMsgServer()
@@ -148,17 +133,14 @@ type UnimplementedMsgServer struct{}
 func (UnimplementedMsgServer) ExecuteTx(context.Context, *MsgExecuteTx) (*MsgExecuteTxResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecuteTx not implemented")
 }
-func (UnimplementedMsgServer) LinkAssertion(context.Context, *MsgLinkAssertion) (*MsgLinkAssertionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method LinkAssertion not implemented")
+func (UnimplementedMsgServer) RegisterController(context.Context, *MsgRegisterController) (*MsgRegisterControllerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterController not implemented")
 }
-func (UnimplementedMsgServer) LinkAuthentication(context.Context, *MsgLinkAuthentication) (*MsgLinkAuthenticationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method LinkAuthentication not implemented")
+func (UnimplementedMsgServer) LinkVerificationMethod(context.Context, *MsgLinkVerificationMethod) (*MsgLinkVerificationMethodResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LinkVerificationMethod not implemented")
 }
-func (UnimplementedMsgServer) UnlinkAssertion(context.Context, *MsgUnlinkAssertion) (*MsgUnlinkAssertionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnlinkAssertion not implemented")
-}
-func (UnimplementedMsgServer) UnlinkAuthentication(context.Context, *MsgUnlinkAuthentication) (*MsgUnlinkAuthenticationResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnlinkAuthentication not implemented")
+func (UnimplementedMsgServer) UnlinkVerificationMethod(context.Context, *MsgUnlinkVerificationMethod) (*MsgUnlinkVerificationMethodResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UnlinkVerificationMethod not implemented")
 }
 func (UnimplementedMsgServer) UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateParams not implemented")
@@ -202,74 +184,56 @@ func _Msg_ExecuteTx_Handler(srv interface{}, ctx context.Context, dec func(inter
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Msg_LinkAssertion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgLinkAssertion)
+func _Msg_RegisterController_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgRegisterController)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).LinkAssertion(ctx, in)
+		return srv.(MsgServer).RegisterController(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Msg_LinkAssertion_FullMethodName,
+		FullMethod: Msg_RegisterController_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).LinkAssertion(ctx, req.(*MsgLinkAssertion))
+		return srv.(MsgServer).RegisterController(ctx, req.(*MsgRegisterController))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Msg_LinkAuthentication_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgLinkAuthentication)
+func _Msg_LinkVerificationMethod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgLinkVerificationMethod)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).LinkAuthentication(ctx, in)
+		return srv.(MsgServer).LinkVerificationMethod(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Msg_LinkAuthentication_FullMethodName,
+		FullMethod: Msg_LinkVerificationMethod_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).LinkAuthentication(ctx, req.(*MsgLinkAuthentication))
+		return srv.(MsgServer).LinkVerificationMethod(ctx, req.(*MsgLinkVerificationMethod))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Msg_UnlinkAssertion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgUnlinkAssertion)
+func _Msg_UnlinkVerificationMethod_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUnlinkVerificationMethod)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).UnlinkAssertion(ctx, in)
+		return srv.(MsgServer).UnlinkVerificationMethod(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Msg_UnlinkAssertion_FullMethodName,
+		FullMethod: Msg_UnlinkVerificationMethod_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).UnlinkAssertion(ctx, req.(*MsgUnlinkAssertion))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Msg_UnlinkAuthentication_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgUnlinkAuthentication)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MsgServer).UnlinkAuthentication(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Msg_UnlinkAuthentication_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).UnlinkAuthentication(ctx, req.(*MsgUnlinkAuthentication))
+		return srv.(MsgServer).UnlinkVerificationMethod(ctx, req.(*MsgUnlinkVerificationMethod))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -304,20 +268,16 @@ var Msg_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Msg_ExecuteTx_Handler,
 		},
 		{
-			MethodName: "LinkAssertion",
-			Handler:    _Msg_LinkAssertion_Handler,
+			MethodName: "RegisterController",
+			Handler:    _Msg_RegisterController_Handler,
 		},
 		{
-			MethodName: "LinkAuthentication",
-			Handler:    _Msg_LinkAuthentication_Handler,
+			MethodName: "LinkVerificationMethod",
+			Handler:    _Msg_LinkVerificationMethod_Handler,
 		},
 		{
-			MethodName: "UnlinkAssertion",
-			Handler:    _Msg_UnlinkAssertion_Handler,
-		},
-		{
-			MethodName: "UnlinkAuthentication",
-			Handler:    _Msg_UnlinkAuthentication_Handler,
+			MethodName: "UnlinkVerificationMethod",
+			Handler:    _Msg_UnlinkVerificationMethod_Handler,
 		},
 		{
 			MethodName: "UpdateParams",

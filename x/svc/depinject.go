@@ -16,8 +16,8 @@ import (
 	"cosmossdk.io/depinject"
 	"cosmossdk.io/log"
 
-	modulev1 "github.com/sonr-io/snrd/api/svc/module/v1"
-	"github.com/sonr-io/snrd/x/svc/keeper"
+	modulev1 "github.com/sonr-io/core/api/svc/module/v1"
+	"github.com/sonr-io/core/x/svc/keeper"
 )
 
 var _ appmodule.AppModule = AppModule{}

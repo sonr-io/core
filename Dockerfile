@@ -33,7 +33,7 @@ FROM alpine:3.17
 
 LABEL org.opencontainers.image.title="snrd"
 LABEL org.opencontainers.image.authors="diDAO <hi@didao.xyz>"
-LABEL org.opencontainers.image.source=https://github.com/sonr-io/snrd
+LABEL org.opencontainers.image.source=https://github.com/sonr-io/core
 
 COPY --from=go-builder /code/build/sonrd /usr/bin/sonrd
 

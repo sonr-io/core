@@ -5,8 +5,8 @@ import (
 
 	upgradetypes "cosmossdk.io/x/upgrade/types"
 
-	"github.com/sonr-io/snrd/app/upgrades"
-	"github.com/sonr-io/snrd/app/upgrades/noop"
+	"github.com/sonr-io/core/app/upgrades"
+	"github.com/sonr-io/core/app/upgrades/noop"
 )
 
 // Upgrades list of chain upgrades

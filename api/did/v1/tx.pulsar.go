@@ -17,33 +17,31 @@ import (
 )
 
 var (
-	md_MsgLinkAuthentication                protoreflect.MessageDescriptor
-	fd_MsgLinkAuthentication_controller     protoreflect.FieldDescriptor
-	fd_MsgLinkAuthentication_subject        protoreflect.FieldDescriptor
-	fd_MsgLinkAuthentication_assertion      protoreflect.FieldDescriptor
-	fd_MsgLinkAuthentication_credential_id  protoreflect.FieldDescriptor
-	fd_MsgLinkAuthentication_macaroon_token protoreflect.FieldDescriptor
+	md_MsgRegisterController                           protoreflect.MessageDescriptor
+	fd_MsgRegisterController_sender                    protoreflect.FieldDescriptor
+	fd_MsgRegisterController_authentication_credential protoreflect.FieldDescriptor
+	fd_MsgRegisterController_assertion_dwn             protoreflect.FieldDescriptor
+	fd_MsgRegisterController_invocation_dwn            protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_did_v1_tx_proto_init()
-	md_MsgLinkAuthentication = File_did_v1_tx_proto.Messages().ByName("MsgLinkAuthentication")
-	fd_MsgLinkAuthentication_controller = md_MsgLinkAuthentication.Fields().ByName("controller")
-	fd_MsgLinkAuthentication_subject = md_MsgLinkAuthentication.Fields().ByName("subject")
-	fd_MsgLinkAuthentication_assertion = md_MsgLinkAuthentication.Fields().ByName("assertion")
-	fd_MsgLinkAuthentication_credential_id = md_MsgLinkAuthentication.Fields().ByName("credential_id")
-	fd_MsgLinkAuthentication_macaroon_token = md_MsgLinkAuthentication.Fields().ByName("macaroon_token")
+	md_MsgRegisterController = File_did_v1_tx_proto.Messages().ByName("MsgRegisterController")
+	fd_MsgRegisterController_sender = md_MsgRegisterController.Fields().ByName("sender")
+	fd_MsgRegisterController_authentication_credential = md_MsgRegisterController.Fields().ByName("authentication_credential")
+	fd_MsgRegisterController_assertion_dwn = md_MsgRegisterController.Fields().ByName("assertion_dwn")
+	fd_MsgRegisterController_invocation_dwn = md_MsgRegisterController.Fields().ByName("invocation_dwn")
 }
 
-var _ protoreflect.Message = (*fastReflection_MsgLinkAuthentication)(nil)
+var _ protoreflect.Message = (*fastReflection_MsgRegisterController)(nil)
 
-type fastReflection_MsgLinkAuthentication MsgLinkAuthentication
+type fastReflection_MsgRegisterController MsgRegisterController
 
-func (x *MsgLinkAuthentication) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgLinkAuthentication)(x)
+func (x *MsgRegisterController) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgRegisterController)(x)
 }
 
-func (x *MsgLinkAuthentication) slowProtoReflect() protoreflect.Message {
+func (x *MsgRegisterController) slowProtoReflect() protoreflect.Message {
 	mi := &file_did_v1_tx_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -55,43 +53,43 @@ func (x *MsgLinkAuthentication) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_MsgLinkAuthentication_messageType fastReflection_MsgLinkAuthentication_messageType
-var _ protoreflect.MessageType = fastReflection_MsgLinkAuthentication_messageType{}
+var _fastReflection_MsgRegisterController_messageType fastReflection_MsgRegisterController_messageType
+var _ protoreflect.MessageType = fastReflection_MsgRegisterController_messageType{}
 
-type fastReflection_MsgLinkAuthentication_messageType struct{}
+type fastReflection_MsgRegisterController_messageType struct{}
 
-func (x fastReflection_MsgLinkAuthentication_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgLinkAuthentication)(nil)
+func (x fastReflection_MsgRegisterController_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgRegisterController)(nil)
 }
-func (x fastReflection_MsgLinkAuthentication_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgLinkAuthentication)
+func (x fastReflection_MsgRegisterController_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgRegisterController)
 }
-func (x fastReflection_MsgLinkAuthentication_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgLinkAuthentication
+func (x fastReflection_MsgRegisterController_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgRegisterController
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_MsgLinkAuthentication) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgLinkAuthentication
+func (x *fastReflection_MsgRegisterController) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgRegisterController
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgLinkAuthentication) Type() protoreflect.MessageType {
-	return _fastReflection_MsgLinkAuthentication_messageType
+func (x *fastReflection_MsgRegisterController) Type() protoreflect.MessageType {
+	return _fastReflection_MsgRegisterController_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgLinkAuthentication) New() protoreflect.Message {
-	return new(fastReflection_MsgLinkAuthentication)
+func (x *fastReflection_MsgRegisterController) New() protoreflect.Message {
+	return new(fastReflection_MsgRegisterController)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgLinkAuthentication) Interface() protoreflect.ProtoMessage {
-	return (*MsgLinkAuthentication)(x)
+func (x *fastReflection_MsgRegisterController) Interface() protoreflect.ProtoMessage {
+	return (*MsgRegisterController)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -99,34 +97,28 @@ func (x *fastReflection_MsgLinkAuthentication) Interface() protoreflect.ProtoMes
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_MsgLinkAuthentication) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Controller != "" {
-		value := protoreflect.ValueOfString(x.Controller)
-		if !f(fd_MsgLinkAuthentication_controller, value) {
+func (x *fastReflection_MsgRegisterController) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.Sender != "" {
+		value := protoreflect.ValueOfString(x.Sender)
+		if !f(fd_MsgRegisterController_sender, value) {
 			return
 		}
 	}
-	if x.Subject != "" {
-		value := protoreflect.ValueOfString(x.Subject)
-		if !f(fd_MsgLinkAuthentication_subject, value) {
+	if x.AuthenticationCredential != nil {
+		value := protoreflect.ValueOfMessage(x.AuthenticationCredential.ProtoReflect())
+		if !f(fd_MsgRegisterController_authentication_credential, value) {
 			return
 		}
 	}
-	if x.Assertion != "" {
-		value := protoreflect.ValueOfString(x.Assertion)
-		if !f(fd_MsgLinkAuthentication_assertion, value) {
+	if x.AssertionDwn != nil {
+		value := protoreflect.ValueOfMessage(x.AssertionDwn.ProtoReflect())
+		if !f(fd_MsgRegisterController_assertion_dwn, value) {
 			return
 		}
 	}
-	if len(x.CredentialId) != 0 {
-		value := protoreflect.ValueOfBytes(x.CredentialId)
-		if !f(fd_MsgLinkAuthentication_credential_id, value) {
-			return
-		}
-	}
-	if x.MacaroonToken != "" {
-		value := protoreflect.ValueOfString(x.MacaroonToken)
-		if !f(fd_MsgLinkAuthentication_macaroon_token, value) {
+	if x.InvocationDwn != nil {
+		value := protoreflect.ValueOfMessage(x.InvocationDwn.ProtoReflect())
+		if !f(fd_MsgRegisterController_invocation_dwn, value) {
 			return
 		}
 	}
@@ -143,23 +135,21 @@ func (x *fastReflection_MsgLinkAuthentication) Range(f func(protoreflect.FieldDe
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgLinkAuthentication) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_MsgRegisterController) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAuthentication.controller":
-		return x.Controller != ""
-	case "did.v1.MsgLinkAuthentication.subject":
-		return x.Subject != ""
-	case "did.v1.MsgLinkAuthentication.assertion":
-		return x.Assertion != ""
-	case "did.v1.MsgLinkAuthentication.credential_id":
-		return len(x.CredentialId) != 0
-	case "did.v1.MsgLinkAuthentication.macaroon_token":
-		return x.MacaroonToken != ""
+	case "did.v1.MsgRegisterController.sender":
+		return x.Sender != ""
+	case "did.v1.MsgRegisterController.authentication_credential":
+		return x.AuthenticationCredential != nil
+	case "did.v1.MsgRegisterController.assertion_dwn":
+		return x.AssertionDwn != nil
+	case "did.v1.MsgRegisterController.invocation_dwn":
+		return x.InvocationDwn != nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAuthentication"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgRegisterController"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAuthentication does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgRegisterController does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -169,23 +159,21 @@ func (x *fastReflection_MsgLinkAuthentication) Has(fd protoreflect.FieldDescript
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAuthentication) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_MsgRegisterController) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAuthentication.controller":
-		x.Controller = ""
-	case "did.v1.MsgLinkAuthentication.subject":
-		x.Subject = ""
-	case "did.v1.MsgLinkAuthentication.assertion":
-		x.Assertion = ""
-	case "did.v1.MsgLinkAuthentication.credential_id":
-		x.CredentialId = nil
-	case "did.v1.MsgLinkAuthentication.macaroon_token":
-		x.MacaroonToken = ""
+	case "did.v1.MsgRegisterController.sender":
+		x.Sender = ""
+	case "did.v1.MsgRegisterController.authentication_credential":
+		x.AuthenticationCredential = nil
+	case "did.v1.MsgRegisterController.assertion_dwn":
+		x.AssertionDwn = nil
+	case "did.v1.MsgRegisterController.invocation_dwn":
+		x.InvocationDwn = nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAuthentication"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgRegisterController"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAuthentication does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgRegisterController does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -195,28 +183,25 @@ func (x *fastReflection_MsgLinkAuthentication) Clear(fd protoreflect.FieldDescri
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgLinkAuthentication) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgRegisterController) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "did.v1.MsgLinkAuthentication.controller":
-		value := x.Controller
+	case "did.v1.MsgRegisterController.sender":
+		value := x.Sender
 		return protoreflect.ValueOfString(value)
-	case "did.v1.MsgLinkAuthentication.subject":
-		value := x.Subject
-		return protoreflect.ValueOfString(value)
-	case "did.v1.MsgLinkAuthentication.assertion":
-		value := x.Assertion
-		return protoreflect.ValueOfString(value)
-	case "did.v1.MsgLinkAuthentication.credential_id":
-		value := x.CredentialId
-		return protoreflect.ValueOfBytes(value)
-	case "did.v1.MsgLinkAuthentication.macaroon_token":
-		value := x.MacaroonToken
-		return protoreflect.ValueOfString(value)
+	case "did.v1.MsgRegisterController.authentication_credential":
+		value := x.AuthenticationCredential
+		return protoreflect.ValueOfMessage(value.ProtoReflect())
+	case "did.v1.MsgRegisterController.assertion_dwn":
+		value := x.AssertionDwn
+		return protoreflect.ValueOfMessage(value.ProtoReflect())
+	case "did.v1.MsgRegisterController.invocation_dwn":
+		value := x.InvocationDwn
+		return protoreflect.ValueOfMessage(value.ProtoReflect())
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAuthentication"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgRegisterController"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAuthentication does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgRegisterController does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -230,23 +215,21 @@ func (x *fastReflection_MsgLinkAuthentication) Get(descriptor protoreflect.Field
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAuthentication) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_MsgRegisterController) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAuthentication.controller":
-		x.Controller = value.Interface().(string)
-	case "did.v1.MsgLinkAuthentication.subject":
-		x.Subject = value.Interface().(string)
-	case "did.v1.MsgLinkAuthentication.assertion":
-		x.Assertion = value.Interface().(string)
-	case "did.v1.MsgLinkAuthentication.credential_id":
-		x.CredentialId = value.Bytes()
-	case "did.v1.MsgLinkAuthentication.macaroon_token":
-		x.MacaroonToken = value.Interface().(string)
+	case "did.v1.MsgRegisterController.sender":
+		x.Sender = value.Interface().(string)
+	case "did.v1.MsgRegisterController.authentication_credential":
+		x.AuthenticationCredential = value.Message().Interface().(*VerificationMethod)
+	case "did.v1.MsgRegisterController.assertion_dwn":
+		x.AssertionDwn = value.Message().Interface().(*VerificationMethod)
+	case "did.v1.MsgRegisterController.invocation_dwn":
+		x.InvocationDwn = value.Message().Interface().(*VerificationMethod)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAuthentication"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgRegisterController"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAuthentication does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgRegisterController does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -260,56 +243,64 @@ func (x *fastReflection_MsgLinkAuthentication) Set(fd protoreflect.FieldDescript
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAuthentication) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgRegisterController) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAuthentication.controller":
-		panic(fmt.Errorf("field controller of message did.v1.MsgLinkAuthentication is not mutable"))
-	case "did.v1.MsgLinkAuthentication.subject":
-		panic(fmt.Errorf("field subject of message did.v1.MsgLinkAuthentication is not mutable"))
-	case "did.v1.MsgLinkAuthentication.assertion":
-		panic(fmt.Errorf("field assertion of message did.v1.MsgLinkAuthentication is not mutable"))
-	case "did.v1.MsgLinkAuthentication.credential_id":
-		panic(fmt.Errorf("field credential_id of message did.v1.MsgLinkAuthentication is not mutable"))
-	case "did.v1.MsgLinkAuthentication.macaroon_token":
-		panic(fmt.Errorf("field macaroon_token of message did.v1.MsgLinkAuthentication is not mutable"))
+	case "did.v1.MsgRegisterController.authentication_credential":
+		if x.AuthenticationCredential == nil {
+			x.AuthenticationCredential = new(VerificationMethod)
+		}
+		return protoreflect.ValueOfMessage(x.AuthenticationCredential.ProtoReflect())
+	case "did.v1.MsgRegisterController.assertion_dwn":
+		if x.AssertionDwn == nil {
+			x.AssertionDwn = new(VerificationMethod)
+		}
+		return protoreflect.ValueOfMessage(x.AssertionDwn.ProtoReflect())
+	case "did.v1.MsgRegisterController.invocation_dwn":
+		if x.InvocationDwn == nil {
+			x.InvocationDwn = new(VerificationMethod)
+		}
+		return protoreflect.ValueOfMessage(x.InvocationDwn.ProtoReflect())
+	case "did.v1.MsgRegisterController.sender":
+		panic(fmt.Errorf("field sender of message did.v1.MsgRegisterController is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAuthentication"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgRegisterController"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAuthentication does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgRegisterController does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgLinkAuthentication) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgRegisterController) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAuthentication.controller":
+	case "did.v1.MsgRegisterController.sender":
 		return protoreflect.ValueOfString("")
-	case "did.v1.MsgLinkAuthentication.subject":
-		return protoreflect.ValueOfString("")
-	case "did.v1.MsgLinkAuthentication.assertion":
-		return protoreflect.ValueOfString("")
-	case "did.v1.MsgLinkAuthentication.credential_id":
-		return protoreflect.ValueOfBytes(nil)
-	case "did.v1.MsgLinkAuthentication.macaroon_token":
-		return protoreflect.ValueOfString("")
+	case "did.v1.MsgRegisterController.authentication_credential":
+		m := new(VerificationMethod)
+		return protoreflect.ValueOfMessage(m.ProtoReflect())
+	case "did.v1.MsgRegisterController.assertion_dwn":
+		m := new(VerificationMethod)
+		return protoreflect.ValueOfMessage(m.ProtoReflect())
+	case "did.v1.MsgRegisterController.invocation_dwn":
+		m := new(VerificationMethod)
+		return protoreflect.ValueOfMessage(m.ProtoReflect())
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAuthentication"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgRegisterController"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAuthentication does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgRegisterController does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgLinkAuthentication) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_MsgRegisterController) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in did.v1.MsgLinkAuthentication", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in did.v1.MsgRegisterController", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -317,7 +308,7 @@ func (x *fastReflection_MsgLinkAuthentication) WhichOneof(d protoreflect.OneofDe
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgLinkAuthentication) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_MsgRegisterController) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -328,7 +319,7 @@ func (x *fastReflection_MsgLinkAuthentication) GetUnknown() protoreflect.RawFiel
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAuthentication) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_MsgRegisterController) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -340,7 +331,7 @@ func (x *fastReflection_MsgLinkAuthentication) SetUnknown(fields protoreflect.Ra
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_MsgLinkAuthentication) IsValid() bool {
+func (x *fastReflection_MsgRegisterController) IsValid() bool {
 	return x != nil
 }
 
@@ -350,9 +341,9 @@ func (x *fastReflection_MsgLinkAuthentication) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgLinkAuthentication) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_MsgRegisterController) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgLinkAuthentication)
+		x := input.Message.Interface().(*MsgRegisterController)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -364,24 +355,20 @@ func (x *fastReflection_MsgLinkAuthentication) ProtoMethods() *protoiface.Method
 		var n int
 		var l int
 		_ = l
-		l = len(x.Controller)
+		l = len(x.Sender)
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
-		l = len(x.Subject)
-		if l > 0 {
+		if x.AuthenticationCredential != nil {
+			l = options.Size(x.AuthenticationCredential)
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
-		l = len(x.Assertion)
-		if l > 0 {
+		if x.AssertionDwn != nil {
+			l = options.Size(x.AssertionDwn)
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
-		l = len(x.CredentialId)
-		if l > 0 {
-			n += 1 + l + runtime.Sov(uint64(l))
-		}
-		l = len(x.MacaroonToken)
-		if l > 0 {
+		if x.InvocationDwn != nil {
+			l = options.Size(x.InvocationDwn)
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
 		if x.unknownFields != nil {
@@ -394,7 +381,7 @@ func (x *fastReflection_MsgLinkAuthentication) ProtoMethods() *protoiface.Method
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgLinkAuthentication)
+		x := input.Message.Interface().(*MsgRegisterController)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -413,38 +400,52 @@ func (x *fastReflection_MsgLinkAuthentication) ProtoMethods() *protoiface.Method
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
 		}
-		if len(x.MacaroonToken) > 0 {
-			i -= len(x.MacaroonToken)
-			copy(dAtA[i:], x.MacaroonToken)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.MacaroonToken)))
-			i--
-			dAtA[i] = 0x2a
-		}
-		if len(x.CredentialId) > 0 {
-			i -= len(x.CredentialId)
-			copy(dAtA[i:], x.CredentialId)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.CredentialId)))
+		if x.InvocationDwn != nil {
+			encoded, err := options.Marshal(x.InvocationDwn)
+			if err != nil {
+				return protoiface.MarshalOutput{
+					NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+					Buf:               input.Buf,
+				}, err
+			}
+			i -= len(encoded)
+			copy(dAtA[i:], encoded)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
 			i--
 			dAtA[i] = 0x22
 		}
-		if len(x.Assertion) > 0 {
-			i -= len(x.Assertion)
-			copy(dAtA[i:], x.Assertion)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Assertion)))
+		if x.AssertionDwn != nil {
+			encoded, err := options.Marshal(x.AssertionDwn)
+			if err != nil {
+				return protoiface.MarshalOutput{
+					NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+					Buf:               input.Buf,
+				}, err
+			}
+			i -= len(encoded)
+			copy(dAtA[i:], encoded)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
 			i--
 			dAtA[i] = 0x1a
 		}
-		if len(x.Subject) > 0 {
-			i -= len(x.Subject)
-			copy(dAtA[i:], x.Subject)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Subject)))
+		if x.AuthenticationCredential != nil {
+			encoded, err := options.Marshal(x.AuthenticationCredential)
+			if err != nil {
+				return protoiface.MarshalOutput{
+					NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+					Buf:               input.Buf,
+				}, err
+			}
+			i -= len(encoded)
+			copy(dAtA[i:], encoded)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
 			i--
 			dAtA[i] = 0x12
 		}
-		if len(x.Controller) > 0 {
-			i -= len(x.Controller)
-			copy(dAtA[i:], x.Controller)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Controller)))
+		if len(x.Sender) > 0 {
+			i -= len(x.Sender)
+			copy(dAtA[i:], x.Sender)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Sender)))
 			i--
 			dAtA[i] = 0xa
 		}
@@ -459,7 +460,7 @@ func (x *fastReflection_MsgLinkAuthentication) ProtoMethods() *protoiface.Method
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgLinkAuthentication)
+		x := input.Message.Interface().(*MsgRegisterController)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -491,15 +492,15 @@ func (x *fastReflection_MsgLinkAuthentication) ProtoMethods() *protoiface.Method
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgLinkAuthentication: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgRegisterController: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgLinkAuthentication: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgRegisterController: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Controller", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Sender", wireType)
 				}
 				var stringLen uint64
 				for shift := uint(0); ; shift += 7 {
@@ -527,13 +528,13 @@ func (x *fastReflection_MsgLinkAuthentication) ProtoMethods() *protoiface.Method
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.Controller = string(dAtA[iNdEx:postIndex])
+				x.Sender = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
 			case 2:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Subject", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field AuthenticationCredential", wireType)
 				}
-				var stringLen uint64
+				var msglen int
 				for shift := uint(0); ; shift += 7 {
 					if shift >= 64 {
 						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
@@ -543,29 +544,33 @@ func (x *fastReflection_MsgLinkAuthentication) ProtoMethods() *protoiface.Method
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
+					msglen |= int(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
 				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
+				if msglen < 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
 				}
-				postIndex := iNdEx + intStringLen
+				postIndex := iNdEx + msglen
 				if postIndex < 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
 				}
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.Subject = string(dAtA[iNdEx:postIndex])
+				if x.AuthenticationCredential == nil {
+					x.AuthenticationCredential = &VerificationMethod{}
+				}
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.AuthenticationCredential); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
 				iNdEx = postIndex
 			case 3:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Assertion", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field AssertionDwn", wireType)
 				}
-				var stringLen uint64
+				var msglen int
 				for shift := uint(0); ; shift += 7 {
 					if shift >= 64 {
 						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
@@ -575,29 +580,33 @@ func (x *fastReflection_MsgLinkAuthentication) ProtoMethods() *protoiface.Method
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
+					msglen |= int(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
 				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
+				if msglen < 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
 				}
-				postIndex := iNdEx + intStringLen
+				postIndex := iNdEx + msglen
 				if postIndex < 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
 				}
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.Assertion = string(dAtA[iNdEx:postIndex])
+				if x.AssertionDwn == nil {
+					x.AssertionDwn = &VerificationMethod{}
+				}
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.AssertionDwn); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
 				iNdEx = postIndex
 			case 4:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field CredentialId", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field InvocationDwn", wireType)
 				}
-				var byteLen int
+				var msglen int
 				for shift := uint(0); ; shift += 7 {
 					if shift >= 64 {
 						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
@@ -607,57 +616,27 @@ func (x *fastReflection_MsgLinkAuthentication) ProtoMethods() *protoiface.Method
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					byteLen |= int(b&0x7F) << shift
+					msglen |= int(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
 				}
-				if byteLen < 0 {
+				if msglen < 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
 				}
-				postIndex := iNdEx + byteLen
+				postIndex := iNdEx + msglen
 				if postIndex < 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
 				}
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.CredentialId = append(x.CredentialId[:0], dAtA[iNdEx:postIndex]...)
-				if x.CredentialId == nil {
-					x.CredentialId = []byte{}
+				if x.InvocationDwn == nil {
+					x.InvocationDwn = &VerificationMethod{}
 				}
-				iNdEx = postIndex
-			case 5:
-				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field MacaroonToken", wireType)
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.InvocationDwn); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
 				}
-				var stringLen uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				postIndex := iNdEx + intStringLen
-				if postIndex < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if postIndex > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				x.MacaroonToken = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
 			default:
 				iNdEx = preIndex
@@ -694,28 +673,112 @@ func (x *fastReflection_MsgLinkAuthentication) ProtoMethods() *protoiface.Method
 	}
 }
 
+var _ protoreflect.Map = (*_MsgRegisterControllerResponse_3_map)(nil)
+
+type _MsgRegisterControllerResponse_3_map struct {
+	m *map[string]string
+}
+
+func (x *_MsgRegisterControllerResponse_3_map) Len() int {
+	if x.m == nil {
+		return 0
+	}
+	return len(*x.m)
+}
+
+func (x *_MsgRegisterControllerResponse_3_map) Range(f func(protoreflect.MapKey, protoreflect.Value) bool) {
+	if x.m == nil {
+		return
+	}
+	for k, v := range *x.m {
+		mapKey := (protoreflect.MapKey)(protoreflect.ValueOfString(k))
+		mapValue := protoreflect.ValueOfString(v)
+		if !f(mapKey, mapValue) {
+			break
+		}
+	}
+}
+
+func (x *_MsgRegisterControllerResponse_3_map) Has(key protoreflect.MapKey) bool {
+	if x.m == nil {
+		return false
+	}
+	keyUnwrapped := key.String()
+	concreteValue := keyUnwrapped
+	_, ok := (*x.m)[concreteValue]
+	return ok
+}
+
+func (x *_MsgRegisterControllerResponse_3_map) Clear(key protoreflect.MapKey) {
+	if x.m == nil {
+		return
+	}
+	keyUnwrapped := key.String()
+	concreteKey := keyUnwrapped
+	delete(*x.m, concreteKey)
+}
+
+func (x *_MsgRegisterControllerResponse_3_map) Get(key protoreflect.MapKey) protoreflect.Value {
+	if x.m == nil {
+		return protoreflect.Value{}
+	}
+	keyUnwrapped := key.String()
+	concreteKey := keyUnwrapped
+	v, ok := (*x.m)[concreteKey]
+	if !ok {
+		return protoreflect.Value{}
+	}
+	return protoreflect.ValueOfString(v)
+}
+
+func (x *_MsgRegisterControllerResponse_3_map) Set(key protoreflect.MapKey, value protoreflect.Value) {
+	if !key.IsValid() || !value.IsValid() {
+		panic("invalid key or value provided")
+	}
+	keyUnwrapped := key.String()
+	concreteKey := keyUnwrapped
+	valueUnwrapped := value.String()
+	concreteValue := valueUnwrapped
+	(*x.m)[concreteKey] = concreteValue
+}
+
+func (x *_MsgRegisterControllerResponse_3_map) Mutable(key protoreflect.MapKey) protoreflect.Value {
+	panic("should not call Mutable on protoreflect.Map whose value is not of type protoreflect.Message")
+}
+
+func (x *_MsgRegisterControllerResponse_3_map) NewValue() protoreflect.Value {
+	v := ""
+	return protoreflect.ValueOfString(v)
+}
+
+func (x *_MsgRegisterControllerResponse_3_map) IsValid() bool {
+	return x.m != nil
+}
+
 var (
-	md_MsgLinkAuthenticationResponse         protoreflect.MessageDescriptor
-	fd_MsgLinkAuthenticationResponse_success protoreflect.FieldDescriptor
-	fd_MsgLinkAuthenticationResponse_did     protoreflect.FieldDescriptor
+	md_MsgRegisterControllerResponse          protoreflect.MessageDescriptor
+	fd_MsgRegisterControllerResponse_cid      protoreflect.FieldDescriptor
+	fd_MsgRegisterControllerResponse_did      protoreflect.FieldDescriptor
+	fd_MsgRegisterControllerResponse_accounts protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_did_v1_tx_proto_init()
-	md_MsgLinkAuthenticationResponse = File_did_v1_tx_proto.Messages().ByName("MsgLinkAuthenticationResponse")
-	fd_MsgLinkAuthenticationResponse_success = md_MsgLinkAuthenticationResponse.Fields().ByName("success")
-	fd_MsgLinkAuthenticationResponse_did = md_MsgLinkAuthenticationResponse.Fields().ByName("did")
+	md_MsgRegisterControllerResponse = File_did_v1_tx_proto.Messages().ByName("MsgRegisterControllerResponse")
+	fd_MsgRegisterControllerResponse_cid = md_MsgRegisterControllerResponse.Fields().ByName("cid")
+	fd_MsgRegisterControllerResponse_did = md_MsgRegisterControllerResponse.Fields().ByName("did")
+	fd_MsgRegisterControllerResponse_accounts = md_MsgRegisterControllerResponse.Fields().ByName("accounts")
 }
 
-var _ protoreflect.Message = (*fastReflection_MsgLinkAuthenticationResponse)(nil)
+var _ protoreflect.Message = (*fastReflection_MsgRegisterControllerResponse)(nil)
 
-type fastReflection_MsgLinkAuthenticationResponse MsgLinkAuthenticationResponse
+type fastReflection_MsgRegisterControllerResponse MsgRegisterControllerResponse
 
-func (x *MsgLinkAuthenticationResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgLinkAuthenticationResponse)(x)
+func (x *MsgRegisterControllerResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgRegisterControllerResponse)(x)
 }
 
-func (x *MsgLinkAuthenticationResponse) slowProtoReflect() protoreflect.Message {
+func (x *MsgRegisterControllerResponse) slowProtoReflect() protoreflect.Message {
 	mi := &file_did_v1_tx_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -727,43 +790,43 @@ func (x *MsgLinkAuthenticationResponse) slowProtoReflect() protoreflect.Message 
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_MsgLinkAuthenticationResponse_messageType fastReflection_MsgLinkAuthenticationResponse_messageType
-var _ protoreflect.MessageType = fastReflection_MsgLinkAuthenticationResponse_messageType{}
+var _fastReflection_MsgRegisterControllerResponse_messageType fastReflection_MsgRegisterControllerResponse_messageType
+var _ protoreflect.MessageType = fastReflection_MsgRegisterControllerResponse_messageType{}
 
-type fastReflection_MsgLinkAuthenticationResponse_messageType struct{}
+type fastReflection_MsgRegisterControllerResponse_messageType struct{}
 
-func (x fastReflection_MsgLinkAuthenticationResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgLinkAuthenticationResponse)(nil)
+func (x fastReflection_MsgRegisterControllerResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgRegisterControllerResponse)(nil)
 }
-func (x fastReflection_MsgLinkAuthenticationResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgLinkAuthenticationResponse)
+func (x fastReflection_MsgRegisterControllerResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgRegisterControllerResponse)
 }
-func (x fastReflection_MsgLinkAuthenticationResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgLinkAuthenticationResponse
+func (x fastReflection_MsgRegisterControllerResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgRegisterControllerResponse
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_MsgLinkAuthenticationResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgLinkAuthenticationResponse
+func (x *fastReflection_MsgRegisterControllerResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgRegisterControllerResponse
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgLinkAuthenticationResponse) Type() protoreflect.MessageType {
-	return _fastReflection_MsgLinkAuthenticationResponse_messageType
+func (x *fastReflection_MsgRegisterControllerResponse) Type() protoreflect.MessageType {
+	return _fastReflection_MsgRegisterControllerResponse_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgLinkAuthenticationResponse) New() protoreflect.Message {
-	return new(fastReflection_MsgLinkAuthenticationResponse)
+func (x *fastReflection_MsgRegisterControllerResponse) New() protoreflect.Message {
+	return new(fastReflection_MsgRegisterControllerResponse)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgLinkAuthenticationResponse) Interface() protoreflect.ProtoMessage {
-	return (*MsgLinkAuthenticationResponse)(x)
+func (x *fastReflection_MsgRegisterControllerResponse) Interface() protoreflect.ProtoMessage {
+	return (*MsgRegisterControllerResponse)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -771,16 +834,22 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) Interface() protoreflect.
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_MsgLinkAuthenticationResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Success != false {
-		value := protoreflect.ValueOfBool(x.Success)
-		if !f(fd_MsgLinkAuthenticationResponse_success, value) {
+func (x *fastReflection_MsgRegisterControllerResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.Cid != "" {
+		value := protoreflect.ValueOfString(x.Cid)
+		if !f(fd_MsgRegisterControllerResponse_cid, value) {
 			return
 		}
 	}
 	if x.Did != "" {
 		value := protoreflect.ValueOfString(x.Did)
-		if !f(fd_MsgLinkAuthenticationResponse_did, value) {
+		if !f(fd_MsgRegisterControllerResponse_did, value) {
+			return
+		}
+	}
+	if len(x.Accounts) != 0 {
+		value := protoreflect.ValueOfMap(&_MsgRegisterControllerResponse_3_map{m: &x.Accounts})
+		if !f(fd_MsgRegisterControllerResponse_accounts, value) {
 			return
 		}
 	}
@@ -797,17 +866,19 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) Range(f func(protoreflect
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgLinkAuthenticationResponse) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_MsgRegisterControllerResponse) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAuthenticationResponse.success":
-		return x.Success != false
-	case "did.v1.MsgLinkAuthenticationResponse.did":
+	case "did.v1.MsgRegisterControllerResponse.cid":
+		return x.Cid != ""
+	case "did.v1.MsgRegisterControllerResponse.did":
 		return x.Did != ""
+	case "did.v1.MsgRegisterControllerResponse.accounts":
+		return len(x.Accounts) != 0
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAuthenticationResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgRegisterControllerResponse"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAuthenticationResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgRegisterControllerResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -817,17 +888,19 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) Has(fd protoreflect.Field
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAuthenticationResponse) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_MsgRegisterControllerResponse) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAuthenticationResponse.success":
-		x.Success = false
-	case "did.v1.MsgLinkAuthenticationResponse.did":
+	case "did.v1.MsgRegisterControllerResponse.cid":
+		x.Cid = ""
+	case "did.v1.MsgRegisterControllerResponse.did":
 		x.Did = ""
+	case "did.v1.MsgRegisterControllerResponse.accounts":
+		x.Accounts = nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAuthenticationResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgRegisterControllerResponse"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAuthenticationResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgRegisterControllerResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -837,19 +910,25 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) Clear(fd protoreflect.Fie
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgLinkAuthenticationResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgRegisterControllerResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "did.v1.MsgLinkAuthenticationResponse.success":
-		value := x.Success
-		return protoreflect.ValueOfBool(value)
-	case "did.v1.MsgLinkAuthenticationResponse.did":
+	case "did.v1.MsgRegisterControllerResponse.cid":
+		value := x.Cid
+		return protoreflect.ValueOfString(value)
+	case "did.v1.MsgRegisterControllerResponse.did":
 		value := x.Did
 		return protoreflect.ValueOfString(value)
+	case "did.v1.MsgRegisterControllerResponse.accounts":
+		if len(x.Accounts) == 0 {
+			return protoreflect.ValueOfMap(&_MsgRegisterControllerResponse_3_map{})
+		}
+		mapValue := &_MsgRegisterControllerResponse_3_map{m: &x.Accounts}
+		return protoreflect.ValueOfMap(mapValue)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAuthenticationResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgRegisterControllerResponse"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAuthenticationResponse does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgRegisterControllerResponse does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -863,17 +942,21 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) Get(descriptor protorefle
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAuthenticationResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_MsgRegisterControllerResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAuthenticationResponse.success":
-		x.Success = value.Bool()
-	case "did.v1.MsgLinkAuthenticationResponse.did":
+	case "did.v1.MsgRegisterControllerResponse.cid":
+		x.Cid = value.Interface().(string)
+	case "did.v1.MsgRegisterControllerResponse.did":
 		x.Did = value.Interface().(string)
+	case "did.v1.MsgRegisterControllerResponse.accounts":
+		mv := value.Map()
+		cmv := mv.(*_MsgRegisterControllerResponse_3_map)
+		x.Accounts = *cmv.m
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAuthenticationResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgRegisterControllerResponse"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAuthenticationResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgRegisterControllerResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -887,44 +970,53 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) Set(fd protoreflect.Field
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAuthenticationResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgRegisterControllerResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAuthenticationResponse.success":
-		panic(fmt.Errorf("field success of message did.v1.MsgLinkAuthenticationResponse is not mutable"))
-	case "did.v1.MsgLinkAuthenticationResponse.did":
-		panic(fmt.Errorf("field did of message did.v1.MsgLinkAuthenticationResponse is not mutable"))
+	case "did.v1.MsgRegisterControllerResponse.accounts":
+		if x.Accounts == nil {
+			x.Accounts = make(map[string]string)
+		}
+		value := &_MsgRegisterControllerResponse_3_map{m: &x.Accounts}
+		return protoreflect.ValueOfMap(value)
+	case "did.v1.MsgRegisterControllerResponse.cid":
+		panic(fmt.Errorf("field cid of message did.v1.MsgRegisterControllerResponse is not mutable"))
+	case "did.v1.MsgRegisterControllerResponse.did":
+		panic(fmt.Errorf("field did of message did.v1.MsgRegisterControllerResponse is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAuthenticationResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgRegisterControllerResponse"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAuthenticationResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgRegisterControllerResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgLinkAuthenticationResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgRegisterControllerResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAuthenticationResponse.success":
-		return protoreflect.ValueOfBool(false)
-	case "did.v1.MsgLinkAuthenticationResponse.did":
+	case "did.v1.MsgRegisterControllerResponse.cid":
 		return protoreflect.ValueOfString("")
+	case "did.v1.MsgRegisterControllerResponse.did":
+		return protoreflect.ValueOfString("")
+	case "did.v1.MsgRegisterControllerResponse.accounts":
+		m := make(map[string]string)
+		return protoreflect.ValueOfMap(&_MsgRegisterControllerResponse_3_map{m: &m})
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAuthenticationResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgRegisterControllerResponse"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAuthenticationResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgRegisterControllerResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgLinkAuthenticationResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_MsgRegisterControllerResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in did.v1.MsgLinkAuthenticationResponse", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in did.v1.MsgRegisterControllerResponse", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -932,7 +1024,7 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) WhichOneof(d protoreflect
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgLinkAuthenticationResponse) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_MsgRegisterControllerResponse) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -943,7 +1035,7 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) GetUnknown() protoreflect
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAuthenticationResponse) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_MsgRegisterControllerResponse) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -955,7 +1047,7 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) SetUnknown(fields protore
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_MsgLinkAuthenticationResponse) IsValid() bool {
+func (x *fastReflection_MsgRegisterControllerResponse) IsValid() bool {
 	return x != nil
 }
 
@@ -965,9 +1057,9 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgLinkAuthenticationResponse) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_MsgRegisterControllerResponse) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgLinkAuthenticationResponse)
+		x := input.Message.Interface().(*MsgRegisterControllerResponse)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -979,12 +1071,34 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) ProtoMethods() *protoifac
 		var n int
 		var l int
 		_ = l
-		if x.Success {
-			n += 2
+		l = len(x.Cid)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
 		}
 		l = len(x.Did)
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if len(x.Accounts) > 0 {
+			SiZeMaP := func(k string, v string) {
+				mapEntrySize := 1 + len(k) + runtime.Sov(uint64(len(k))) + 1 + len(v) + runtime.Sov(uint64(len(v)))
+				n += mapEntrySize + 1 + runtime.Sov(uint64(mapEntrySize))
+			}
+			if options.Deterministic {
+				sortme := make([]string, 0, len(x.Accounts))
+				for k := range x.Accounts {
+					sortme = append(sortme, k)
+				}
+				sort.Strings(sortme)
+				for _, k := range sortme {
+					v := x.Accounts[k]
+					SiZeMaP(k, v)
+				}
+			} else {
+				for k, v := range x.Accounts {
+					SiZeMaP(k, v)
+				}
+			}
 		}
 		if x.unknownFields != nil {
 			n += len(x.unknownFields)
@@ -996,7 +1110,7 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) ProtoMethods() *protoifac
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgLinkAuthenticationResponse)
+		x := input.Message.Interface().(*MsgRegisterControllerResponse)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -1015,6 +1129,49 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) ProtoMethods() *protoifac
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
 		}
+		if len(x.Accounts) > 0 {
+			MaRsHaLmAp := func(k string, v string) (protoiface.MarshalOutput, error) {
+				baseI := i
+				i -= len(v)
+				copy(dAtA[i:], v)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(v)))
+				i--
+				dAtA[i] = 0x12
+				i -= len(k)
+				copy(dAtA[i:], k)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(k)))
+				i--
+				dAtA[i] = 0xa
+				i = runtime.EncodeVarint(dAtA, i, uint64(baseI-i))
+				i--
+				dAtA[i] = 0x1a
+				return protoiface.MarshalOutput{}, nil
+			}
+			if options.Deterministic {
+				keysForAccounts := make([]string, 0, len(x.Accounts))
+				for k := range x.Accounts {
+					keysForAccounts = append(keysForAccounts, string(k))
+				}
+				sort.Slice(keysForAccounts, func(i, j int) bool {
+					return keysForAccounts[i] < keysForAccounts[j]
+				})
+				for iNdEx := len(keysForAccounts) - 1; iNdEx >= 0; iNdEx-- {
+					v := x.Accounts[string(keysForAccounts[iNdEx])]
+					out, err := MaRsHaLmAp(keysForAccounts[iNdEx], v)
+					if err != nil {
+						return out, err
+					}
+				}
+			} else {
+				for k := range x.Accounts {
+					v := x.Accounts[k]
+					out, err := MaRsHaLmAp(k, v)
+					if err != nil {
+						return out, err
+					}
+				}
+			}
+		}
 		if len(x.Did) > 0 {
 			i -= len(x.Did)
 			copy(dAtA[i:], x.Did)
@@ -1022,15 +1179,12 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) ProtoMethods() *protoifac
 			i--
 			dAtA[i] = 0x12
 		}
-		if x.Success {
+		if len(x.Cid) > 0 {
+			i -= len(x.Cid)
+			copy(dAtA[i:], x.Cid)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Cid)))
 			i--
-			if x.Success {
-				dAtA[i] = 1
-			} else {
-				dAtA[i] = 0
-			}
-			i--
-			dAtA[i] = 0x8
+			dAtA[i] = 0xa
 		}
 		if input.Buf != nil {
 			input.Buf = append(input.Buf, dAtA...)
@@ -1043,7 +1197,7 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) ProtoMethods() *protoifac
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgLinkAuthenticationResponse)
+		x := input.Message.Interface().(*MsgRegisterControllerResponse)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -1075,17 +1229,17 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) ProtoMethods() *protoifac
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgLinkAuthenticationResponse: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgRegisterControllerResponse: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgLinkAuthenticationResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgRegisterControllerResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
-				if wireType != 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Success", wireType)
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Cid", wireType)
 				}
-				var v int
+				var stringLen uint64
 				for shift := uint(0); ; shift += 7 {
 					if shift >= 64 {
 						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
@@ -1095,12 +1249,24 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) ProtoMethods() *protoifac
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					v |= int(b&0x7F) << shift
+					stringLen |= uint64(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
 				}
-				x.Success = bool(v != 0)
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Cid = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
 			case 2:
 				if wireType != 2 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Did", wireType)
@@ -1132,6 +1298,133 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) ProtoMethods() *protoifac
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
 				x.Did = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 3:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Accounts", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if x.Accounts == nil {
+					x.Accounts = make(map[string]string)
+				}
+				var mapkey string
+				var mapvalue string
+				for iNdEx < postIndex {
+					entryPreIndex := iNdEx
+					var wire uint64
+					for shift := uint(0); ; shift += 7 {
+						if shift >= 64 {
+							return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+						}
+						if iNdEx >= l {
+							return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+						}
+						b := dAtA[iNdEx]
+						iNdEx++
+						wire |= uint64(b&0x7F) << shift
+						if b < 0x80 {
+							break
+						}
+					}
+					fieldNum := int32(wire >> 3)
+					if fieldNum == 1 {
+						var stringLenmapkey uint64
+						for shift := uint(0); ; shift += 7 {
+							if shift >= 64 {
+								return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+							}
+							if iNdEx >= l {
+								return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+							}
+							b := dAtA[iNdEx]
+							iNdEx++
+							stringLenmapkey |= uint64(b&0x7F) << shift
+							if b < 0x80 {
+								break
+							}
+						}
+						intStringLenmapkey := int(stringLenmapkey)
+						if intStringLenmapkey < 0 {
+							return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+						}
+						postStringIndexmapkey := iNdEx + intStringLenmapkey
+						if postStringIndexmapkey < 0 {
+							return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+						}
+						if postStringIndexmapkey > l {
+							return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+						}
+						mapkey = string(dAtA[iNdEx:postStringIndexmapkey])
+						iNdEx = postStringIndexmapkey
+					} else if fieldNum == 2 {
+						var stringLenmapvalue uint64
+						for shift := uint(0); ; shift += 7 {
+							if shift >= 64 {
+								return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+							}
+							if iNdEx >= l {
+								return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+							}
+							b := dAtA[iNdEx]
+							iNdEx++
+							stringLenmapvalue |= uint64(b&0x7F) << shift
+							if b < 0x80 {
+								break
+							}
+						}
+						intStringLenmapvalue := int(stringLenmapvalue)
+						if intStringLenmapvalue < 0 {
+							return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+						}
+						postStringIndexmapvalue := iNdEx + intStringLenmapvalue
+						if postStringIndexmapvalue < 0 {
+							return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+						}
+						if postStringIndexmapvalue > l {
+							return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+						}
+						mapvalue = string(dAtA[iNdEx:postStringIndexmapvalue])
+						iNdEx = postStringIndexmapvalue
+					} else {
+						iNdEx = entryPreIndex
+						skippy, err := runtime.Skip(dAtA[iNdEx:])
+						if err != nil {
+							return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+						}
+						if (skippy < 0) || (iNdEx+skippy) < 0 {
+							return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+						}
+						if (iNdEx + skippy) > postIndex {
+							return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+						}
+						iNdEx += skippy
+					}
+				}
+				x.Accounts[mapkey] = mapvalue
 				iNdEx = postIndex
 			default:
 				iNdEx = preIndex
@@ -1168,32 +1461,240 @@ func (x *fastReflection_MsgLinkAuthenticationResponse) ProtoMethods() *protoifac
 	}
 }
 
+var _ protoreflect.List = (*_MsgLinkVerificationMethod_3_list)(nil)
+
+type _MsgLinkVerificationMethod_3_list struct {
+	list *[]*VerificationMethod
+}
+
+func (x *_MsgLinkVerificationMethod_3_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_MsgLinkVerificationMethod_3_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
+}
+
+func (x *_MsgLinkVerificationMethod_3_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*VerificationMethod)
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_MsgLinkVerificationMethod_3_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*VerificationMethod)
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_MsgLinkVerificationMethod_3_list) AppendMutable() protoreflect.Value {
+	v := new(VerificationMethod)
+	*x.list = append(*x.list, v)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_MsgLinkVerificationMethod_3_list) Truncate(n int) {
+	for i := n; i < len(*x.list); i++ {
+		(*x.list)[i] = nil
+	}
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_MsgLinkVerificationMethod_3_list) NewElement() protoreflect.Value {
+	v := new(VerificationMethod)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_MsgLinkVerificationMethod_3_list) IsValid() bool {
+	return x.list != nil
+}
+
+var _ protoreflect.List = (*_MsgLinkVerificationMethod_4_list)(nil)
+
+type _MsgLinkVerificationMethod_4_list struct {
+	list *[]*VerificationMethod
+}
+
+func (x *_MsgLinkVerificationMethod_4_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_MsgLinkVerificationMethod_4_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
+}
+
+func (x *_MsgLinkVerificationMethod_4_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*VerificationMethod)
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_MsgLinkVerificationMethod_4_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*VerificationMethod)
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_MsgLinkVerificationMethod_4_list) AppendMutable() protoreflect.Value {
+	v := new(VerificationMethod)
+	*x.list = append(*x.list, v)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_MsgLinkVerificationMethod_4_list) Truncate(n int) {
+	for i := n; i < len(*x.list); i++ {
+		(*x.list)[i] = nil
+	}
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_MsgLinkVerificationMethod_4_list) NewElement() protoreflect.Value {
+	v := new(VerificationMethod)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_MsgLinkVerificationMethod_4_list) IsValid() bool {
+	return x.list != nil
+}
+
+var _ protoreflect.List = (*_MsgLinkVerificationMethod_5_list)(nil)
+
+type _MsgLinkVerificationMethod_5_list struct {
+	list *[]*VerificationMethod
+}
+
+func (x *_MsgLinkVerificationMethod_5_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_MsgLinkVerificationMethod_5_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
+}
+
+func (x *_MsgLinkVerificationMethod_5_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*VerificationMethod)
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_MsgLinkVerificationMethod_5_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*VerificationMethod)
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_MsgLinkVerificationMethod_5_list) AppendMutable() protoreflect.Value {
+	v := new(VerificationMethod)
+	*x.list = append(*x.list, v)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_MsgLinkVerificationMethod_5_list) Truncate(n int) {
+	for i := n; i < len(*x.list); i++ {
+		(*x.list)[i] = nil
+	}
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_MsgLinkVerificationMethod_5_list) NewElement() protoreflect.Value {
+	v := new(VerificationMethod)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_MsgLinkVerificationMethod_5_list) IsValid() bool {
+	return x.list != nil
+}
+
+var _ protoreflect.List = (*_MsgLinkVerificationMethod_6_list)(nil)
+
+type _MsgLinkVerificationMethod_6_list struct {
+	list *[]*VerificationMethod
+}
+
+func (x *_MsgLinkVerificationMethod_6_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_MsgLinkVerificationMethod_6_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfMessage((*x.list)[i].ProtoReflect())
+}
+
+func (x *_MsgLinkVerificationMethod_6_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*VerificationMethod)
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_MsgLinkVerificationMethod_6_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.Message()
+	concreteValue := valueUnwrapped.Interface().(*VerificationMethod)
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_MsgLinkVerificationMethod_6_list) AppendMutable() protoreflect.Value {
+	v := new(VerificationMethod)
+	*x.list = append(*x.list, v)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_MsgLinkVerificationMethod_6_list) Truncate(n int) {
+	for i := n; i < len(*x.list); i++ {
+		(*x.list)[i] = nil
+	}
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_MsgLinkVerificationMethod_6_list) NewElement() protoreflect.Value {
+	v := new(VerificationMethod)
+	return protoreflect.ValueOfMessage(v.ProtoReflect())
+}
+
+func (x *_MsgLinkVerificationMethod_6_list) IsValid() bool {
+	return x.list != nil
+}
+
 var (
-	md_MsgLinkAssertion                protoreflect.MessageDescriptor
-	fd_MsgLinkAssertion_controller     protoreflect.FieldDescriptor
-	fd_MsgLinkAssertion_subject        protoreflect.FieldDescriptor
-	fd_MsgLinkAssertion_assertion      protoreflect.FieldDescriptor
-	fd_MsgLinkAssertion_macaroon_token protoreflect.FieldDescriptor
+	md_MsgLinkVerificationMethod                protoreflect.MessageDescriptor
+	fd_MsgLinkVerificationMethod_sender         protoreflect.FieldDescriptor
+	fd_MsgLinkVerificationMethod_controller     protoreflect.FieldDescriptor
+	fd_MsgLinkVerificationMethod_authentication protoreflect.FieldDescriptor
+	fd_MsgLinkVerificationMethod_assertion      protoreflect.FieldDescriptor
+	fd_MsgLinkVerificationMethod_delegation     protoreflect.FieldDescriptor
+	fd_MsgLinkVerificationMethod_invocation     protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_did_v1_tx_proto_init()
-	md_MsgLinkAssertion = File_did_v1_tx_proto.Messages().ByName("MsgLinkAssertion")
-	fd_MsgLinkAssertion_controller = md_MsgLinkAssertion.Fields().ByName("controller")
-	fd_MsgLinkAssertion_subject = md_MsgLinkAssertion.Fields().ByName("subject")
-	fd_MsgLinkAssertion_assertion = md_MsgLinkAssertion.Fields().ByName("assertion")
-	fd_MsgLinkAssertion_macaroon_token = md_MsgLinkAssertion.Fields().ByName("macaroon_token")
+	md_MsgLinkVerificationMethod = File_did_v1_tx_proto.Messages().ByName("MsgLinkVerificationMethod")
+	fd_MsgLinkVerificationMethod_sender = md_MsgLinkVerificationMethod.Fields().ByName("sender")
+	fd_MsgLinkVerificationMethod_controller = md_MsgLinkVerificationMethod.Fields().ByName("controller")
+	fd_MsgLinkVerificationMethod_authentication = md_MsgLinkVerificationMethod.Fields().ByName("authentication")
+	fd_MsgLinkVerificationMethod_assertion = md_MsgLinkVerificationMethod.Fields().ByName("assertion")
+	fd_MsgLinkVerificationMethod_delegation = md_MsgLinkVerificationMethod.Fields().ByName("delegation")
+	fd_MsgLinkVerificationMethod_invocation = md_MsgLinkVerificationMethod.Fields().ByName("invocation")
 }
 
-var _ protoreflect.Message = (*fastReflection_MsgLinkAssertion)(nil)
+var _ protoreflect.Message = (*fastReflection_MsgLinkVerificationMethod)(nil)
 
-type fastReflection_MsgLinkAssertion MsgLinkAssertion
+type fastReflection_MsgLinkVerificationMethod MsgLinkVerificationMethod
 
-func (x *MsgLinkAssertion) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgLinkAssertion)(x)
+func (x *MsgLinkVerificationMethod) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgLinkVerificationMethod)(x)
 }
 
-func (x *MsgLinkAssertion) slowProtoReflect() protoreflect.Message {
+func (x *MsgLinkVerificationMethod) slowProtoReflect() protoreflect.Message {
 	mi := &file_did_v1_tx_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1205,43 +1706,43 @@ func (x *MsgLinkAssertion) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_MsgLinkAssertion_messageType fastReflection_MsgLinkAssertion_messageType
-var _ protoreflect.MessageType = fastReflection_MsgLinkAssertion_messageType{}
+var _fastReflection_MsgLinkVerificationMethod_messageType fastReflection_MsgLinkVerificationMethod_messageType
+var _ protoreflect.MessageType = fastReflection_MsgLinkVerificationMethod_messageType{}
 
-type fastReflection_MsgLinkAssertion_messageType struct{}
+type fastReflection_MsgLinkVerificationMethod_messageType struct{}
 
-func (x fastReflection_MsgLinkAssertion_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgLinkAssertion)(nil)
+func (x fastReflection_MsgLinkVerificationMethod_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgLinkVerificationMethod)(nil)
 }
-func (x fastReflection_MsgLinkAssertion_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgLinkAssertion)
+func (x fastReflection_MsgLinkVerificationMethod_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgLinkVerificationMethod)
 }
-func (x fastReflection_MsgLinkAssertion_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgLinkAssertion
+func (x fastReflection_MsgLinkVerificationMethod_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgLinkVerificationMethod
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_MsgLinkAssertion) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgLinkAssertion
+func (x *fastReflection_MsgLinkVerificationMethod) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgLinkVerificationMethod
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgLinkAssertion) Type() protoreflect.MessageType {
-	return _fastReflection_MsgLinkAssertion_messageType
+func (x *fastReflection_MsgLinkVerificationMethod) Type() protoreflect.MessageType {
+	return _fastReflection_MsgLinkVerificationMethod_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgLinkAssertion) New() protoreflect.Message {
-	return new(fastReflection_MsgLinkAssertion)
+func (x *fastReflection_MsgLinkVerificationMethod) New() protoreflect.Message {
+	return new(fastReflection_MsgLinkVerificationMethod)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgLinkAssertion) Interface() protoreflect.ProtoMessage {
-	return (*MsgLinkAssertion)(x)
+func (x *fastReflection_MsgLinkVerificationMethod) Interface() protoreflect.ProtoMessage {
+	return (*MsgLinkVerificationMethod)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -1249,28 +1750,40 @@ func (x *fastReflection_MsgLinkAssertion) Interface() protoreflect.ProtoMessage 
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_MsgLinkAssertion) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_MsgLinkVerificationMethod) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.Sender != "" {
+		value := protoreflect.ValueOfString(x.Sender)
+		if !f(fd_MsgLinkVerificationMethod_sender, value) {
+			return
+		}
+	}
 	if x.Controller != "" {
 		value := protoreflect.ValueOfString(x.Controller)
-		if !f(fd_MsgLinkAssertion_controller, value) {
+		if !f(fd_MsgLinkVerificationMethod_controller, value) {
 			return
 		}
 	}
-	if x.Subject != "" {
-		value := protoreflect.ValueOfString(x.Subject)
-		if !f(fd_MsgLinkAssertion_subject, value) {
+	if len(x.Authentication) != 0 {
+		value := protoreflect.ValueOfList(&_MsgLinkVerificationMethod_3_list{list: &x.Authentication})
+		if !f(fd_MsgLinkVerificationMethod_authentication, value) {
 			return
 		}
 	}
-	if x.Assertion != "" {
-		value := protoreflect.ValueOfString(x.Assertion)
-		if !f(fd_MsgLinkAssertion_assertion, value) {
+	if len(x.Assertion) != 0 {
+		value := protoreflect.ValueOfList(&_MsgLinkVerificationMethod_4_list{list: &x.Assertion})
+		if !f(fd_MsgLinkVerificationMethod_assertion, value) {
 			return
 		}
 	}
-	if x.MacaroonToken != "" {
-		value := protoreflect.ValueOfString(x.MacaroonToken)
-		if !f(fd_MsgLinkAssertion_macaroon_token, value) {
+	if len(x.Delegation) != 0 {
+		value := protoreflect.ValueOfList(&_MsgLinkVerificationMethod_5_list{list: &x.Delegation})
+		if !f(fd_MsgLinkVerificationMethod_delegation, value) {
+			return
+		}
+	}
+	if len(x.Invocation) != 0 {
+		value := protoreflect.ValueOfList(&_MsgLinkVerificationMethod_6_list{list: &x.Invocation})
+		if !f(fd_MsgLinkVerificationMethod_invocation, value) {
 			return
 		}
 	}
@@ -1287,21 +1800,25 @@ func (x *fastReflection_MsgLinkAssertion) Range(f func(protoreflect.FieldDescrip
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgLinkAssertion) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_MsgLinkVerificationMethod) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAssertion.controller":
+	case "did.v1.MsgLinkVerificationMethod.sender":
+		return x.Sender != ""
+	case "did.v1.MsgLinkVerificationMethod.controller":
 		return x.Controller != ""
-	case "did.v1.MsgLinkAssertion.subject":
-		return x.Subject != ""
-	case "did.v1.MsgLinkAssertion.assertion":
-		return x.Assertion != ""
-	case "did.v1.MsgLinkAssertion.macaroon_token":
-		return x.MacaroonToken != ""
+	case "did.v1.MsgLinkVerificationMethod.authentication":
+		return len(x.Authentication) != 0
+	case "did.v1.MsgLinkVerificationMethod.assertion":
+		return len(x.Assertion) != 0
+	case "did.v1.MsgLinkVerificationMethod.delegation":
+		return len(x.Delegation) != 0
+	case "did.v1.MsgLinkVerificationMethod.invocation":
+		return len(x.Invocation) != 0
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAssertion"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkVerificationMethod"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAssertion does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgLinkVerificationMethod does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -1311,21 +1828,25 @@ func (x *fastReflection_MsgLinkAssertion) Has(fd protoreflect.FieldDescriptor) b
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAssertion) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_MsgLinkVerificationMethod) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAssertion.controller":
+	case "did.v1.MsgLinkVerificationMethod.sender":
+		x.Sender = ""
+	case "did.v1.MsgLinkVerificationMethod.controller":
 		x.Controller = ""
-	case "did.v1.MsgLinkAssertion.subject":
-		x.Subject = ""
-	case "did.v1.MsgLinkAssertion.assertion":
-		x.Assertion = ""
-	case "did.v1.MsgLinkAssertion.macaroon_token":
-		x.MacaroonToken = ""
+	case "did.v1.MsgLinkVerificationMethod.authentication":
+		x.Authentication = nil
+	case "did.v1.MsgLinkVerificationMethod.assertion":
+		x.Assertion = nil
+	case "did.v1.MsgLinkVerificationMethod.delegation":
+		x.Delegation = nil
+	case "did.v1.MsgLinkVerificationMethod.invocation":
+		x.Invocation = nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAssertion"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkVerificationMethod"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAssertion does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgLinkVerificationMethod does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -1335,25 +1856,43 @@ func (x *fastReflection_MsgLinkAssertion) Clear(fd protoreflect.FieldDescriptor)
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgLinkAssertion) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgLinkVerificationMethod) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "did.v1.MsgLinkAssertion.controller":
+	case "did.v1.MsgLinkVerificationMethod.sender":
+		value := x.Sender
+		return protoreflect.ValueOfString(value)
+	case "did.v1.MsgLinkVerificationMethod.controller":
 		value := x.Controller
 		return protoreflect.ValueOfString(value)
-	case "did.v1.MsgLinkAssertion.subject":
-		value := x.Subject
-		return protoreflect.ValueOfString(value)
-	case "did.v1.MsgLinkAssertion.assertion":
-		value := x.Assertion
-		return protoreflect.ValueOfString(value)
-	case "did.v1.MsgLinkAssertion.macaroon_token":
-		value := x.MacaroonToken
-		return protoreflect.ValueOfString(value)
+	case "did.v1.MsgLinkVerificationMethod.authentication":
+		if len(x.Authentication) == 0 {
+			return protoreflect.ValueOfList(&_MsgLinkVerificationMethod_3_list{})
+		}
+		listValue := &_MsgLinkVerificationMethod_3_list{list: &x.Authentication}
+		return protoreflect.ValueOfList(listValue)
+	case "did.v1.MsgLinkVerificationMethod.assertion":
+		if len(x.Assertion) == 0 {
+			return protoreflect.ValueOfList(&_MsgLinkVerificationMethod_4_list{})
+		}
+		listValue := &_MsgLinkVerificationMethod_4_list{list: &x.Assertion}
+		return protoreflect.ValueOfList(listValue)
+	case "did.v1.MsgLinkVerificationMethod.delegation":
+		if len(x.Delegation) == 0 {
+			return protoreflect.ValueOfList(&_MsgLinkVerificationMethod_5_list{})
+		}
+		listValue := &_MsgLinkVerificationMethod_5_list{list: &x.Delegation}
+		return protoreflect.ValueOfList(listValue)
+	case "did.v1.MsgLinkVerificationMethod.invocation":
+		if len(x.Invocation) == 0 {
+			return protoreflect.ValueOfList(&_MsgLinkVerificationMethod_6_list{})
+		}
+		listValue := &_MsgLinkVerificationMethod_6_list{list: &x.Invocation}
+		return protoreflect.ValueOfList(listValue)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAssertion"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkVerificationMethod"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAssertion does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgLinkVerificationMethod does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -1367,21 +1906,33 @@ func (x *fastReflection_MsgLinkAssertion) Get(descriptor protoreflect.FieldDescr
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAssertion) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_MsgLinkVerificationMethod) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAssertion.controller":
+	case "did.v1.MsgLinkVerificationMethod.sender":
+		x.Sender = value.Interface().(string)
+	case "did.v1.MsgLinkVerificationMethod.controller":
 		x.Controller = value.Interface().(string)
-	case "did.v1.MsgLinkAssertion.subject":
-		x.Subject = value.Interface().(string)
-	case "did.v1.MsgLinkAssertion.assertion":
-		x.Assertion = value.Interface().(string)
-	case "did.v1.MsgLinkAssertion.macaroon_token":
-		x.MacaroonToken = value.Interface().(string)
+	case "did.v1.MsgLinkVerificationMethod.authentication":
+		lv := value.List()
+		clv := lv.(*_MsgLinkVerificationMethod_3_list)
+		x.Authentication = *clv.list
+	case "did.v1.MsgLinkVerificationMethod.assertion":
+		lv := value.List()
+		clv := lv.(*_MsgLinkVerificationMethod_4_list)
+		x.Assertion = *clv.list
+	case "did.v1.MsgLinkVerificationMethod.delegation":
+		lv := value.List()
+		clv := lv.(*_MsgLinkVerificationMethod_5_list)
+		x.Delegation = *clv.list
+	case "did.v1.MsgLinkVerificationMethod.invocation":
+		lv := value.List()
+		clv := lv.(*_MsgLinkVerificationMethod_6_list)
+		x.Invocation = *clv.list
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAssertion"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkVerificationMethod"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAssertion does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgLinkVerificationMethod does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -1395,52 +1946,80 @@ func (x *fastReflection_MsgLinkAssertion) Set(fd protoreflect.FieldDescriptor, v
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAssertion) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgLinkVerificationMethod) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAssertion.controller":
-		panic(fmt.Errorf("field controller of message did.v1.MsgLinkAssertion is not mutable"))
-	case "did.v1.MsgLinkAssertion.subject":
-		panic(fmt.Errorf("field subject of message did.v1.MsgLinkAssertion is not mutable"))
-	case "did.v1.MsgLinkAssertion.assertion":
-		panic(fmt.Errorf("field assertion of message did.v1.MsgLinkAssertion is not mutable"))
-	case "did.v1.MsgLinkAssertion.macaroon_token":
-		panic(fmt.Errorf("field macaroon_token of message did.v1.MsgLinkAssertion is not mutable"))
+	case "did.v1.MsgLinkVerificationMethod.authentication":
+		if x.Authentication == nil {
+			x.Authentication = []*VerificationMethod{}
+		}
+		value := &_MsgLinkVerificationMethod_3_list{list: &x.Authentication}
+		return protoreflect.ValueOfList(value)
+	case "did.v1.MsgLinkVerificationMethod.assertion":
+		if x.Assertion == nil {
+			x.Assertion = []*VerificationMethod{}
+		}
+		value := &_MsgLinkVerificationMethod_4_list{list: &x.Assertion}
+		return protoreflect.ValueOfList(value)
+	case "did.v1.MsgLinkVerificationMethod.delegation":
+		if x.Delegation == nil {
+			x.Delegation = []*VerificationMethod{}
+		}
+		value := &_MsgLinkVerificationMethod_5_list{list: &x.Delegation}
+		return protoreflect.ValueOfList(value)
+	case "did.v1.MsgLinkVerificationMethod.invocation":
+		if x.Invocation == nil {
+			x.Invocation = []*VerificationMethod{}
+		}
+		value := &_MsgLinkVerificationMethod_6_list{list: &x.Invocation}
+		return protoreflect.ValueOfList(value)
+	case "did.v1.MsgLinkVerificationMethod.sender":
+		panic(fmt.Errorf("field sender of message did.v1.MsgLinkVerificationMethod is not mutable"))
+	case "did.v1.MsgLinkVerificationMethod.controller":
+		panic(fmt.Errorf("field controller of message did.v1.MsgLinkVerificationMethod is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAssertion"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkVerificationMethod"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAssertion does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgLinkVerificationMethod does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgLinkAssertion) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgLinkVerificationMethod) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAssertion.controller":
+	case "did.v1.MsgLinkVerificationMethod.sender":
 		return protoreflect.ValueOfString("")
-	case "did.v1.MsgLinkAssertion.subject":
+	case "did.v1.MsgLinkVerificationMethod.controller":
 		return protoreflect.ValueOfString("")
-	case "did.v1.MsgLinkAssertion.assertion":
-		return protoreflect.ValueOfString("")
-	case "did.v1.MsgLinkAssertion.macaroon_token":
-		return protoreflect.ValueOfString("")
+	case "did.v1.MsgLinkVerificationMethod.authentication":
+		list := []*VerificationMethod{}
+		return protoreflect.ValueOfList(&_MsgLinkVerificationMethod_3_list{list: &list})
+	case "did.v1.MsgLinkVerificationMethod.assertion":
+		list := []*VerificationMethod{}
+		return protoreflect.ValueOfList(&_MsgLinkVerificationMethod_4_list{list: &list})
+	case "did.v1.MsgLinkVerificationMethod.delegation":
+		list := []*VerificationMethod{}
+		return protoreflect.ValueOfList(&_MsgLinkVerificationMethod_5_list{list: &list})
+	case "did.v1.MsgLinkVerificationMethod.invocation":
+		list := []*VerificationMethod{}
+		return protoreflect.ValueOfList(&_MsgLinkVerificationMethod_6_list{list: &list})
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAssertion"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkVerificationMethod"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAssertion does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgLinkVerificationMethod does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgLinkAssertion) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_MsgLinkVerificationMethod) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in did.v1.MsgLinkAssertion", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in did.v1.MsgLinkVerificationMethod", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -1448,7 +2027,7 @@ func (x *fastReflection_MsgLinkAssertion) WhichOneof(d protoreflect.OneofDescrip
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgLinkAssertion) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_MsgLinkVerificationMethod) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -1459,7 +2038,7 @@ func (x *fastReflection_MsgLinkAssertion) GetUnknown() protoreflect.RawFields {
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAssertion) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_MsgLinkVerificationMethod) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -1471,7 +2050,7 @@ func (x *fastReflection_MsgLinkAssertion) SetUnknown(fields protoreflect.RawFiel
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_MsgLinkAssertion) IsValid() bool {
+func (x *fastReflection_MsgLinkVerificationMethod) IsValid() bool {
 	return x != nil
 }
 
@@ -1481,9 +2060,9 @@ func (x *fastReflection_MsgLinkAssertion) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgLinkAssertion) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_MsgLinkVerificationMethod) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgLinkAssertion)
+		x := input.Message.Interface().(*MsgLinkVerificationMethod)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -1495,21 +2074,37 @@ func (x *fastReflection_MsgLinkAssertion) ProtoMethods() *protoiface.Methods {
 		var n int
 		var l int
 		_ = l
+		l = len(x.Sender)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
 		l = len(x.Controller)
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
-		l = len(x.Subject)
-		if l > 0 {
-			n += 1 + l + runtime.Sov(uint64(l))
+		if len(x.Authentication) > 0 {
+			for _, e := range x.Authentication {
+				l = options.Size(e)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
 		}
-		l = len(x.Assertion)
-		if l > 0 {
-			n += 1 + l + runtime.Sov(uint64(l))
+		if len(x.Assertion) > 0 {
+			for _, e := range x.Assertion {
+				l = options.Size(e)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
 		}
-		l = len(x.MacaroonToken)
-		if l > 0 {
-			n += 1 + l + runtime.Sov(uint64(l))
+		if len(x.Delegation) > 0 {
+			for _, e := range x.Delegation {
+				l = options.Size(e)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
+		if len(x.Invocation) > 0 {
+			for _, e := range x.Invocation {
+				l = options.Size(e)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
 		}
 		if x.unknownFields != nil {
 			n += len(x.unknownFields)
@@ -1521,7 +2116,7 @@ func (x *fastReflection_MsgLinkAssertion) ProtoMethods() *protoiface.Methods {
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgLinkAssertion)
+		x := input.Message.Interface().(*MsgLinkVerificationMethod)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -1540,31 +2135,81 @@ func (x *fastReflection_MsgLinkAssertion) ProtoMethods() *protoiface.Methods {
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
 		}
-		if len(x.MacaroonToken) > 0 {
-			i -= len(x.MacaroonToken)
-			copy(dAtA[i:], x.MacaroonToken)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.MacaroonToken)))
-			i--
-			dAtA[i] = 0x22
+		if len(x.Invocation) > 0 {
+			for iNdEx := len(x.Invocation) - 1; iNdEx >= 0; iNdEx-- {
+				encoded, err := options.Marshal(x.Invocation[iNdEx])
+				if err != nil {
+					return protoiface.MarshalOutput{
+						NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+						Buf:               input.Buf,
+					}, err
+				}
+				i -= len(encoded)
+				copy(dAtA[i:], encoded)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+				i--
+				dAtA[i] = 0x32
+			}
+		}
+		if len(x.Delegation) > 0 {
+			for iNdEx := len(x.Delegation) - 1; iNdEx >= 0; iNdEx-- {
+				encoded, err := options.Marshal(x.Delegation[iNdEx])
+				if err != nil {
+					return protoiface.MarshalOutput{
+						NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+						Buf:               input.Buf,
+					}, err
+				}
+				i -= len(encoded)
+				copy(dAtA[i:], encoded)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+				i--
+				dAtA[i] = 0x2a
+			}
 		}
 		if len(x.Assertion) > 0 {
-			i -= len(x.Assertion)
-			copy(dAtA[i:], x.Assertion)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Assertion)))
-			i--
-			dAtA[i] = 0x1a
+			for iNdEx := len(x.Assertion) - 1; iNdEx >= 0; iNdEx-- {
+				encoded, err := options.Marshal(x.Assertion[iNdEx])
+				if err != nil {
+					return protoiface.MarshalOutput{
+						NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+						Buf:               input.Buf,
+					}, err
+				}
+				i -= len(encoded)
+				copy(dAtA[i:], encoded)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+				i--
+				dAtA[i] = 0x22
+			}
 		}
-		if len(x.Subject) > 0 {
-			i -= len(x.Subject)
-			copy(dAtA[i:], x.Subject)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Subject)))
-			i--
-			dAtA[i] = 0x12
+		if len(x.Authentication) > 0 {
+			for iNdEx := len(x.Authentication) - 1; iNdEx >= 0; iNdEx-- {
+				encoded, err := options.Marshal(x.Authentication[iNdEx])
+				if err != nil {
+					return protoiface.MarshalOutput{
+						NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+						Buf:               input.Buf,
+					}, err
+				}
+				i -= len(encoded)
+				copy(dAtA[i:], encoded)
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+				i--
+				dAtA[i] = 0x1a
+			}
 		}
 		if len(x.Controller) > 0 {
 			i -= len(x.Controller)
 			copy(dAtA[i:], x.Controller)
 			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Controller)))
+			i--
+			dAtA[i] = 0x12
+		}
+		if len(x.Sender) > 0 {
+			i -= len(x.Sender)
+			copy(dAtA[i:], x.Sender)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Sender)))
 			i--
 			dAtA[i] = 0xa
 		}
@@ -1579,7 +2224,7 @@ func (x *fastReflection_MsgLinkAssertion) ProtoMethods() *protoiface.Methods {
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgLinkAssertion)
+		x := input.Message.Interface().(*MsgLinkVerificationMethod)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -1611,13 +2256,45 @@ func (x *fastReflection_MsgLinkAssertion) ProtoMethods() *protoiface.Methods {
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgLinkAssertion: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgLinkVerificationMethod: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgLinkAssertion: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgLinkVerificationMethod: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Sender", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Sender = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 2:
 				if wireType != 2 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Controller", wireType)
 				}
@@ -1649,43 +2326,11 @@ func (x *fastReflection_MsgLinkAssertion) ProtoMethods() *protoiface.Methods {
 				}
 				x.Controller = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
-			case 2:
-				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Subject", wireType)
-				}
-				var stringLen uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				postIndex := iNdEx + intStringLen
-				if postIndex < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if postIndex > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				x.Subject = string(dAtA[iNdEx:postIndex])
-				iNdEx = postIndex
 			case 3:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Assertion", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Authentication", wireType)
 				}
-				var stringLen uint64
+				var msglen int
 				for shift := uint(0); ; shift += 7 {
 					if shift >= 64 {
 						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
@@ -1695,29 +2340,31 @@ func (x *fastReflection_MsgLinkAssertion) ProtoMethods() *protoiface.Methods {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
+					msglen |= int(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
 				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
+				if msglen < 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
 				}
-				postIndex := iNdEx + intStringLen
+				postIndex := iNdEx + msglen
 				if postIndex < 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
 				}
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.Assertion = string(dAtA[iNdEx:postIndex])
+				x.Authentication = append(x.Authentication, &VerificationMethod{})
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.Authentication[len(x.Authentication)-1]); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
 				iNdEx = postIndex
 			case 4:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field MacaroonToken", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Assertion", wireType)
 				}
-				var stringLen uint64
+				var msglen int
 				for shift := uint(0); ; shift += 7 {
 					if shift >= 64 {
 						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
@@ -1727,23 +2374,93 @@ func (x *fastReflection_MsgLinkAssertion) ProtoMethods() *protoiface.Methods {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
+					msglen |= int(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
 				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
+				if msglen < 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
 				}
-				postIndex := iNdEx + intStringLen
+				postIndex := iNdEx + msglen
 				if postIndex < 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
 				}
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.MacaroonToken = string(dAtA[iNdEx:postIndex])
+				x.Assertion = append(x.Assertion, &VerificationMethod{})
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.Assertion[len(x.Assertion)-1]); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			case 5:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Delegation", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Delegation = append(x.Delegation, &VerificationMethod{})
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.Delegation[len(x.Delegation)-1]); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			case 6:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Invocation", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Invocation = append(x.Invocation, &VerificationMethod{})
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.Invocation[len(x.Invocation)-1]); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
 				iNdEx = postIndex
 			default:
 				iNdEx = preIndex
@@ -1781,27 +2498,27 @@ func (x *fastReflection_MsgLinkAssertion) ProtoMethods() *protoiface.Methods {
 }
 
 var (
-	md_MsgLinkAssertionResponse         protoreflect.MessageDescriptor
-	fd_MsgLinkAssertionResponse_success protoreflect.FieldDescriptor
-	fd_MsgLinkAssertionResponse_did     protoreflect.FieldDescriptor
+	md_MsgLinkVerificationMethodResponse          protoreflect.MessageDescriptor
+	fd_MsgLinkVerificationMethodResponse_success  protoreflect.FieldDescriptor
+	fd_MsgLinkVerificationMethodResponse_document protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_did_v1_tx_proto_init()
-	md_MsgLinkAssertionResponse = File_did_v1_tx_proto.Messages().ByName("MsgLinkAssertionResponse")
-	fd_MsgLinkAssertionResponse_success = md_MsgLinkAssertionResponse.Fields().ByName("success")
-	fd_MsgLinkAssertionResponse_did = md_MsgLinkAssertionResponse.Fields().ByName("did")
+	md_MsgLinkVerificationMethodResponse = File_did_v1_tx_proto.Messages().ByName("MsgLinkVerificationMethodResponse")
+	fd_MsgLinkVerificationMethodResponse_success = md_MsgLinkVerificationMethodResponse.Fields().ByName("success")
+	fd_MsgLinkVerificationMethodResponse_document = md_MsgLinkVerificationMethodResponse.Fields().ByName("document")
 }
 
-var _ protoreflect.Message = (*fastReflection_MsgLinkAssertionResponse)(nil)
+var _ protoreflect.Message = (*fastReflection_MsgLinkVerificationMethodResponse)(nil)
 
-type fastReflection_MsgLinkAssertionResponse MsgLinkAssertionResponse
+type fastReflection_MsgLinkVerificationMethodResponse MsgLinkVerificationMethodResponse
 
-func (x *MsgLinkAssertionResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgLinkAssertionResponse)(x)
+func (x *MsgLinkVerificationMethodResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgLinkVerificationMethodResponse)(x)
 }
 
-func (x *MsgLinkAssertionResponse) slowProtoReflect() protoreflect.Message {
+func (x *MsgLinkVerificationMethodResponse) slowProtoReflect() protoreflect.Message {
 	mi := &file_did_v1_tx_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1813,43 +2530,43 @@ func (x *MsgLinkAssertionResponse) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_MsgLinkAssertionResponse_messageType fastReflection_MsgLinkAssertionResponse_messageType
-var _ protoreflect.MessageType = fastReflection_MsgLinkAssertionResponse_messageType{}
+var _fastReflection_MsgLinkVerificationMethodResponse_messageType fastReflection_MsgLinkVerificationMethodResponse_messageType
+var _ protoreflect.MessageType = fastReflection_MsgLinkVerificationMethodResponse_messageType{}
 
-type fastReflection_MsgLinkAssertionResponse_messageType struct{}
+type fastReflection_MsgLinkVerificationMethodResponse_messageType struct{}
 
-func (x fastReflection_MsgLinkAssertionResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgLinkAssertionResponse)(nil)
+func (x fastReflection_MsgLinkVerificationMethodResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgLinkVerificationMethodResponse)(nil)
 }
-func (x fastReflection_MsgLinkAssertionResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgLinkAssertionResponse)
+func (x fastReflection_MsgLinkVerificationMethodResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgLinkVerificationMethodResponse)
 }
-func (x fastReflection_MsgLinkAssertionResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgLinkAssertionResponse
+func (x fastReflection_MsgLinkVerificationMethodResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgLinkVerificationMethodResponse
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_MsgLinkAssertionResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgLinkAssertionResponse
+func (x *fastReflection_MsgLinkVerificationMethodResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgLinkVerificationMethodResponse
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgLinkAssertionResponse) Type() protoreflect.MessageType {
-	return _fastReflection_MsgLinkAssertionResponse_messageType
+func (x *fastReflection_MsgLinkVerificationMethodResponse) Type() protoreflect.MessageType {
+	return _fastReflection_MsgLinkVerificationMethodResponse_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgLinkAssertionResponse) New() protoreflect.Message {
-	return new(fastReflection_MsgLinkAssertionResponse)
+func (x *fastReflection_MsgLinkVerificationMethodResponse) New() protoreflect.Message {
+	return new(fastReflection_MsgLinkVerificationMethodResponse)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgLinkAssertionResponse) Interface() protoreflect.ProtoMessage {
-	return (*MsgLinkAssertionResponse)(x)
+func (x *fastReflection_MsgLinkVerificationMethodResponse) Interface() protoreflect.ProtoMessage {
+	return (*MsgLinkVerificationMethodResponse)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -1857,16 +2574,16 @@ func (x *fastReflection_MsgLinkAssertionResponse) Interface() protoreflect.Proto
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_MsgLinkAssertionResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_MsgLinkVerificationMethodResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if x.Success != false {
 		value := protoreflect.ValueOfBool(x.Success)
-		if !f(fd_MsgLinkAssertionResponse_success, value) {
+		if !f(fd_MsgLinkVerificationMethodResponse_success, value) {
 			return
 		}
 	}
-	if x.Did != "" {
-		value := protoreflect.ValueOfString(x.Did)
-		if !f(fd_MsgLinkAssertionResponse_did, value) {
+	if x.Document != nil {
+		value := protoreflect.ValueOfMessage(x.Document.ProtoReflect())
+		if !f(fd_MsgLinkVerificationMethodResponse_document, value) {
 			return
 		}
 	}
@@ -1883,17 +2600,17 @@ func (x *fastReflection_MsgLinkAssertionResponse) Range(f func(protoreflect.Fiel
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgLinkAssertionResponse) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_MsgLinkVerificationMethodResponse) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAssertionResponse.success":
+	case "did.v1.MsgLinkVerificationMethodResponse.success":
 		return x.Success != false
-	case "did.v1.MsgLinkAssertionResponse.did":
-		return x.Did != ""
+	case "did.v1.MsgLinkVerificationMethodResponse.document":
+		return x.Document != nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAssertionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkVerificationMethodResponse"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAssertionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgLinkVerificationMethodResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -1903,17 +2620,17 @@ func (x *fastReflection_MsgLinkAssertionResponse) Has(fd protoreflect.FieldDescr
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAssertionResponse) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_MsgLinkVerificationMethodResponse) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAssertionResponse.success":
+	case "did.v1.MsgLinkVerificationMethodResponse.success":
 		x.Success = false
-	case "did.v1.MsgLinkAssertionResponse.did":
-		x.Did = ""
+	case "did.v1.MsgLinkVerificationMethodResponse.document":
+		x.Document = nil
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAssertionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkVerificationMethodResponse"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAssertionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgLinkVerificationMethodResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -1923,19 +2640,19 @@ func (x *fastReflection_MsgLinkAssertionResponse) Clear(fd protoreflect.FieldDes
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgLinkAssertionResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgLinkVerificationMethodResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "did.v1.MsgLinkAssertionResponse.success":
+	case "did.v1.MsgLinkVerificationMethodResponse.success":
 		value := x.Success
 		return protoreflect.ValueOfBool(value)
-	case "did.v1.MsgLinkAssertionResponse.did":
-		value := x.Did
-		return protoreflect.ValueOfString(value)
+	case "did.v1.MsgLinkVerificationMethodResponse.document":
+		value := x.Document
+		return protoreflect.ValueOfMessage(value.ProtoReflect())
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAssertionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkVerificationMethodResponse"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAssertionResponse does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgLinkVerificationMethodResponse does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -1949,17 +2666,17 @@ func (x *fastReflection_MsgLinkAssertionResponse) Get(descriptor protoreflect.Fi
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAssertionResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_MsgLinkVerificationMethodResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAssertionResponse.success":
+	case "did.v1.MsgLinkVerificationMethodResponse.success":
 		x.Success = value.Bool()
-	case "did.v1.MsgLinkAssertionResponse.did":
-		x.Did = value.Interface().(string)
+	case "did.v1.MsgLinkVerificationMethodResponse.document":
+		x.Document = value.Message().Interface().(*Document)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAssertionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkVerificationMethodResponse"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAssertionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgLinkVerificationMethodResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -1973,44 +2690,48 @@ func (x *fastReflection_MsgLinkAssertionResponse) Set(fd protoreflect.FieldDescr
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAssertionResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgLinkVerificationMethodResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAssertionResponse.success":
-		panic(fmt.Errorf("field success of message did.v1.MsgLinkAssertionResponse is not mutable"))
-	case "did.v1.MsgLinkAssertionResponse.did":
-		panic(fmt.Errorf("field did of message did.v1.MsgLinkAssertionResponse is not mutable"))
+	case "did.v1.MsgLinkVerificationMethodResponse.document":
+		if x.Document == nil {
+			x.Document = new(Document)
+		}
+		return protoreflect.ValueOfMessage(x.Document.ProtoReflect())
+	case "did.v1.MsgLinkVerificationMethodResponse.success":
+		panic(fmt.Errorf("field success of message did.v1.MsgLinkVerificationMethodResponse is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAssertionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkVerificationMethodResponse"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAssertionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgLinkVerificationMethodResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgLinkAssertionResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgLinkVerificationMethodResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "did.v1.MsgLinkAssertionResponse.success":
+	case "did.v1.MsgLinkVerificationMethodResponse.success":
 		return protoreflect.ValueOfBool(false)
-	case "did.v1.MsgLinkAssertionResponse.did":
-		return protoreflect.ValueOfString("")
+	case "did.v1.MsgLinkVerificationMethodResponse.document":
+		m := new(Document)
+		return protoreflect.ValueOfMessage(m.ProtoReflect())
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkAssertionResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgLinkVerificationMethodResponse"))
 		}
-		panic(fmt.Errorf("message did.v1.MsgLinkAssertionResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message did.v1.MsgLinkVerificationMethodResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgLinkAssertionResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_MsgLinkVerificationMethodResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in did.v1.MsgLinkAssertionResponse", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in did.v1.MsgLinkVerificationMethodResponse", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -2018,7 +2739,7 @@ func (x *fastReflection_MsgLinkAssertionResponse) WhichOneof(d protoreflect.Oneo
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgLinkAssertionResponse) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_MsgLinkVerificationMethodResponse) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -2029,7 +2750,7 @@ func (x *fastReflection_MsgLinkAssertionResponse) GetUnknown() protoreflect.RawF
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgLinkAssertionResponse) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_MsgLinkVerificationMethodResponse) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -2041,7 +2762,7 @@ func (x *fastReflection_MsgLinkAssertionResponse) SetUnknown(fields protoreflect
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_MsgLinkAssertionResponse) IsValid() bool {
+func (x *fastReflection_MsgLinkVerificationMethodResponse) IsValid() bool {
 	return x != nil
 }
 
@@ -2051,9 +2772,9 @@ func (x *fastReflection_MsgLinkAssertionResponse) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgLinkAssertionResponse) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_MsgLinkVerificationMethodResponse) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgLinkAssertionResponse)
+		x := input.Message.Interface().(*MsgLinkVerificationMethodResponse)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2068,8 +2789,8 @@ func (x *fastReflection_MsgLinkAssertionResponse) ProtoMethods() *protoiface.Met
 		if x.Success {
 			n += 2
 		}
-		l = len(x.Did)
-		if l > 0 {
+		if x.Document != nil {
+			l = options.Size(x.Document)
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
 		if x.unknownFields != nil {
@@ -2082,7 +2803,7 @@ func (x *fastReflection_MsgLinkAssertionResponse) ProtoMethods() *protoiface.Met
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgLinkAssertionResponse)
+		x := input.Message.Interface().(*MsgLinkVerificationMethodResponse)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2101,10 +2822,17 @@ func (x *fastReflection_MsgLinkAssertionResponse) ProtoMethods() *protoiface.Met
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
 		}
-		if len(x.Did) > 0 {
-			i -= len(x.Did)
-			copy(dAtA[i:], x.Did)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Did)))
+		if x.Document != nil {
+			encoded, err := options.Marshal(x.Document)
+			if err != nil {
+				return protoiface.MarshalOutput{
+					NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+					Buf:               input.Buf,
+				}, err
+			}
+			i -= len(encoded)
+			copy(dAtA[i:], encoded)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
 			i--
 			dAtA[i] = 0x12
 		}
@@ -2129,7 +2857,7 @@ func (x *fastReflection_MsgLinkAssertionResponse) ProtoMethods() *protoiface.Met
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgLinkAssertionResponse)
+		x := input.Message.Interface().(*MsgLinkVerificationMethodResponse)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -2161,10 +2889,10 @@ func (x *fastReflection_MsgLinkAssertionResponse) ProtoMethods() *protoiface.Met
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgLinkAssertionResponse: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgLinkVerificationMethodResponse: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgLinkAssertionResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgLinkVerificationMethodResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -2189,7 +2917,831 @@ func (x *fastReflection_MsgLinkAssertionResponse) ProtoMethods() *protoiface.Met
 				x.Success = bool(v != 0)
 			case 2:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Did", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Document", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if x.Document == nil {
+					x.Document = &Document{}
+				}
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.Document); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				iNdEx = postIndex
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
+var _ protoreflect.List = (*_MsgUnlinkVerificationMethod_3_list)(nil)
+
+type _MsgUnlinkVerificationMethod_3_list struct {
+	list *[]string
+}
+
+func (x *_MsgUnlinkVerificationMethod_3_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_MsgUnlinkVerificationMethod_3_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfString((*x.list)[i])
+}
+
+func (x *_MsgUnlinkVerificationMethod_3_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.String()
+	concreteValue := valueUnwrapped
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_MsgUnlinkVerificationMethod_3_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.String()
+	concreteValue := valueUnwrapped
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_MsgUnlinkVerificationMethod_3_list) AppendMutable() protoreflect.Value {
+	panic(fmt.Errorf("AppendMutable can not be called on message MsgUnlinkVerificationMethod at list field Authentication as it is not of Message kind"))
+}
+
+func (x *_MsgUnlinkVerificationMethod_3_list) Truncate(n int) {
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_MsgUnlinkVerificationMethod_3_list) NewElement() protoreflect.Value {
+	v := ""
+	return protoreflect.ValueOfString(v)
+}
+
+func (x *_MsgUnlinkVerificationMethod_3_list) IsValid() bool {
+	return x.list != nil
+}
+
+var _ protoreflect.List = (*_MsgUnlinkVerificationMethod_4_list)(nil)
+
+type _MsgUnlinkVerificationMethod_4_list struct {
+	list *[]string
+}
+
+func (x *_MsgUnlinkVerificationMethod_4_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_MsgUnlinkVerificationMethod_4_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfString((*x.list)[i])
+}
+
+func (x *_MsgUnlinkVerificationMethod_4_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.String()
+	concreteValue := valueUnwrapped
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_MsgUnlinkVerificationMethod_4_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.String()
+	concreteValue := valueUnwrapped
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_MsgUnlinkVerificationMethod_4_list) AppendMutable() protoreflect.Value {
+	panic(fmt.Errorf("AppendMutable can not be called on message MsgUnlinkVerificationMethod at list field Assertion as it is not of Message kind"))
+}
+
+func (x *_MsgUnlinkVerificationMethod_4_list) Truncate(n int) {
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_MsgUnlinkVerificationMethod_4_list) NewElement() protoreflect.Value {
+	v := ""
+	return protoreflect.ValueOfString(v)
+}
+
+func (x *_MsgUnlinkVerificationMethod_4_list) IsValid() bool {
+	return x.list != nil
+}
+
+var _ protoreflect.List = (*_MsgUnlinkVerificationMethod_5_list)(nil)
+
+type _MsgUnlinkVerificationMethod_5_list struct {
+	list *[]string
+}
+
+func (x *_MsgUnlinkVerificationMethod_5_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_MsgUnlinkVerificationMethod_5_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfString((*x.list)[i])
+}
+
+func (x *_MsgUnlinkVerificationMethod_5_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.String()
+	concreteValue := valueUnwrapped
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_MsgUnlinkVerificationMethod_5_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.String()
+	concreteValue := valueUnwrapped
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_MsgUnlinkVerificationMethod_5_list) AppendMutable() protoreflect.Value {
+	panic(fmt.Errorf("AppendMutable can not be called on message MsgUnlinkVerificationMethod at list field Delegation as it is not of Message kind"))
+}
+
+func (x *_MsgUnlinkVerificationMethod_5_list) Truncate(n int) {
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_MsgUnlinkVerificationMethod_5_list) NewElement() protoreflect.Value {
+	v := ""
+	return protoreflect.ValueOfString(v)
+}
+
+func (x *_MsgUnlinkVerificationMethod_5_list) IsValid() bool {
+	return x.list != nil
+}
+
+var _ protoreflect.List = (*_MsgUnlinkVerificationMethod_6_list)(nil)
+
+type _MsgUnlinkVerificationMethod_6_list struct {
+	list *[]string
+}
+
+func (x *_MsgUnlinkVerificationMethod_6_list) Len() int {
+	if x.list == nil {
+		return 0
+	}
+	return len(*x.list)
+}
+
+func (x *_MsgUnlinkVerificationMethod_6_list) Get(i int) protoreflect.Value {
+	return protoreflect.ValueOfString((*x.list)[i])
+}
+
+func (x *_MsgUnlinkVerificationMethod_6_list) Set(i int, value protoreflect.Value) {
+	valueUnwrapped := value.String()
+	concreteValue := valueUnwrapped
+	(*x.list)[i] = concreteValue
+}
+
+func (x *_MsgUnlinkVerificationMethod_6_list) Append(value protoreflect.Value) {
+	valueUnwrapped := value.String()
+	concreteValue := valueUnwrapped
+	*x.list = append(*x.list, concreteValue)
+}
+
+func (x *_MsgUnlinkVerificationMethod_6_list) AppendMutable() protoreflect.Value {
+	panic(fmt.Errorf("AppendMutable can not be called on message MsgUnlinkVerificationMethod at list field Invocation as it is not of Message kind"))
+}
+
+func (x *_MsgUnlinkVerificationMethod_6_list) Truncate(n int) {
+	*x.list = (*x.list)[:n]
+}
+
+func (x *_MsgUnlinkVerificationMethod_6_list) NewElement() protoreflect.Value {
+	v := ""
+	return protoreflect.ValueOfString(v)
+}
+
+func (x *_MsgUnlinkVerificationMethod_6_list) IsValid() bool {
+	return x.list != nil
+}
+
+var (
+	md_MsgUnlinkVerificationMethod                protoreflect.MessageDescriptor
+	fd_MsgUnlinkVerificationMethod_sender         protoreflect.FieldDescriptor
+	fd_MsgUnlinkVerificationMethod_controller     protoreflect.FieldDescriptor
+	fd_MsgUnlinkVerificationMethod_authentication protoreflect.FieldDescriptor
+	fd_MsgUnlinkVerificationMethod_assertion      protoreflect.FieldDescriptor
+	fd_MsgUnlinkVerificationMethod_delegation     protoreflect.FieldDescriptor
+	fd_MsgUnlinkVerificationMethod_invocation     protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_did_v1_tx_proto_init()
+	md_MsgUnlinkVerificationMethod = File_did_v1_tx_proto.Messages().ByName("MsgUnlinkVerificationMethod")
+	fd_MsgUnlinkVerificationMethod_sender = md_MsgUnlinkVerificationMethod.Fields().ByName("sender")
+	fd_MsgUnlinkVerificationMethod_controller = md_MsgUnlinkVerificationMethod.Fields().ByName("controller")
+	fd_MsgUnlinkVerificationMethod_authentication = md_MsgUnlinkVerificationMethod.Fields().ByName("authentication")
+	fd_MsgUnlinkVerificationMethod_assertion = md_MsgUnlinkVerificationMethod.Fields().ByName("assertion")
+	fd_MsgUnlinkVerificationMethod_delegation = md_MsgUnlinkVerificationMethod.Fields().ByName("delegation")
+	fd_MsgUnlinkVerificationMethod_invocation = md_MsgUnlinkVerificationMethod.Fields().ByName("invocation")
+}
+
+var _ protoreflect.Message = (*fastReflection_MsgUnlinkVerificationMethod)(nil)
+
+type fastReflection_MsgUnlinkVerificationMethod MsgUnlinkVerificationMethod
+
+func (x *MsgUnlinkVerificationMethod) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgUnlinkVerificationMethod)(x)
+}
+
+func (x *MsgUnlinkVerificationMethod) slowProtoReflect() protoreflect.Message {
+	mi := &file_did_v1_tx_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_MsgUnlinkVerificationMethod_messageType fastReflection_MsgUnlinkVerificationMethod_messageType
+var _ protoreflect.MessageType = fastReflection_MsgUnlinkVerificationMethod_messageType{}
+
+type fastReflection_MsgUnlinkVerificationMethod_messageType struct{}
+
+func (x fastReflection_MsgUnlinkVerificationMethod_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgUnlinkVerificationMethod)(nil)
+}
+func (x fastReflection_MsgUnlinkVerificationMethod_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgUnlinkVerificationMethod)
+}
+func (x fastReflection_MsgUnlinkVerificationMethod_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgUnlinkVerificationMethod
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_MsgUnlinkVerificationMethod) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgUnlinkVerificationMethod
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_MsgUnlinkVerificationMethod) Type() protoreflect.MessageType {
+	return _fastReflection_MsgUnlinkVerificationMethod_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_MsgUnlinkVerificationMethod) New() protoreflect.Message {
+	return new(fastReflection_MsgUnlinkVerificationMethod)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_MsgUnlinkVerificationMethod) Interface() protoreflect.ProtoMessage {
+	return (*MsgUnlinkVerificationMethod)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_MsgUnlinkVerificationMethod) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.Sender != "" {
+		value := protoreflect.ValueOfString(x.Sender)
+		if !f(fd_MsgUnlinkVerificationMethod_sender, value) {
+			return
+		}
+	}
+	if x.Controller != "" {
+		value := protoreflect.ValueOfString(x.Controller)
+		if !f(fd_MsgUnlinkVerificationMethod_controller, value) {
+			return
+		}
+	}
+	if len(x.Authentication) != 0 {
+		value := protoreflect.ValueOfList(&_MsgUnlinkVerificationMethod_3_list{list: &x.Authentication})
+		if !f(fd_MsgUnlinkVerificationMethod_authentication, value) {
+			return
+		}
+	}
+	if len(x.Assertion) != 0 {
+		value := protoreflect.ValueOfList(&_MsgUnlinkVerificationMethod_4_list{list: &x.Assertion})
+		if !f(fd_MsgUnlinkVerificationMethod_assertion, value) {
+			return
+		}
+	}
+	if len(x.Delegation) != 0 {
+		value := protoreflect.ValueOfList(&_MsgUnlinkVerificationMethod_5_list{list: &x.Delegation})
+		if !f(fd_MsgUnlinkVerificationMethod_delegation, value) {
+			return
+		}
+	}
+	if len(x.Invocation) != 0 {
+		value := protoreflect.ValueOfList(&_MsgUnlinkVerificationMethod_6_list{list: &x.Invocation})
+		if !f(fd_MsgUnlinkVerificationMethod_invocation, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_MsgUnlinkVerificationMethod) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "did.v1.MsgUnlinkVerificationMethod.sender":
+		return x.Sender != ""
+	case "did.v1.MsgUnlinkVerificationMethod.controller":
+		return x.Controller != ""
+	case "did.v1.MsgUnlinkVerificationMethod.authentication":
+		return len(x.Authentication) != 0
+	case "did.v1.MsgUnlinkVerificationMethod.assertion":
+		return len(x.Assertion) != 0
+	case "did.v1.MsgUnlinkVerificationMethod.delegation":
+		return len(x.Delegation) != 0
+	case "did.v1.MsgUnlinkVerificationMethod.invocation":
+		return len(x.Invocation) != 0
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkVerificationMethod"))
+		}
+		panic(fmt.Errorf("message did.v1.MsgUnlinkVerificationMethod does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUnlinkVerificationMethod) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "did.v1.MsgUnlinkVerificationMethod.sender":
+		x.Sender = ""
+	case "did.v1.MsgUnlinkVerificationMethod.controller":
+		x.Controller = ""
+	case "did.v1.MsgUnlinkVerificationMethod.authentication":
+		x.Authentication = nil
+	case "did.v1.MsgUnlinkVerificationMethod.assertion":
+		x.Assertion = nil
+	case "did.v1.MsgUnlinkVerificationMethod.delegation":
+		x.Delegation = nil
+	case "did.v1.MsgUnlinkVerificationMethod.invocation":
+		x.Invocation = nil
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkVerificationMethod"))
+		}
+		panic(fmt.Errorf("message did.v1.MsgUnlinkVerificationMethod does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_MsgUnlinkVerificationMethod) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "did.v1.MsgUnlinkVerificationMethod.sender":
+		value := x.Sender
+		return protoreflect.ValueOfString(value)
+	case "did.v1.MsgUnlinkVerificationMethod.controller":
+		value := x.Controller
+		return protoreflect.ValueOfString(value)
+	case "did.v1.MsgUnlinkVerificationMethod.authentication":
+		if len(x.Authentication) == 0 {
+			return protoreflect.ValueOfList(&_MsgUnlinkVerificationMethod_3_list{})
+		}
+		listValue := &_MsgUnlinkVerificationMethod_3_list{list: &x.Authentication}
+		return protoreflect.ValueOfList(listValue)
+	case "did.v1.MsgUnlinkVerificationMethod.assertion":
+		if len(x.Assertion) == 0 {
+			return protoreflect.ValueOfList(&_MsgUnlinkVerificationMethod_4_list{})
+		}
+		listValue := &_MsgUnlinkVerificationMethod_4_list{list: &x.Assertion}
+		return protoreflect.ValueOfList(listValue)
+	case "did.v1.MsgUnlinkVerificationMethod.delegation":
+		if len(x.Delegation) == 0 {
+			return protoreflect.ValueOfList(&_MsgUnlinkVerificationMethod_5_list{})
+		}
+		listValue := &_MsgUnlinkVerificationMethod_5_list{list: &x.Delegation}
+		return protoreflect.ValueOfList(listValue)
+	case "did.v1.MsgUnlinkVerificationMethod.invocation":
+		if len(x.Invocation) == 0 {
+			return protoreflect.ValueOfList(&_MsgUnlinkVerificationMethod_6_list{})
+		}
+		listValue := &_MsgUnlinkVerificationMethod_6_list{list: &x.Invocation}
+		return protoreflect.ValueOfList(listValue)
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkVerificationMethod"))
+		}
+		panic(fmt.Errorf("message did.v1.MsgUnlinkVerificationMethod does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUnlinkVerificationMethod) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "did.v1.MsgUnlinkVerificationMethod.sender":
+		x.Sender = value.Interface().(string)
+	case "did.v1.MsgUnlinkVerificationMethod.controller":
+		x.Controller = value.Interface().(string)
+	case "did.v1.MsgUnlinkVerificationMethod.authentication":
+		lv := value.List()
+		clv := lv.(*_MsgUnlinkVerificationMethod_3_list)
+		x.Authentication = *clv.list
+	case "did.v1.MsgUnlinkVerificationMethod.assertion":
+		lv := value.List()
+		clv := lv.(*_MsgUnlinkVerificationMethod_4_list)
+		x.Assertion = *clv.list
+	case "did.v1.MsgUnlinkVerificationMethod.delegation":
+		lv := value.List()
+		clv := lv.(*_MsgUnlinkVerificationMethod_5_list)
+		x.Delegation = *clv.list
+	case "did.v1.MsgUnlinkVerificationMethod.invocation":
+		lv := value.List()
+		clv := lv.(*_MsgUnlinkVerificationMethod_6_list)
+		x.Invocation = *clv.list
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkVerificationMethod"))
+		}
+		panic(fmt.Errorf("message did.v1.MsgUnlinkVerificationMethod does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUnlinkVerificationMethod) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "did.v1.MsgUnlinkVerificationMethod.authentication":
+		if x.Authentication == nil {
+			x.Authentication = []string{}
+		}
+		value := &_MsgUnlinkVerificationMethod_3_list{list: &x.Authentication}
+		return protoreflect.ValueOfList(value)
+	case "did.v1.MsgUnlinkVerificationMethod.assertion":
+		if x.Assertion == nil {
+			x.Assertion = []string{}
+		}
+		value := &_MsgUnlinkVerificationMethod_4_list{list: &x.Assertion}
+		return protoreflect.ValueOfList(value)
+	case "did.v1.MsgUnlinkVerificationMethod.delegation":
+		if x.Delegation == nil {
+			x.Delegation = []string{}
+		}
+		value := &_MsgUnlinkVerificationMethod_5_list{list: &x.Delegation}
+		return protoreflect.ValueOfList(value)
+	case "did.v1.MsgUnlinkVerificationMethod.invocation":
+		if x.Invocation == nil {
+			x.Invocation = []string{}
+		}
+		value := &_MsgUnlinkVerificationMethod_6_list{list: &x.Invocation}
+		return protoreflect.ValueOfList(value)
+	case "did.v1.MsgUnlinkVerificationMethod.sender":
+		panic(fmt.Errorf("field sender of message did.v1.MsgUnlinkVerificationMethod is not mutable"))
+	case "did.v1.MsgUnlinkVerificationMethod.controller":
+		panic(fmt.Errorf("field controller of message did.v1.MsgUnlinkVerificationMethod is not mutable"))
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkVerificationMethod"))
+		}
+		panic(fmt.Errorf("message did.v1.MsgUnlinkVerificationMethod does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_MsgUnlinkVerificationMethod) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "did.v1.MsgUnlinkVerificationMethod.sender":
+		return protoreflect.ValueOfString("")
+	case "did.v1.MsgUnlinkVerificationMethod.controller":
+		return protoreflect.ValueOfString("")
+	case "did.v1.MsgUnlinkVerificationMethod.authentication":
+		list := []string{}
+		return protoreflect.ValueOfList(&_MsgUnlinkVerificationMethod_3_list{list: &list})
+	case "did.v1.MsgUnlinkVerificationMethod.assertion":
+		list := []string{}
+		return protoreflect.ValueOfList(&_MsgUnlinkVerificationMethod_4_list{list: &list})
+	case "did.v1.MsgUnlinkVerificationMethod.delegation":
+		list := []string{}
+		return protoreflect.ValueOfList(&_MsgUnlinkVerificationMethod_5_list{list: &list})
+	case "did.v1.MsgUnlinkVerificationMethod.invocation":
+		list := []string{}
+		return protoreflect.ValueOfList(&_MsgUnlinkVerificationMethod_6_list{list: &list})
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkVerificationMethod"))
+		}
+		panic(fmt.Errorf("message did.v1.MsgUnlinkVerificationMethod does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_MsgUnlinkVerificationMethod) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in did.v1.MsgUnlinkVerificationMethod", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_MsgUnlinkVerificationMethod) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUnlinkVerificationMethod) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_MsgUnlinkVerificationMethod) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_MsgUnlinkVerificationMethod) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*MsgUnlinkVerificationMethod)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		l = len(x.Sender)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		l = len(x.Controller)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if len(x.Authentication) > 0 {
+			for _, s := range x.Authentication {
+				l = len(s)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
+		if len(x.Assertion) > 0 {
+			for _, s := range x.Assertion {
+				l = len(s)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
+		if len(x.Delegation) > 0 {
+			for _, s := range x.Delegation {
+				l = len(s)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
+		if len(x.Invocation) > 0 {
+			for _, s := range x.Invocation {
+				l = len(s)
+				n += 1 + l + runtime.Sov(uint64(l))
+			}
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*MsgUnlinkVerificationMethod)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if len(x.Invocation) > 0 {
+			for iNdEx := len(x.Invocation) - 1; iNdEx >= 0; iNdEx-- {
+				i -= len(x.Invocation[iNdEx])
+				copy(dAtA[i:], x.Invocation[iNdEx])
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Invocation[iNdEx])))
+				i--
+				dAtA[i] = 0x32
+			}
+		}
+		if len(x.Delegation) > 0 {
+			for iNdEx := len(x.Delegation) - 1; iNdEx >= 0; iNdEx-- {
+				i -= len(x.Delegation[iNdEx])
+				copy(dAtA[i:], x.Delegation[iNdEx])
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Delegation[iNdEx])))
+				i--
+				dAtA[i] = 0x2a
+			}
+		}
+		if len(x.Assertion) > 0 {
+			for iNdEx := len(x.Assertion) - 1; iNdEx >= 0; iNdEx-- {
+				i -= len(x.Assertion[iNdEx])
+				copy(dAtA[i:], x.Assertion[iNdEx])
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Assertion[iNdEx])))
+				i--
+				dAtA[i] = 0x22
+			}
+		}
+		if len(x.Authentication) > 0 {
+			for iNdEx := len(x.Authentication) - 1; iNdEx >= 0; iNdEx-- {
+				i -= len(x.Authentication[iNdEx])
+				copy(dAtA[i:], x.Authentication[iNdEx])
+				i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Authentication[iNdEx])))
+				i--
+				dAtA[i] = 0x1a
+			}
+		}
+		if len(x.Controller) > 0 {
+			i -= len(x.Controller)
+			copy(dAtA[i:], x.Controller)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Controller)))
+			i--
+			dAtA[i] = 0x12
+		}
+		if len(x.Sender) > 0 {
+			i -= len(x.Sender)
+			copy(dAtA[i:], x.Sender)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Sender)))
+			i--
+			dAtA[i] = 0xa
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*MsgUnlinkVerificationMethod)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUnlinkVerificationMethod: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUnlinkVerificationMethod: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Sender", wireType)
 				}
 				var stringLen uint64
 				for shift := uint(0); ; shift += 7 {
@@ -2217,7 +3769,656 @@ func (x *fastReflection_MsgLinkAssertionResponse) ProtoMethods() *protoiface.Met
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.Did = string(dAtA[iNdEx:postIndex])
+				x.Sender = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 2:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Controller", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Controller = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 3:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Authentication", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Authentication = append(x.Authentication, string(dAtA[iNdEx:postIndex]))
+				iNdEx = postIndex
+			case 4:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Assertion", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Assertion = append(x.Assertion, string(dAtA[iNdEx:postIndex]))
+				iNdEx = postIndex
+			case 5:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Delegation", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Delegation = append(x.Delegation, string(dAtA[iNdEx:postIndex]))
+				iNdEx = postIndex
+			case 6:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Invocation", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Invocation = append(x.Invocation, string(dAtA[iNdEx:postIndex]))
+				iNdEx = postIndex
+			default:
+				iNdEx = preIndex
+				skippy, err := runtime.Skip(dAtA[iNdEx:])
+				if err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
+				if (skippy < 0) || (iNdEx+skippy) < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if (iNdEx + skippy) > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if !options.DiscardUnknown {
+					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
+				}
+				iNdEx += skippy
+			}
+		}
+
+		if iNdEx > l {
+			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+		}
+		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
+	}
+	return &protoiface.Methods{
+		NoUnkeyedLiterals: struct{}{},
+		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
+		Size:              size,
+		Marshal:           marshal,
+		Unmarshal:         unmarshal,
+		Merge:             nil,
+		CheckInitialized:  nil,
+	}
+}
+
+var (
+	md_MsgUnlinkVerificationMethodResponse          protoreflect.MessageDescriptor
+	fd_MsgUnlinkVerificationMethodResponse_success  protoreflect.FieldDescriptor
+	fd_MsgUnlinkVerificationMethodResponse_document protoreflect.FieldDescriptor
+)
+
+func init() {
+	file_did_v1_tx_proto_init()
+	md_MsgUnlinkVerificationMethodResponse = File_did_v1_tx_proto.Messages().ByName("MsgUnlinkVerificationMethodResponse")
+	fd_MsgUnlinkVerificationMethodResponse_success = md_MsgUnlinkVerificationMethodResponse.Fields().ByName("success")
+	fd_MsgUnlinkVerificationMethodResponse_document = md_MsgUnlinkVerificationMethodResponse.Fields().ByName("document")
+}
+
+var _ protoreflect.Message = (*fastReflection_MsgUnlinkVerificationMethodResponse)(nil)
+
+type fastReflection_MsgUnlinkVerificationMethodResponse MsgUnlinkVerificationMethodResponse
+
+func (x *MsgUnlinkVerificationMethodResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgUnlinkVerificationMethodResponse)(x)
+}
+
+func (x *MsgUnlinkVerificationMethodResponse) slowProtoReflect() protoreflect.Message {
+	mi := &file_did_v1_tx_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+var _fastReflection_MsgUnlinkVerificationMethodResponse_messageType fastReflection_MsgUnlinkVerificationMethodResponse_messageType
+var _ protoreflect.MessageType = fastReflection_MsgUnlinkVerificationMethodResponse_messageType{}
+
+type fastReflection_MsgUnlinkVerificationMethodResponse_messageType struct{}
+
+func (x fastReflection_MsgUnlinkVerificationMethodResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgUnlinkVerificationMethodResponse)(nil)
+}
+func (x fastReflection_MsgUnlinkVerificationMethodResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgUnlinkVerificationMethodResponse)
+}
+func (x fastReflection_MsgUnlinkVerificationMethodResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgUnlinkVerificationMethodResponse
+}
+
+// Descriptor returns message descriptor, which contains only the protobuf
+// type information for the message.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgUnlinkVerificationMethodResponse
+}
+
+// Type returns the message type, which encapsulates both Go and protobuf
+// type information. If the Go type information is not needed,
+// it is recommended that the message descriptor be used instead.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) Type() protoreflect.MessageType {
+	return _fastReflection_MsgUnlinkVerificationMethodResponse_messageType
+}
+
+// New returns a newly allocated and mutable empty message.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) New() protoreflect.Message {
+	return new(fastReflection_MsgUnlinkVerificationMethodResponse)
+}
+
+// Interface unwraps the message reflection interface and
+// returns the underlying ProtoMessage interface.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) Interface() protoreflect.ProtoMessage {
+	return (*MsgUnlinkVerificationMethodResponse)(x)
+}
+
+// Range iterates over every populated field in an undefined order,
+// calling f for each field descriptor and value encountered.
+// Range returns immediately if f returns false.
+// While iterating, mutating operations may only be performed
+// on the current field descriptor.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.Success != false {
+		value := protoreflect.ValueOfBool(x.Success)
+		if !f(fd_MsgUnlinkVerificationMethodResponse_success, value) {
+			return
+		}
+	}
+	if x.Document != nil {
+		value := protoreflect.ValueOfMessage(x.Document.ProtoReflect())
+		if !f(fd_MsgUnlinkVerificationMethodResponse_document, value) {
+			return
+		}
+	}
+}
+
+// Has reports whether a field is populated.
+//
+// Some fields have the property of nullability where it is possible to
+// distinguish between the default value of a field and whether the field
+// was explicitly populated with the default value. Singular message fields,
+// member fields of a oneof, and proto2 scalar fields are nullable. Such
+// fields are populated only if explicitly set.
+//
+// In other cases (aside from the nullable cases above),
+// a proto3 scalar field is populated if it contains a non-zero value, and
+// a repeated field is populated if it is non-empty.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) Has(fd protoreflect.FieldDescriptor) bool {
+	switch fd.FullName() {
+	case "did.v1.MsgUnlinkVerificationMethodResponse.success":
+		return x.Success != false
+	case "did.v1.MsgUnlinkVerificationMethodResponse.document":
+		return x.Document != nil
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkVerificationMethodResponse"))
+		}
+		panic(fmt.Errorf("message did.v1.MsgUnlinkVerificationMethodResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Clear clears the field such that a subsequent Has call reports false.
+//
+// Clearing an extension field clears both the extension type and value
+// associated with the given field number.
+//
+// Clear is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) Clear(fd protoreflect.FieldDescriptor) {
+	switch fd.FullName() {
+	case "did.v1.MsgUnlinkVerificationMethodResponse.success":
+		x.Success = false
+	case "did.v1.MsgUnlinkVerificationMethodResponse.document":
+		x.Document = nil
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkVerificationMethodResponse"))
+		}
+		panic(fmt.Errorf("message did.v1.MsgUnlinkVerificationMethodResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Get retrieves the value for a field.
+//
+// For unpopulated scalars, it returns the default value, where
+// the default value of a bytes scalar is guaranteed to be a copy.
+// For unpopulated composite types, it returns an empty, read-only view
+// of the value; to obtain a mutable reference, use Mutable.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+	switch descriptor.FullName() {
+	case "did.v1.MsgUnlinkVerificationMethodResponse.success":
+		value := x.Success
+		return protoreflect.ValueOfBool(value)
+	case "did.v1.MsgUnlinkVerificationMethodResponse.document":
+		value := x.Document
+		return protoreflect.ValueOfMessage(value.ProtoReflect())
+	default:
+		if descriptor.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkVerificationMethodResponse"))
+		}
+		panic(fmt.Errorf("message did.v1.MsgUnlinkVerificationMethodResponse does not contain field %s", descriptor.FullName()))
+	}
+}
+
+// Set stores the value for a field.
+//
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType.
+// When setting a composite type, it is unspecified whether the stored value
+// aliases the source's memory in any way. If the composite value is an
+// empty, read-only value, then it panics.
+//
+// Set is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+	switch fd.FullName() {
+	case "did.v1.MsgUnlinkVerificationMethodResponse.success":
+		x.Success = value.Bool()
+	case "did.v1.MsgUnlinkVerificationMethodResponse.document":
+		x.Document = value.Message().Interface().(*Document)
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkVerificationMethodResponse"))
+		}
+		panic(fmt.Errorf("message did.v1.MsgUnlinkVerificationMethodResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// Mutable returns a mutable reference to a composite type.
+//
+// If the field is unpopulated, it may allocate a composite value.
+// For a field belonging to a oneof, it implicitly clears any other field
+// that may be currently set within the same oneof.
+// For extension fields, it implicitly stores the provided ExtensionType
+// if not already stored.
+// It panics if the field does not contain a composite type.
+//
+// Mutable is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "did.v1.MsgUnlinkVerificationMethodResponse.document":
+		if x.Document == nil {
+			x.Document = new(Document)
+		}
+		return protoreflect.ValueOfMessage(x.Document.ProtoReflect())
+	case "did.v1.MsgUnlinkVerificationMethodResponse.success":
+		panic(fmt.Errorf("field success of message did.v1.MsgUnlinkVerificationMethodResponse is not mutable"))
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkVerificationMethodResponse"))
+		}
+		panic(fmt.Errorf("message did.v1.MsgUnlinkVerificationMethodResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// NewField returns a new value that is assignable to the field
+// for the given descriptor. For scalars, this returns the default value.
+// For lists, maps, and messages, this returns a new, empty, mutable value.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+	switch fd.FullName() {
+	case "did.v1.MsgUnlinkVerificationMethodResponse.success":
+		return protoreflect.ValueOfBool(false)
+	case "did.v1.MsgUnlinkVerificationMethodResponse.document":
+		m := new(Document)
+		return protoreflect.ValueOfMessage(m.ProtoReflect())
+	default:
+		if fd.IsExtension() {
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkVerificationMethodResponse"))
+		}
+		panic(fmt.Errorf("message did.v1.MsgUnlinkVerificationMethodResponse does not contain field %s", fd.FullName()))
+	}
+}
+
+// WhichOneof reports which field within the oneof is populated,
+// returning nil if none are populated.
+// It panics if the oneof descriptor does not belong to this message.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+	switch d.FullName() {
+	default:
+		panic(fmt.Errorf("%s is not a oneof field in did.v1.MsgUnlinkVerificationMethodResponse", d.FullName()))
+	}
+	panic("unreachable")
+}
+
+// GetUnknown retrieves the entire list of unknown fields.
+// The caller may only mutate the contents of the RawFields
+// if the mutated bytes are stored back into the message with SetUnknown.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) GetUnknown() protoreflect.RawFields {
+	return x.unknownFields
+}
+
+// SetUnknown stores an entire list of unknown fields.
+// The raw fields must be syntactically valid according to the wire format.
+// An implementation may panic if this is not the case.
+// Once stored, the caller must not mutate the content of the RawFields.
+// An empty RawFields may be passed to clear the fields.
+//
+// SetUnknown is a mutating operation and unsafe for concurrent use.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) SetUnknown(fields protoreflect.RawFields) {
+	x.unknownFields = fields
+}
+
+// IsValid reports whether the message is valid.
+//
+// An invalid message is an empty, read-only value.
+//
+// An invalid message often corresponds to a nil pointer of the concrete
+// message type, but the details are implementation dependent.
+// Validity is not part of the protobuf data model, and may not
+// be preserved in marshaling or other operations.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) IsValid() bool {
+	return x != nil
+}
+
+// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
+// This method may return nil.
+//
+// The returned methods type is identical to
+// "google.golang.org/protobuf/runtime/protoiface".Methods.
+// Consult the protoiface package documentation for details.
+func (x *fastReflection_MsgUnlinkVerificationMethodResponse) ProtoMethods() *protoiface.Methods {
+	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
+		x := input.Message.Interface().(*MsgUnlinkVerificationMethodResponse)
+		if x == nil {
+			return protoiface.SizeOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Size:              0,
+			}
+		}
+		options := runtime.SizeInputToOptions(input)
+		_ = options
+		var n int
+		var l int
+		_ = l
+		if x.Success {
+			n += 2
+		}
+		if x.Document != nil {
+			l = options.Size(x.Document)
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.unknownFields != nil {
+			n += len(x.unknownFields)
+		}
+		return protoiface.SizeOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Size:              n,
+		}
+	}
+
+	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
+		x := input.Message.Interface().(*MsgUnlinkVerificationMethodResponse)
+		if x == nil {
+			return protoiface.MarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Buf:               input.Buf,
+			}, nil
+		}
+		options := runtime.MarshalInputToOptions(input)
+		_ = options
+		size := options.Size(x)
+		dAtA := make([]byte, size)
+		i := len(dAtA)
+		_ = i
+		var l int
+		_ = l
+		if x.unknownFields != nil {
+			i -= len(x.unknownFields)
+			copy(dAtA[i:], x.unknownFields)
+		}
+		if x.Document != nil {
+			encoded, err := options.Marshal(x.Document)
+			if err != nil {
+				return protoiface.MarshalOutput{
+					NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+					Buf:               input.Buf,
+				}, err
+			}
+			i -= len(encoded)
+			copy(dAtA[i:], encoded)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+			i--
+			dAtA[i] = 0x12
+		}
+		if x.Success {
+			i--
+			if x.Success {
+				dAtA[i] = 1
+			} else {
+				dAtA[i] = 0
+			}
+			i--
+			dAtA[i] = 0x8
+		}
+		if input.Buf != nil {
+			input.Buf = append(input.Buf, dAtA...)
+		} else {
+			input.Buf = dAtA
+		}
+		return protoiface.MarshalOutput{
+			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+			Buf:               input.Buf,
+		}, nil
+	}
+	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
+		x := input.Message.Interface().(*MsgUnlinkVerificationMethodResponse)
+		if x == nil {
+			return protoiface.UnmarshalOutput{
+				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
+				Flags:             input.Flags,
+			}, nil
+		}
+		options := runtime.UnmarshalInputToOptions(input)
+		_ = options
+		dAtA := input.Buf
+		l := len(dAtA)
+		iNdEx := 0
+		for iNdEx < l {
+			preIndex := iNdEx
+			var wire uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+				}
+				if iNdEx >= l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				wire |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			fieldNum := int32(wire >> 3)
+			wireType := int(wire & 0x7)
+			if wireType == 4 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUnlinkVerificationMethodResponse: wiretype end group for non-group")
+			}
+			if fieldNum <= 0 {
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUnlinkVerificationMethodResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			}
+			switch fieldNum {
+			case 1:
+				if wireType != 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Success", wireType)
+				}
+				var v int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					v |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				x.Success = bool(v != 0)
+			case 2:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Document", wireType)
+				}
+				var msglen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					msglen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if msglen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + msglen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				if x.Document == nil {
+					x.Document = &Document{}
+				}
+				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.Document); err != nil {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
+				}
 				iNdEx = postIndex
 			default:
 				iNdEx = preIndex
@@ -2338,7 +4539,7 @@ func (x *_MsgExecuteTx_2_map) IsValid() bool {
 
 var (
 	md_MsgExecuteTx                protoreflect.MessageDescriptor
-	fd_MsgExecuteTx_controller     protoreflect.FieldDescriptor
+	fd_MsgExecuteTx_sender         protoreflect.FieldDescriptor
 	fd_MsgExecuteTx_messages       protoreflect.FieldDescriptor
 	fd_MsgExecuteTx_macaroon_token protoreflect.FieldDescriptor
 )
@@ -2346,7 +4547,7 @@ var (
 func init() {
 	file_did_v1_tx_proto_init()
 	md_MsgExecuteTx = File_did_v1_tx_proto.Messages().ByName("MsgExecuteTx")
-	fd_MsgExecuteTx_controller = md_MsgExecuteTx.Fields().ByName("controller")
+	fd_MsgExecuteTx_sender = md_MsgExecuteTx.Fields().ByName("sender")
 	fd_MsgExecuteTx_messages = md_MsgExecuteTx.Fields().ByName("messages")
 	fd_MsgExecuteTx_macaroon_token = md_MsgExecuteTx.Fields().ByName("macaroon_token")
 }
@@ -2360,7 +4561,7 @@ func (x *MsgExecuteTx) ProtoReflect() protoreflect.Message {
 }
 
 func (x *MsgExecuteTx) slowProtoReflect() protoreflect.Message {
-	mi := &file_did_v1_tx_proto_msgTypes[4]
+	mi := &file_did_v1_tx_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2416,9 +4617,9 @@ func (x *fastReflection_MsgExecuteTx) Interface() protoreflect.ProtoMessage {
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
 func (x *fastReflection_MsgExecuteTx) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Controller != "" {
-		value := protoreflect.ValueOfString(x.Controller)
-		if !f(fd_MsgExecuteTx_controller, value) {
+	if x.Sender != "" {
+		value := protoreflect.ValueOfString(x.Sender)
+		if !f(fd_MsgExecuteTx_sender, value) {
 			return
 		}
 	}
@@ -2449,8 +4650,8 @@ func (x *fastReflection_MsgExecuteTx) Range(f func(protoreflect.FieldDescriptor,
 // a repeated field is populated if it is non-empty.
 func (x *fastReflection_MsgExecuteTx) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "did.v1.MsgExecuteTx.controller":
-		return x.Controller != ""
+	case "did.v1.MsgExecuteTx.sender":
+		return x.Sender != ""
 	case "did.v1.MsgExecuteTx.messages":
 		return len(x.Messages) != 0
 	case "did.v1.MsgExecuteTx.macaroon_token":
@@ -2471,8 +4672,8 @@ func (x *fastReflection_MsgExecuteTx) Has(fd protoreflect.FieldDescriptor) bool 
 // Clear is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgExecuteTx) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "did.v1.MsgExecuteTx.controller":
-		x.Controller = ""
+	case "did.v1.MsgExecuteTx.sender":
+		x.Sender = ""
 	case "did.v1.MsgExecuteTx.messages":
 		x.Messages = nil
 	case "did.v1.MsgExecuteTx.macaroon_token":
@@ -2493,8 +4694,8 @@ func (x *fastReflection_MsgExecuteTx) Clear(fd protoreflect.FieldDescriptor) {
 // of the value; to obtain a mutable reference, use Mutable.
 func (x *fastReflection_MsgExecuteTx) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "did.v1.MsgExecuteTx.controller":
-		value := x.Controller
+	case "did.v1.MsgExecuteTx.sender":
+		value := x.Sender
 		return protoreflect.ValueOfString(value)
 	case "did.v1.MsgExecuteTx.messages":
 		if len(x.Messages) == 0 {
@@ -2525,8 +4726,8 @@ func (x *fastReflection_MsgExecuteTx) Get(descriptor protoreflect.FieldDescripto
 // Set is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgExecuteTx) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "did.v1.MsgExecuteTx.controller":
-		x.Controller = value.Interface().(string)
+	case "did.v1.MsgExecuteTx.sender":
+		x.Sender = value.Interface().(string)
 	case "did.v1.MsgExecuteTx.messages":
 		mv := value.Map()
 		cmv := mv.(*_MsgExecuteTx_2_map)
@@ -2559,8 +4760,8 @@ func (x *fastReflection_MsgExecuteTx) Mutable(fd protoreflect.FieldDescriptor) p
 		}
 		value := &_MsgExecuteTx_2_map{m: &x.Messages}
 		return protoreflect.ValueOfMap(value)
-	case "did.v1.MsgExecuteTx.controller":
-		panic(fmt.Errorf("field controller of message did.v1.MsgExecuteTx is not mutable"))
+	case "did.v1.MsgExecuteTx.sender":
+		panic(fmt.Errorf("field sender of message did.v1.MsgExecuteTx is not mutable"))
 	case "did.v1.MsgExecuteTx.macaroon_token":
 		panic(fmt.Errorf("field macaroon_token of message did.v1.MsgExecuteTx is not mutable"))
 	default:
@@ -2576,7 +4777,7 @@ func (x *fastReflection_MsgExecuteTx) Mutable(fd protoreflect.FieldDescriptor) p
 // For lists, maps, and messages, this returns a new, empty, mutable value.
 func (x *fastReflection_MsgExecuteTx) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "did.v1.MsgExecuteTx.controller":
+	case "did.v1.MsgExecuteTx.sender":
 		return protoreflect.ValueOfString("")
 	case "did.v1.MsgExecuteTx.messages":
 		m := make(map[string][]byte)
@@ -2652,7 +4853,7 @@ func (x *fastReflection_MsgExecuteTx) ProtoMethods() *protoiface.Methods {
 		var n int
 		var l int
 		_ = l
-		l = len(x.Controller)
+		l = len(x.Sender)
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
@@ -2761,10 +4962,10 @@ func (x *fastReflection_MsgExecuteTx) ProtoMethods() *protoiface.Methods {
 				}
 			}
 		}
-		if len(x.Controller) > 0 {
-			i -= len(x.Controller)
-			copy(dAtA[i:], x.Controller)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Controller)))
+		if len(x.Sender) > 0 {
+			i -= len(x.Sender)
+			copy(dAtA[i:], x.Sender)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Sender)))
 			i--
 			dAtA[i] = 0xa
 		}
@@ -2819,7 +5020,7 @@ func (x *fastReflection_MsgExecuteTx) ProtoMethods() *protoiface.Methods {
 			switch fieldNum {
 			case 1:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Controller", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Sender", wireType)
 				}
 				var stringLen uint64
 				for shift := uint(0); ; shift += 7 {
@@ -2847,7 +5048,7 @@ func (x *fastReflection_MsgExecuteTx) ProtoMethods() *protoiface.Methods {
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.Controller = string(dAtA[iNdEx:postIndex])
+				x.Sender = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
 			case 2:
 				if wireType != 2 {
@@ -3046,15 +5247,15 @@ func (x *fastReflection_MsgExecuteTx) ProtoMethods() *protoiface.Methods {
 
 var (
 	md_MsgExecuteTxResponse         protoreflect.MessageDescriptor
-	fd_MsgExecuteTxResponse_success protoreflect.FieldDescriptor
 	fd_MsgExecuteTxResponse_tx_hash protoreflect.FieldDescriptor
+	fd_MsgExecuteTxResponse_success protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_did_v1_tx_proto_init()
 	md_MsgExecuteTxResponse = File_did_v1_tx_proto.Messages().ByName("MsgExecuteTxResponse")
-	fd_MsgExecuteTxResponse_success = md_MsgExecuteTxResponse.Fields().ByName("success")
 	fd_MsgExecuteTxResponse_tx_hash = md_MsgExecuteTxResponse.Fields().ByName("tx_hash")
+	fd_MsgExecuteTxResponse_success = md_MsgExecuteTxResponse.Fields().ByName("success")
 }
 
 var _ protoreflect.Message = (*fastReflection_MsgExecuteTxResponse)(nil)
@@ -3066,7 +5267,7 @@ func (x *MsgExecuteTxResponse) ProtoReflect() protoreflect.Message {
 }
 
 func (x *MsgExecuteTxResponse) slowProtoReflect() protoreflect.Message {
-	mi := &file_did_v1_tx_proto_msgTypes[5]
+	mi := &file_did_v1_tx_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3122,15 +5323,15 @@ func (x *fastReflection_MsgExecuteTxResponse) Interface() protoreflect.ProtoMess
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
 func (x *fastReflection_MsgExecuteTxResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Success != false {
-		value := protoreflect.ValueOfBool(x.Success)
-		if !f(fd_MsgExecuteTxResponse_success, value) {
-			return
-		}
-	}
 	if x.TxHash != "" {
 		value := protoreflect.ValueOfString(x.TxHash)
 		if !f(fd_MsgExecuteTxResponse_tx_hash, value) {
+			return
+		}
+	}
+	if x.Success != false {
+		value := protoreflect.ValueOfBool(x.Success)
+		if !f(fd_MsgExecuteTxResponse_success, value) {
 			return
 		}
 	}
@@ -3149,10 +5350,10 @@ func (x *fastReflection_MsgExecuteTxResponse) Range(f func(protoreflect.FieldDes
 // a repeated field is populated if it is non-empty.
 func (x *fastReflection_MsgExecuteTxResponse) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "did.v1.MsgExecuteTxResponse.success":
-		return x.Success != false
 	case "did.v1.MsgExecuteTxResponse.tx_hash":
 		return x.TxHash != ""
+	case "did.v1.MsgExecuteTxResponse.success":
+		return x.Success != false
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgExecuteTxResponse"))
@@ -3169,10 +5370,10 @@ func (x *fastReflection_MsgExecuteTxResponse) Has(fd protoreflect.FieldDescripto
 // Clear is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgExecuteTxResponse) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "did.v1.MsgExecuteTxResponse.success":
-		x.Success = false
 	case "did.v1.MsgExecuteTxResponse.tx_hash":
 		x.TxHash = ""
+	case "did.v1.MsgExecuteTxResponse.success":
+		x.Success = false
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgExecuteTxResponse"))
@@ -3189,12 +5390,12 @@ func (x *fastReflection_MsgExecuteTxResponse) Clear(fd protoreflect.FieldDescrip
 // of the value; to obtain a mutable reference, use Mutable.
 func (x *fastReflection_MsgExecuteTxResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "did.v1.MsgExecuteTxResponse.success":
-		value := x.Success
-		return protoreflect.ValueOfBool(value)
 	case "did.v1.MsgExecuteTxResponse.tx_hash":
 		value := x.TxHash
 		return protoreflect.ValueOfString(value)
+	case "did.v1.MsgExecuteTxResponse.success":
+		value := x.Success
+		return protoreflect.ValueOfBool(value)
 	default:
 		if descriptor.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgExecuteTxResponse"))
@@ -3215,10 +5416,10 @@ func (x *fastReflection_MsgExecuteTxResponse) Get(descriptor protoreflect.FieldD
 // Set is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgExecuteTxResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "did.v1.MsgExecuteTxResponse.success":
-		x.Success = value.Bool()
 	case "did.v1.MsgExecuteTxResponse.tx_hash":
 		x.TxHash = value.Interface().(string)
+	case "did.v1.MsgExecuteTxResponse.success":
+		x.Success = value.Bool()
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgExecuteTxResponse"))
@@ -3239,10 +5440,10 @@ func (x *fastReflection_MsgExecuteTxResponse) Set(fd protoreflect.FieldDescripto
 // Mutable is a mutating operation and unsafe for concurrent use.
 func (x *fastReflection_MsgExecuteTxResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "did.v1.MsgExecuteTxResponse.success":
-		panic(fmt.Errorf("field success of message did.v1.MsgExecuteTxResponse is not mutable"))
 	case "did.v1.MsgExecuteTxResponse.tx_hash":
 		panic(fmt.Errorf("field tx_hash of message did.v1.MsgExecuteTxResponse is not mutable"))
+	case "did.v1.MsgExecuteTxResponse.success":
+		panic(fmt.Errorf("field success of message did.v1.MsgExecuteTxResponse is not mutable"))
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgExecuteTxResponse"))
@@ -3256,10 +5457,10 @@ func (x *fastReflection_MsgExecuteTxResponse) Mutable(fd protoreflect.FieldDescr
 // For lists, maps, and messages, this returns a new, empty, mutable value.
 func (x *fastReflection_MsgExecuteTxResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "did.v1.MsgExecuteTxResponse.success":
-		return protoreflect.ValueOfBool(false)
 	case "did.v1.MsgExecuteTxResponse.tx_hash":
 		return protoreflect.ValueOfString("")
+	case "did.v1.MsgExecuteTxResponse.success":
+		return protoreflect.ValueOfBool(false)
 	default:
 		if fd.IsExtension() {
 			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgExecuteTxResponse"))
@@ -3329,12 +5530,12 @@ func (x *fastReflection_MsgExecuteTxResponse) ProtoMethods() *protoiface.Methods
 		var n int
 		var l int
 		_ = l
-		if x.Success {
-			n += 2
-		}
 		l = len(x.TxHash)
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		if x.Success {
+			n += 2
 		}
 		if x.unknownFields != nil {
 			n += len(x.unknownFields)
@@ -3365,13 +5566,6 @@ func (x *fastReflection_MsgExecuteTxResponse) ProtoMethods() *protoiface.Methods
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
 		}
-		if len(x.TxHash) > 0 {
-			i -= len(x.TxHash)
-			copy(dAtA[i:], x.TxHash)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.TxHash)))
-			i--
-			dAtA[i] = 0x12
-		}
 		if x.Success {
 			i--
 			if x.Success {
@@ -3380,7 +5574,14 @@ func (x *fastReflection_MsgExecuteTxResponse) ProtoMethods() *protoiface.Methods
 				dAtA[i] = 0
 			}
 			i--
-			dAtA[i] = 0x8
+			dAtA[i] = 0x10
+		}
+		if len(x.TxHash) > 0 {
+			i -= len(x.TxHash)
+			copy(dAtA[i:], x.TxHash)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.TxHash)))
+			i--
+			dAtA[i] = 0xa
 		}
 		if input.Buf != nil {
 			input.Buf = append(input.Buf, dAtA...)
@@ -3432,26 +5633,6 @@ func (x *fastReflection_MsgExecuteTxResponse) ProtoMethods() *protoiface.Methods
 			}
 			switch fieldNum {
 			case 1:
-				if wireType != 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Success", wireType)
-				}
-				var v int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				x.Success = bool(v != 0)
-			case 2:
 				if wireType != 2 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field TxHash", wireType)
 				}
@@ -3483,977 +5664,7 @@ func (x *fastReflection_MsgExecuteTxResponse) ProtoMethods() *protoiface.Methods
 				}
 				x.TxHash = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
-			default:
-				iNdEx = preIndex
-				skippy, err := runtime.Skip(dAtA[iNdEx:])
-				if err != nil {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
-				}
-				if (skippy < 0) || (iNdEx+skippy) < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if (iNdEx + skippy) > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				if !options.DiscardUnknown {
-					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
-				}
-				iNdEx += skippy
-			}
-		}
-
-		if iNdEx > l {
-			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-		}
-		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
-	}
-	return &protoiface.Methods{
-		NoUnkeyedLiterals: struct{}{},
-		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
-		Size:              size,
-		Marshal:           marshal,
-		Unmarshal:         unmarshal,
-		Merge:             nil,
-		CheckInitialized:  nil,
-	}
-}
-
-var (
-	md_MsgUnlinkAssertion                protoreflect.MessageDescriptor
-	fd_MsgUnlinkAssertion_controller     protoreflect.FieldDescriptor
-	fd_MsgUnlinkAssertion_assertion_did  protoreflect.FieldDescriptor
-	fd_MsgUnlinkAssertion_macaroon_token protoreflect.FieldDescriptor
-)
-
-func init() {
-	file_did_v1_tx_proto_init()
-	md_MsgUnlinkAssertion = File_did_v1_tx_proto.Messages().ByName("MsgUnlinkAssertion")
-	fd_MsgUnlinkAssertion_controller = md_MsgUnlinkAssertion.Fields().ByName("controller")
-	fd_MsgUnlinkAssertion_assertion_did = md_MsgUnlinkAssertion.Fields().ByName("assertion_did")
-	fd_MsgUnlinkAssertion_macaroon_token = md_MsgUnlinkAssertion.Fields().ByName("macaroon_token")
-}
-
-var _ protoreflect.Message = (*fastReflection_MsgUnlinkAssertion)(nil)
-
-type fastReflection_MsgUnlinkAssertion MsgUnlinkAssertion
-
-func (x *MsgUnlinkAssertion) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgUnlinkAssertion)(x)
-}
-
-func (x *MsgUnlinkAssertion) slowProtoReflect() protoreflect.Message {
-	mi := &file_did_v1_tx_proto_msgTypes[6]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-var _fastReflection_MsgUnlinkAssertion_messageType fastReflection_MsgUnlinkAssertion_messageType
-var _ protoreflect.MessageType = fastReflection_MsgUnlinkAssertion_messageType{}
-
-type fastReflection_MsgUnlinkAssertion_messageType struct{}
-
-func (x fastReflection_MsgUnlinkAssertion_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgUnlinkAssertion)(nil)
-}
-func (x fastReflection_MsgUnlinkAssertion_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgUnlinkAssertion)
-}
-func (x fastReflection_MsgUnlinkAssertion_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgUnlinkAssertion
-}
-
-// Descriptor returns message descriptor, which contains only the protobuf
-// type information for the message.
-func (x *fastReflection_MsgUnlinkAssertion) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgUnlinkAssertion
-}
-
-// Type returns the message type, which encapsulates both Go and protobuf
-// type information. If the Go type information is not needed,
-// it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgUnlinkAssertion) Type() protoreflect.MessageType {
-	return _fastReflection_MsgUnlinkAssertion_messageType
-}
-
-// New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgUnlinkAssertion) New() protoreflect.Message {
-	return new(fastReflection_MsgUnlinkAssertion)
-}
-
-// Interface unwraps the message reflection interface and
-// returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgUnlinkAssertion) Interface() protoreflect.ProtoMessage {
-	return (*MsgUnlinkAssertion)(x)
-}
-
-// Range iterates over every populated field in an undefined order,
-// calling f for each field descriptor and value encountered.
-// Range returns immediately if f returns false.
-// While iterating, mutating operations may only be performed
-// on the current field descriptor.
-func (x *fastReflection_MsgUnlinkAssertion) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Controller != "" {
-		value := protoreflect.ValueOfString(x.Controller)
-		if !f(fd_MsgUnlinkAssertion_controller, value) {
-			return
-		}
-	}
-	if x.AssertionDid != "" {
-		value := protoreflect.ValueOfString(x.AssertionDid)
-		if !f(fd_MsgUnlinkAssertion_assertion_did, value) {
-			return
-		}
-	}
-	if x.MacaroonToken != "" {
-		value := protoreflect.ValueOfString(x.MacaroonToken)
-		if !f(fd_MsgUnlinkAssertion_macaroon_token, value) {
-			return
-		}
-	}
-}
-
-// Has reports whether a field is populated.
-//
-// Some fields have the property of nullability where it is possible to
-// distinguish between the default value of a field and whether the field
-// was explicitly populated with the default value. Singular message fields,
-// member fields of a oneof, and proto2 scalar fields are nullable. Such
-// fields are populated only if explicitly set.
-//
-// In other cases (aside from the nullable cases above),
-// a proto3 scalar field is populated if it contains a non-zero value, and
-// a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgUnlinkAssertion) Has(fd protoreflect.FieldDescriptor) bool {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAssertion.controller":
-		return x.Controller != ""
-	case "did.v1.MsgUnlinkAssertion.assertion_did":
-		return x.AssertionDid != ""
-	case "did.v1.MsgUnlinkAssertion.macaroon_token":
-		return x.MacaroonToken != ""
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAssertion"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAssertion does not contain field %s", fd.FullName()))
-	}
-}
-
-// Clear clears the field such that a subsequent Has call reports false.
-//
-// Clearing an extension field clears both the extension type and value
-// associated with the given field number.
-//
-// Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAssertion) Clear(fd protoreflect.FieldDescriptor) {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAssertion.controller":
-		x.Controller = ""
-	case "did.v1.MsgUnlinkAssertion.assertion_did":
-		x.AssertionDid = ""
-	case "did.v1.MsgUnlinkAssertion.macaroon_token":
-		x.MacaroonToken = ""
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAssertion"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAssertion does not contain field %s", fd.FullName()))
-	}
-}
-
-// Get retrieves the value for a field.
-//
-// For unpopulated scalars, it returns the default value, where
-// the default value of a bytes scalar is guaranteed to be a copy.
-// For unpopulated composite types, it returns an empty, read-only view
-// of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgUnlinkAssertion) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
-	switch descriptor.FullName() {
-	case "did.v1.MsgUnlinkAssertion.controller":
-		value := x.Controller
-		return protoreflect.ValueOfString(value)
-	case "did.v1.MsgUnlinkAssertion.assertion_did":
-		value := x.AssertionDid
-		return protoreflect.ValueOfString(value)
-	case "did.v1.MsgUnlinkAssertion.macaroon_token":
-		value := x.MacaroonToken
-		return protoreflect.ValueOfString(value)
-	default:
-		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAssertion"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAssertion does not contain field %s", descriptor.FullName()))
-	}
-}
-
-// Set stores the value for a field.
-//
-// For a field belonging to a oneof, it implicitly clears any other field
-// that may be currently set within the same oneof.
-// For extension fields, it implicitly stores the provided ExtensionType.
-// When setting a composite type, it is unspecified whether the stored value
-// aliases the source's memory in any way. If the composite value is an
-// empty, read-only value, then it panics.
-//
-// Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAssertion) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAssertion.controller":
-		x.Controller = value.Interface().(string)
-	case "did.v1.MsgUnlinkAssertion.assertion_did":
-		x.AssertionDid = value.Interface().(string)
-	case "did.v1.MsgUnlinkAssertion.macaroon_token":
-		x.MacaroonToken = value.Interface().(string)
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAssertion"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAssertion does not contain field %s", fd.FullName()))
-	}
-}
-
-// Mutable returns a mutable reference to a composite type.
-//
-// If the field is unpopulated, it may allocate a composite value.
-// For a field belonging to a oneof, it implicitly clears any other field
-// that may be currently set within the same oneof.
-// For extension fields, it implicitly stores the provided ExtensionType
-// if not already stored.
-// It panics if the field does not contain a composite type.
-//
-// Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAssertion) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAssertion.controller":
-		panic(fmt.Errorf("field controller of message did.v1.MsgUnlinkAssertion is not mutable"))
-	case "did.v1.MsgUnlinkAssertion.assertion_did":
-		panic(fmt.Errorf("field assertion_did of message did.v1.MsgUnlinkAssertion is not mutable"))
-	case "did.v1.MsgUnlinkAssertion.macaroon_token":
-		panic(fmt.Errorf("field macaroon_token of message did.v1.MsgUnlinkAssertion is not mutable"))
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAssertion"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAssertion does not contain field %s", fd.FullName()))
-	}
-}
-
-// NewField returns a new value that is assignable to the field
-// for the given descriptor. For scalars, this returns the default value.
-// For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgUnlinkAssertion) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAssertion.controller":
-		return protoreflect.ValueOfString("")
-	case "did.v1.MsgUnlinkAssertion.assertion_did":
-		return protoreflect.ValueOfString("")
-	case "did.v1.MsgUnlinkAssertion.macaroon_token":
-		return protoreflect.ValueOfString("")
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAssertion"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAssertion does not contain field %s", fd.FullName()))
-	}
-}
-
-// WhichOneof reports which field within the oneof is populated,
-// returning nil if none are populated.
-// It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgUnlinkAssertion) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
-	switch d.FullName() {
-	default:
-		panic(fmt.Errorf("%s is not a oneof field in did.v1.MsgUnlinkAssertion", d.FullName()))
-	}
-	panic("unreachable")
-}
-
-// GetUnknown retrieves the entire list of unknown fields.
-// The caller may only mutate the contents of the RawFields
-// if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgUnlinkAssertion) GetUnknown() protoreflect.RawFields {
-	return x.unknownFields
-}
-
-// SetUnknown stores an entire list of unknown fields.
-// The raw fields must be syntactically valid according to the wire format.
-// An implementation may panic if this is not the case.
-// Once stored, the caller must not mutate the content of the RawFields.
-// An empty RawFields may be passed to clear the fields.
-//
-// SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAssertion) SetUnknown(fields protoreflect.RawFields) {
-	x.unknownFields = fields
-}
-
-// IsValid reports whether the message is valid.
-//
-// An invalid message is an empty, read-only value.
-//
-// An invalid message often corresponds to a nil pointer of the concrete
-// message type, but the details are implementation dependent.
-// Validity is not part of the protobuf data model, and may not
-// be preserved in marshaling or other operations.
-func (x *fastReflection_MsgUnlinkAssertion) IsValid() bool {
-	return x != nil
-}
-
-// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
-// This method may return nil.
-//
-// The returned methods type is identical to
-// "google.golang.org/protobuf/runtime/protoiface".Methods.
-// Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgUnlinkAssertion) ProtoMethods() *protoiface.Methods {
-	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgUnlinkAssertion)
-		if x == nil {
-			return protoiface.SizeOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Size:              0,
-			}
-		}
-		options := runtime.SizeInputToOptions(input)
-		_ = options
-		var n int
-		var l int
-		_ = l
-		l = len(x.Controller)
-		if l > 0 {
-			n += 1 + l + runtime.Sov(uint64(l))
-		}
-		l = len(x.AssertionDid)
-		if l > 0 {
-			n += 1 + l + runtime.Sov(uint64(l))
-		}
-		l = len(x.MacaroonToken)
-		if l > 0 {
-			n += 1 + l + runtime.Sov(uint64(l))
-		}
-		if x.unknownFields != nil {
-			n += len(x.unknownFields)
-		}
-		return protoiface.SizeOutput{
-			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-			Size:              n,
-		}
-	}
-
-	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgUnlinkAssertion)
-		if x == nil {
-			return protoiface.MarshalOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Buf:               input.Buf,
-			}, nil
-		}
-		options := runtime.MarshalInputToOptions(input)
-		_ = options
-		size := options.Size(x)
-		dAtA := make([]byte, size)
-		i := len(dAtA)
-		_ = i
-		var l int
-		_ = l
-		if x.unknownFields != nil {
-			i -= len(x.unknownFields)
-			copy(dAtA[i:], x.unknownFields)
-		}
-		if len(x.MacaroonToken) > 0 {
-			i -= len(x.MacaroonToken)
-			copy(dAtA[i:], x.MacaroonToken)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.MacaroonToken)))
-			i--
-			dAtA[i] = 0x1a
-		}
-		if len(x.AssertionDid) > 0 {
-			i -= len(x.AssertionDid)
-			copy(dAtA[i:], x.AssertionDid)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.AssertionDid)))
-			i--
-			dAtA[i] = 0x12
-		}
-		if len(x.Controller) > 0 {
-			i -= len(x.Controller)
-			copy(dAtA[i:], x.Controller)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Controller)))
-			i--
-			dAtA[i] = 0xa
-		}
-		if input.Buf != nil {
-			input.Buf = append(input.Buf, dAtA...)
-		} else {
-			input.Buf = dAtA
-		}
-		return protoiface.MarshalOutput{
-			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-			Buf:               input.Buf,
-		}, nil
-	}
-	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgUnlinkAssertion)
-		if x == nil {
-			return protoiface.UnmarshalOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Flags:             input.Flags,
-			}, nil
-		}
-		options := runtime.UnmarshalInputToOptions(input)
-		_ = options
-		dAtA := input.Buf
-		l := len(dAtA)
-		iNdEx := 0
-		for iNdEx < l {
-			preIndex := iNdEx
-			var wire uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-				}
-				if iNdEx >= l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				wire |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			fieldNum := int32(wire >> 3)
-			wireType := int(wire & 0x7)
-			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUnlinkAssertion: wiretype end group for non-group")
-			}
-			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUnlinkAssertion: illegal tag %d (wire type %d)", fieldNum, wire)
-			}
-			switch fieldNum {
-			case 1:
-				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Controller", wireType)
-				}
-				var stringLen uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				postIndex := iNdEx + intStringLen
-				if postIndex < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if postIndex > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				x.Controller = string(dAtA[iNdEx:postIndex])
-				iNdEx = postIndex
 			case 2:
-				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field AssertionDid", wireType)
-				}
-				var stringLen uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				postIndex := iNdEx + intStringLen
-				if postIndex < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if postIndex > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				x.AssertionDid = string(dAtA[iNdEx:postIndex])
-				iNdEx = postIndex
-			case 3:
-				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field MacaroonToken", wireType)
-				}
-				var stringLen uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				postIndex := iNdEx + intStringLen
-				if postIndex < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if postIndex > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				x.MacaroonToken = string(dAtA[iNdEx:postIndex])
-				iNdEx = postIndex
-			default:
-				iNdEx = preIndex
-				skippy, err := runtime.Skip(dAtA[iNdEx:])
-				if err != nil {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
-				}
-				if (skippy < 0) || (iNdEx+skippy) < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if (iNdEx + skippy) > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				if !options.DiscardUnknown {
-					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
-				}
-				iNdEx += skippy
-			}
-		}
-
-		if iNdEx > l {
-			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-		}
-		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
-	}
-	return &protoiface.Methods{
-		NoUnkeyedLiterals: struct{}{},
-		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
-		Size:              size,
-		Marshal:           marshal,
-		Unmarshal:         unmarshal,
-		Merge:             nil,
-		CheckInitialized:  nil,
-	}
-}
-
-var (
-	md_MsgUnlinkAssertionResponse         protoreflect.MessageDescriptor
-	fd_MsgUnlinkAssertionResponse_success protoreflect.FieldDescriptor
-	fd_MsgUnlinkAssertionResponse_did     protoreflect.FieldDescriptor
-)
-
-func init() {
-	file_did_v1_tx_proto_init()
-	md_MsgUnlinkAssertionResponse = File_did_v1_tx_proto.Messages().ByName("MsgUnlinkAssertionResponse")
-	fd_MsgUnlinkAssertionResponse_success = md_MsgUnlinkAssertionResponse.Fields().ByName("success")
-	fd_MsgUnlinkAssertionResponse_did = md_MsgUnlinkAssertionResponse.Fields().ByName("did")
-}
-
-var _ protoreflect.Message = (*fastReflection_MsgUnlinkAssertionResponse)(nil)
-
-type fastReflection_MsgUnlinkAssertionResponse MsgUnlinkAssertionResponse
-
-func (x *MsgUnlinkAssertionResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgUnlinkAssertionResponse)(x)
-}
-
-func (x *MsgUnlinkAssertionResponse) slowProtoReflect() protoreflect.Message {
-	mi := &file_did_v1_tx_proto_msgTypes[7]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-var _fastReflection_MsgUnlinkAssertionResponse_messageType fastReflection_MsgUnlinkAssertionResponse_messageType
-var _ protoreflect.MessageType = fastReflection_MsgUnlinkAssertionResponse_messageType{}
-
-type fastReflection_MsgUnlinkAssertionResponse_messageType struct{}
-
-func (x fastReflection_MsgUnlinkAssertionResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgUnlinkAssertionResponse)(nil)
-}
-func (x fastReflection_MsgUnlinkAssertionResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgUnlinkAssertionResponse)
-}
-func (x fastReflection_MsgUnlinkAssertionResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgUnlinkAssertionResponse
-}
-
-// Descriptor returns message descriptor, which contains only the protobuf
-// type information for the message.
-func (x *fastReflection_MsgUnlinkAssertionResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgUnlinkAssertionResponse
-}
-
-// Type returns the message type, which encapsulates both Go and protobuf
-// type information. If the Go type information is not needed,
-// it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgUnlinkAssertionResponse) Type() protoreflect.MessageType {
-	return _fastReflection_MsgUnlinkAssertionResponse_messageType
-}
-
-// New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgUnlinkAssertionResponse) New() protoreflect.Message {
-	return new(fastReflection_MsgUnlinkAssertionResponse)
-}
-
-// Interface unwraps the message reflection interface and
-// returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgUnlinkAssertionResponse) Interface() protoreflect.ProtoMessage {
-	return (*MsgUnlinkAssertionResponse)(x)
-}
-
-// Range iterates over every populated field in an undefined order,
-// calling f for each field descriptor and value encountered.
-// Range returns immediately if f returns false.
-// While iterating, mutating operations may only be performed
-// on the current field descriptor.
-func (x *fastReflection_MsgUnlinkAssertionResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Success != false {
-		value := protoreflect.ValueOfBool(x.Success)
-		if !f(fd_MsgUnlinkAssertionResponse_success, value) {
-			return
-		}
-	}
-	if x.Did != "" {
-		value := protoreflect.ValueOfString(x.Did)
-		if !f(fd_MsgUnlinkAssertionResponse_did, value) {
-			return
-		}
-	}
-}
-
-// Has reports whether a field is populated.
-//
-// Some fields have the property of nullability where it is possible to
-// distinguish between the default value of a field and whether the field
-// was explicitly populated with the default value. Singular message fields,
-// member fields of a oneof, and proto2 scalar fields are nullable. Such
-// fields are populated only if explicitly set.
-//
-// In other cases (aside from the nullable cases above),
-// a proto3 scalar field is populated if it contains a non-zero value, and
-// a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgUnlinkAssertionResponse) Has(fd protoreflect.FieldDescriptor) bool {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAssertionResponse.success":
-		return x.Success != false
-	case "did.v1.MsgUnlinkAssertionResponse.did":
-		return x.Did != ""
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAssertionResponse"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAssertionResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// Clear clears the field such that a subsequent Has call reports false.
-//
-// Clearing an extension field clears both the extension type and value
-// associated with the given field number.
-//
-// Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAssertionResponse) Clear(fd protoreflect.FieldDescriptor) {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAssertionResponse.success":
-		x.Success = false
-	case "did.v1.MsgUnlinkAssertionResponse.did":
-		x.Did = ""
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAssertionResponse"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAssertionResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// Get retrieves the value for a field.
-//
-// For unpopulated scalars, it returns the default value, where
-// the default value of a bytes scalar is guaranteed to be a copy.
-// For unpopulated composite types, it returns an empty, read-only view
-// of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgUnlinkAssertionResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
-	switch descriptor.FullName() {
-	case "did.v1.MsgUnlinkAssertionResponse.success":
-		value := x.Success
-		return protoreflect.ValueOfBool(value)
-	case "did.v1.MsgUnlinkAssertionResponse.did":
-		value := x.Did
-		return protoreflect.ValueOfString(value)
-	default:
-		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAssertionResponse"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAssertionResponse does not contain field %s", descriptor.FullName()))
-	}
-}
-
-// Set stores the value for a field.
-//
-// For a field belonging to a oneof, it implicitly clears any other field
-// that may be currently set within the same oneof.
-// For extension fields, it implicitly stores the provided ExtensionType.
-// When setting a composite type, it is unspecified whether the stored value
-// aliases the source's memory in any way. If the composite value is an
-// empty, read-only value, then it panics.
-//
-// Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAssertionResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAssertionResponse.success":
-		x.Success = value.Bool()
-	case "did.v1.MsgUnlinkAssertionResponse.did":
-		x.Did = value.Interface().(string)
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAssertionResponse"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAssertionResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// Mutable returns a mutable reference to a composite type.
-//
-// If the field is unpopulated, it may allocate a composite value.
-// For a field belonging to a oneof, it implicitly clears any other field
-// that may be currently set within the same oneof.
-// For extension fields, it implicitly stores the provided ExtensionType
-// if not already stored.
-// It panics if the field does not contain a composite type.
-//
-// Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAssertionResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAssertionResponse.success":
-		panic(fmt.Errorf("field success of message did.v1.MsgUnlinkAssertionResponse is not mutable"))
-	case "did.v1.MsgUnlinkAssertionResponse.did":
-		panic(fmt.Errorf("field did of message did.v1.MsgUnlinkAssertionResponse is not mutable"))
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAssertionResponse"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAssertionResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// NewField returns a new value that is assignable to the field
-// for the given descriptor. For scalars, this returns the default value.
-// For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgUnlinkAssertionResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAssertionResponse.success":
-		return protoreflect.ValueOfBool(false)
-	case "did.v1.MsgUnlinkAssertionResponse.did":
-		return protoreflect.ValueOfString("")
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAssertionResponse"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAssertionResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// WhichOneof reports which field within the oneof is populated,
-// returning nil if none are populated.
-// It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgUnlinkAssertionResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
-	switch d.FullName() {
-	default:
-		panic(fmt.Errorf("%s is not a oneof field in did.v1.MsgUnlinkAssertionResponse", d.FullName()))
-	}
-	panic("unreachable")
-}
-
-// GetUnknown retrieves the entire list of unknown fields.
-// The caller may only mutate the contents of the RawFields
-// if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgUnlinkAssertionResponse) GetUnknown() protoreflect.RawFields {
-	return x.unknownFields
-}
-
-// SetUnknown stores an entire list of unknown fields.
-// The raw fields must be syntactically valid according to the wire format.
-// An implementation may panic if this is not the case.
-// Once stored, the caller must not mutate the content of the RawFields.
-// An empty RawFields may be passed to clear the fields.
-//
-// SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAssertionResponse) SetUnknown(fields protoreflect.RawFields) {
-	x.unknownFields = fields
-}
-
-// IsValid reports whether the message is valid.
-//
-// An invalid message is an empty, read-only value.
-//
-// An invalid message often corresponds to a nil pointer of the concrete
-// message type, but the details are implementation dependent.
-// Validity is not part of the protobuf data model, and may not
-// be preserved in marshaling or other operations.
-func (x *fastReflection_MsgUnlinkAssertionResponse) IsValid() bool {
-	return x != nil
-}
-
-// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
-// This method may return nil.
-//
-// The returned methods type is identical to
-// "google.golang.org/protobuf/runtime/protoiface".Methods.
-// Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgUnlinkAssertionResponse) ProtoMethods() *protoiface.Methods {
-	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgUnlinkAssertionResponse)
-		if x == nil {
-			return protoiface.SizeOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Size:              0,
-			}
-		}
-		options := runtime.SizeInputToOptions(input)
-		_ = options
-		var n int
-		var l int
-		_ = l
-		if x.Success {
-			n += 2
-		}
-		l = len(x.Did)
-		if l > 0 {
-			n += 1 + l + runtime.Sov(uint64(l))
-		}
-		if x.unknownFields != nil {
-			n += len(x.unknownFields)
-		}
-		return protoiface.SizeOutput{
-			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-			Size:              n,
-		}
-	}
-
-	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgUnlinkAssertionResponse)
-		if x == nil {
-			return protoiface.MarshalOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Buf:               input.Buf,
-			}, nil
-		}
-		options := runtime.MarshalInputToOptions(input)
-		_ = options
-		size := options.Size(x)
-		dAtA := make([]byte, size)
-		i := len(dAtA)
-		_ = i
-		var l int
-		_ = l
-		if x.unknownFields != nil {
-			i -= len(x.unknownFields)
-			copy(dAtA[i:], x.unknownFields)
-		}
-		if len(x.Did) > 0 {
-			i -= len(x.Did)
-			copy(dAtA[i:], x.Did)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Did)))
-			i--
-			dAtA[i] = 0x12
-		}
-		if x.Success {
-			i--
-			if x.Success {
-				dAtA[i] = 1
-			} else {
-				dAtA[i] = 0
-			}
-			i--
-			dAtA[i] = 0x8
-		}
-		if input.Buf != nil {
-			input.Buf = append(input.Buf, dAtA...)
-		} else {
-			input.Buf = dAtA
-		}
-		return protoiface.MarshalOutput{
-			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-			Buf:               input.Buf,
-		}, nil
-	}
-	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgUnlinkAssertionResponse)
-		if x == nil {
-			return protoiface.UnmarshalOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Flags:             input.Flags,
-			}, nil
-		}
-		options := runtime.UnmarshalInputToOptions(input)
-		_ = options
-		dAtA := input.Buf
-		l := len(dAtA)
-		iNdEx := 0
-		for iNdEx < l {
-			preIndex := iNdEx
-			var wire uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-				}
-				if iNdEx >= l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				wire |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			fieldNum := int32(wire >> 3)
-			wireType := int(wire & 0x7)
-			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUnlinkAssertionResponse: wiretype end group for non-group")
-			}
-			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUnlinkAssertionResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-			}
-			switch fieldNum {
-			case 1:
 				if wireType != 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Success", wireType)
 				}
@@ -4473,1060 +5684,6 @@ func (x *fastReflection_MsgUnlinkAssertionResponse) ProtoMethods() *protoiface.M
 					}
 				}
 				x.Success = bool(v != 0)
-			case 2:
-				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Did", wireType)
-				}
-				var stringLen uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				postIndex := iNdEx + intStringLen
-				if postIndex < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if postIndex > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				x.Did = string(dAtA[iNdEx:postIndex])
-				iNdEx = postIndex
-			default:
-				iNdEx = preIndex
-				skippy, err := runtime.Skip(dAtA[iNdEx:])
-				if err != nil {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
-				}
-				if (skippy < 0) || (iNdEx+skippy) < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if (iNdEx + skippy) > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				if !options.DiscardUnknown {
-					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
-				}
-				iNdEx += skippy
-			}
-		}
-
-		if iNdEx > l {
-			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-		}
-		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
-	}
-	return &protoiface.Methods{
-		NoUnkeyedLiterals: struct{}{},
-		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
-		Size:              size,
-		Marshal:           marshal,
-		Unmarshal:         unmarshal,
-		Merge:             nil,
-		CheckInitialized:  nil,
-	}
-}
-
-var (
-	md_MsgUnlinkAuthentication                    protoreflect.MessageDescriptor
-	fd_MsgUnlinkAuthentication_controller         protoreflect.FieldDescriptor
-	fd_MsgUnlinkAuthentication_authentication_did protoreflect.FieldDescriptor
-	fd_MsgUnlinkAuthentication_macaroon_token     protoreflect.FieldDescriptor
-)
-
-func init() {
-	file_did_v1_tx_proto_init()
-	md_MsgUnlinkAuthentication = File_did_v1_tx_proto.Messages().ByName("MsgUnlinkAuthentication")
-	fd_MsgUnlinkAuthentication_controller = md_MsgUnlinkAuthentication.Fields().ByName("controller")
-	fd_MsgUnlinkAuthentication_authentication_did = md_MsgUnlinkAuthentication.Fields().ByName("authentication_did")
-	fd_MsgUnlinkAuthentication_macaroon_token = md_MsgUnlinkAuthentication.Fields().ByName("macaroon_token")
-}
-
-var _ protoreflect.Message = (*fastReflection_MsgUnlinkAuthentication)(nil)
-
-type fastReflection_MsgUnlinkAuthentication MsgUnlinkAuthentication
-
-func (x *MsgUnlinkAuthentication) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgUnlinkAuthentication)(x)
-}
-
-func (x *MsgUnlinkAuthentication) slowProtoReflect() protoreflect.Message {
-	mi := &file_did_v1_tx_proto_msgTypes[8]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-var _fastReflection_MsgUnlinkAuthentication_messageType fastReflection_MsgUnlinkAuthentication_messageType
-var _ protoreflect.MessageType = fastReflection_MsgUnlinkAuthentication_messageType{}
-
-type fastReflection_MsgUnlinkAuthentication_messageType struct{}
-
-func (x fastReflection_MsgUnlinkAuthentication_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgUnlinkAuthentication)(nil)
-}
-func (x fastReflection_MsgUnlinkAuthentication_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgUnlinkAuthentication)
-}
-func (x fastReflection_MsgUnlinkAuthentication_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgUnlinkAuthentication
-}
-
-// Descriptor returns message descriptor, which contains only the protobuf
-// type information for the message.
-func (x *fastReflection_MsgUnlinkAuthentication) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgUnlinkAuthentication
-}
-
-// Type returns the message type, which encapsulates both Go and protobuf
-// type information. If the Go type information is not needed,
-// it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgUnlinkAuthentication) Type() protoreflect.MessageType {
-	return _fastReflection_MsgUnlinkAuthentication_messageType
-}
-
-// New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgUnlinkAuthentication) New() protoreflect.Message {
-	return new(fastReflection_MsgUnlinkAuthentication)
-}
-
-// Interface unwraps the message reflection interface and
-// returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgUnlinkAuthentication) Interface() protoreflect.ProtoMessage {
-	return (*MsgUnlinkAuthentication)(x)
-}
-
-// Range iterates over every populated field in an undefined order,
-// calling f for each field descriptor and value encountered.
-// Range returns immediately if f returns false.
-// While iterating, mutating operations may only be performed
-// on the current field descriptor.
-func (x *fastReflection_MsgUnlinkAuthentication) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Controller != "" {
-		value := protoreflect.ValueOfString(x.Controller)
-		if !f(fd_MsgUnlinkAuthentication_controller, value) {
-			return
-		}
-	}
-	if x.AuthenticationDid != "" {
-		value := protoreflect.ValueOfString(x.AuthenticationDid)
-		if !f(fd_MsgUnlinkAuthentication_authentication_did, value) {
-			return
-		}
-	}
-	if x.MacaroonToken != "" {
-		value := protoreflect.ValueOfString(x.MacaroonToken)
-		if !f(fd_MsgUnlinkAuthentication_macaroon_token, value) {
-			return
-		}
-	}
-}
-
-// Has reports whether a field is populated.
-//
-// Some fields have the property of nullability where it is possible to
-// distinguish between the default value of a field and whether the field
-// was explicitly populated with the default value. Singular message fields,
-// member fields of a oneof, and proto2 scalar fields are nullable. Such
-// fields are populated only if explicitly set.
-//
-// In other cases (aside from the nullable cases above),
-// a proto3 scalar field is populated if it contains a non-zero value, and
-// a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgUnlinkAuthentication) Has(fd protoreflect.FieldDescriptor) bool {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAuthentication.controller":
-		return x.Controller != ""
-	case "did.v1.MsgUnlinkAuthentication.authentication_did":
-		return x.AuthenticationDid != ""
-	case "did.v1.MsgUnlinkAuthentication.macaroon_token":
-		return x.MacaroonToken != ""
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAuthentication"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAuthentication does not contain field %s", fd.FullName()))
-	}
-}
-
-// Clear clears the field such that a subsequent Has call reports false.
-//
-// Clearing an extension field clears both the extension type and value
-// associated with the given field number.
-//
-// Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAuthentication) Clear(fd protoreflect.FieldDescriptor) {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAuthentication.controller":
-		x.Controller = ""
-	case "did.v1.MsgUnlinkAuthentication.authentication_did":
-		x.AuthenticationDid = ""
-	case "did.v1.MsgUnlinkAuthentication.macaroon_token":
-		x.MacaroonToken = ""
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAuthentication"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAuthentication does not contain field %s", fd.FullName()))
-	}
-}
-
-// Get retrieves the value for a field.
-//
-// For unpopulated scalars, it returns the default value, where
-// the default value of a bytes scalar is guaranteed to be a copy.
-// For unpopulated composite types, it returns an empty, read-only view
-// of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgUnlinkAuthentication) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
-	switch descriptor.FullName() {
-	case "did.v1.MsgUnlinkAuthentication.controller":
-		value := x.Controller
-		return protoreflect.ValueOfString(value)
-	case "did.v1.MsgUnlinkAuthentication.authentication_did":
-		value := x.AuthenticationDid
-		return protoreflect.ValueOfString(value)
-	case "did.v1.MsgUnlinkAuthentication.macaroon_token":
-		value := x.MacaroonToken
-		return protoreflect.ValueOfString(value)
-	default:
-		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAuthentication"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAuthentication does not contain field %s", descriptor.FullName()))
-	}
-}
-
-// Set stores the value for a field.
-//
-// For a field belonging to a oneof, it implicitly clears any other field
-// that may be currently set within the same oneof.
-// For extension fields, it implicitly stores the provided ExtensionType.
-// When setting a composite type, it is unspecified whether the stored value
-// aliases the source's memory in any way. If the composite value is an
-// empty, read-only value, then it panics.
-//
-// Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAuthentication) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAuthentication.controller":
-		x.Controller = value.Interface().(string)
-	case "did.v1.MsgUnlinkAuthentication.authentication_did":
-		x.AuthenticationDid = value.Interface().(string)
-	case "did.v1.MsgUnlinkAuthentication.macaroon_token":
-		x.MacaroonToken = value.Interface().(string)
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAuthentication"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAuthentication does not contain field %s", fd.FullName()))
-	}
-}
-
-// Mutable returns a mutable reference to a composite type.
-//
-// If the field is unpopulated, it may allocate a composite value.
-// For a field belonging to a oneof, it implicitly clears any other field
-// that may be currently set within the same oneof.
-// For extension fields, it implicitly stores the provided ExtensionType
-// if not already stored.
-// It panics if the field does not contain a composite type.
-//
-// Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAuthentication) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAuthentication.controller":
-		panic(fmt.Errorf("field controller of message did.v1.MsgUnlinkAuthentication is not mutable"))
-	case "did.v1.MsgUnlinkAuthentication.authentication_did":
-		panic(fmt.Errorf("field authentication_did of message did.v1.MsgUnlinkAuthentication is not mutable"))
-	case "did.v1.MsgUnlinkAuthentication.macaroon_token":
-		panic(fmt.Errorf("field macaroon_token of message did.v1.MsgUnlinkAuthentication is not mutable"))
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAuthentication"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAuthentication does not contain field %s", fd.FullName()))
-	}
-}
-
-// NewField returns a new value that is assignable to the field
-// for the given descriptor. For scalars, this returns the default value.
-// For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgUnlinkAuthentication) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAuthentication.controller":
-		return protoreflect.ValueOfString("")
-	case "did.v1.MsgUnlinkAuthentication.authentication_did":
-		return protoreflect.ValueOfString("")
-	case "did.v1.MsgUnlinkAuthentication.macaroon_token":
-		return protoreflect.ValueOfString("")
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAuthentication"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAuthentication does not contain field %s", fd.FullName()))
-	}
-}
-
-// WhichOneof reports which field within the oneof is populated,
-// returning nil if none are populated.
-// It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgUnlinkAuthentication) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
-	switch d.FullName() {
-	default:
-		panic(fmt.Errorf("%s is not a oneof field in did.v1.MsgUnlinkAuthentication", d.FullName()))
-	}
-	panic("unreachable")
-}
-
-// GetUnknown retrieves the entire list of unknown fields.
-// The caller may only mutate the contents of the RawFields
-// if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgUnlinkAuthentication) GetUnknown() protoreflect.RawFields {
-	return x.unknownFields
-}
-
-// SetUnknown stores an entire list of unknown fields.
-// The raw fields must be syntactically valid according to the wire format.
-// An implementation may panic if this is not the case.
-// Once stored, the caller must not mutate the content of the RawFields.
-// An empty RawFields may be passed to clear the fields.
-//
-// SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAuthentication) SetUnknown(fields protoreflect.RawFields) {
-	x.unknownFields = fields
-}
-
-// IsValid reports whether the message is valid.
-//
-// An invalid message is an empty, read-only value.
-//
-// An invalid message often corresponds to a nil pointer of the concrete
-// message type, but the details are implementation dependent.
-// Validity is not part of the protobuf data model, and may not
-// be preserved in marshaling or other operations.
-func (x *fastReflection_MsgUnlinkAuthentication) IsValid() bool {
-	return x != nil
-}
-
-// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
-// This method may return nil.
-//
-// The returned methods type is identical to
-// "google.golang.org/protobuf/runtime/protoiface".Methods.
-// Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgUnlinkAuthentication) ProtoMethods() *protoiface.Methods {
-	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgUnlinkAuthentication)
-		if x == nil {
-			return protoiface.SizeOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Size:              0,
-			}
-		}
-		options := runtime.SizeInputToOptions(input)
-		_ = options
-		var n int
-		var l int
-		_ = l
-		l = len(x.Controller)
-		if l > 0 {
-			n += 1 + l + runtime.Sov(uint64(l))
-		}
-		l = len(x.AuthenticationDid)
-		if l > 0 {
-			n += 1 + l + runtime.Sov(uint64(l))
-		}
-		l = len(x.MacaroonToken)
-		if l > 0 {
-			n += 1 + l + runtime.Sov(uint64(l))
-		}
-		if x.unknownFields != nil {
-			n += len(x.unknownFields)
-		}
-		return protoiface.SizeOutput{
-			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-			Size:              n,
-		}
-	}
-
-	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgUnlinkAuthentication)
-		if x == nil {
-			return protoiface.MarshalOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Buf:               input.Buf,
-			}, nil
-		}
-		options := runtime.MarshalInputToOptions(input)
-		_ = options
-		size := options.Size(x)
-		dAtA := make([]byte, size)
-		i := len(dAtA)
-		_ = i
-		var l int
-		_ = l
-		if x.unknownFields != nil {
-			i -= len(x.unknownFields)
-			copy(dAtA[i:], x.unknownFields)
-		}
-		if len(x.MacaroonToken) > 0 {
-			i -= len(x.MacaroonToken)
-			copy(dAtA[i:], x.MacaroonToken)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.MacaroonToken)))
-			i--
-			dAtA[i] = 0x1a
-		}
-		if len(x.AuthenticationDid) > 0 {
-			i -= len(x.AuthenticationDid)
-			copy(dAtA[i:], x.AuthenticationDid)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.AuthenticationDid)))
-			i--
-			dAtA[i] = 0x12
-		}
-		if len(x.Controller) > 0 {
-			i -= len(x.Controller)
-			copy(dAtA[i:], x.Controller)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Controller)))
-			i--
-			dAtA[i] = 0xa
-		}
-		if input.Buf != nil {
-			input.Buf = append(input.Buf, dAtA...)
-		} else {
-			input.Buf = dAtA
-		}
-		return protoiface.MarshalOutput{
-			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-			Buf:               input.Buf,
-		}, nil
-	}
-	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgUnlinkAuthentication)
-		if x == nil {
-			return protoiface.UnmarshalOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Flags:             input.Flags,
-			}, nil
-		}
-		options := runtime.UnmarshalInputToOptions(input)
-		_ = options
-		dAtA := input.Buf
-		l := len(dAtA)
-		iNdEx := 0
-		for iNdEx < l {
-			preIndex := iNdEx
-			var wire uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-				}
-				if iNdEx >= l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				wire |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			fieldNum := int32(wire >> 3)
-			wireType := int(wire & 0x7)
-			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUnlinkAuthentication: wiretype end group for non-group")
-			}
-			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUnlinkAuthentication: illegal tag %d (wire type %d)", fieldNum, wire)
-			}
-			switch fieldNum {
-			case 1:
-				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Controller", wireType)
-				}
-				var stringLen uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				postIndex := iNdEx + intStringLen
-				if postIndex < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if postIndex > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				x.Controller = string(dAtA[iNdEx:postIndex])
-				iNdEx = postIndex
-			case 2:
-				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field AuthenticationDid", wireType)
-				}
-				var stringLen uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				postIndex := iNdEx + intStringLen
-				if postIndex < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if postIndex > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				x.AuthenticationDid = string(dAtA[iNdEx:postIndex])
-				iNdEx = postIndex
-			case 3:
-				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field MacaroonToken", wireType)
-				}
-				var stringLen uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				postIndex := iNdEx + intStringLen
-				if postIndex < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if postIndex > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				x.MacaroonToken = string(dAtA[iNdEx:postIndex])
-				iNdEx = postIndex
-			default:
-				iNdEx = preIndex
-				skippy, err := runtime.Skip(dAtA[iNdEx:])
-				if err != nil {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
-				}
-				if (skippy < 0) || (iNdEx+skippy) < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if (iNdEx + skippy) > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				if !options.DiscardUnknown {
-					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
-				}
-				iNdEx += skippy
-			}
-		}
-
-		if iNdEx > l {
-			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-		}
-		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
-	}
-	return &protoiface.Methods{
-		NoUnkeyedLiterals: struct{}{},
-		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
-		Size:              size,
-		Marshal:           marshal,
-		Unmarshal:         unmarshal,
-		Merge:             nil,
-		CheckInitialized:  nil,
-	}
-}
-
-var (
-	md_MsgUnlinkAuthenticationResponse         protoreflect.MessageDescriptor
-	fd_MsgUnlinkAuthenticationResponse_success protoreflect.FieldDescriptor
-	fd_MsgUnlinkAuthenticationResponse_did     protoreflect.FieldDescriptor
-)
-
-func init() {
-	file_did_v1_tx_proto_init()
-	md_MsgUnlinkAuthenticationResponse = File_did_v1_tx_proto.Messages().ByName("MsgUnlinkAuthenticationResponse")
-	fd_MsgUnlinkAuthenticationResponse_success = md_MsgUnlinkAuthenticationResponse.Fields().ByName("success")
-	fd_MsgUnlinkAuthenticationResponse_did = md_MsgUnlinkAuthenticationResponse.Fields().ByName("did")
-}
-
-var _ protoreflect.Message = (*fastReflection_MsgUnlinkAuthenticationResponse)(nil)
-
-type fastReflection_MsgUnlinkAuthenticationResponse MsgUnlinkAuthenticationResponse
-
-func (x *MsgUnlinkAuthenticationResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgUnlinkAuthenticationResponse)(x)
-}
-
-func (x *MsgUnlinkAuthenticationResponse) slowProtoReflect() protoreflect.Message {
-	mi := &file_did_v1_tx_proto_msgTypes[9]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-var _fastReflection_MsgUnlinkAuthenticationResponse_messageType fastReflection_MsgUnlinkAuthenticationResponse_messageType
-var _ protoreflect.MessageType = fastReflection_MsgUnlinkAuthenticationResponse_messageType{}
-
-type fastReflection_MsgUnlinkAuthenticationResponse_messageType struct{}
-
-func (x fastReflection_MsgUnlinkAuthenticationResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgUnlinkAuthenticationResponse)(nil)
-}
-func (x fastReflection_MsgUnlinkAuthenticationResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgUnlinkAuthenticationResponse)
-}
-func (x fastReflection_MsgUnlinkAuthenticationResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgUnlinkAuthenticationResponse
-}
-
-// Descriptor returns message descriptor, which contains only the protobuf
-// type information for the message.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgUnlinkAuthenticationResponse
-}
-
-// Type returns the message type, which encapsulates both Go and protobuf
-// type information. If the Go type information is not needed,
-// it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) Type() protoreflect.MessageType {
-	return _fastReflection_MsgUnlinkAuthenticationResponse_messageType
-}
-
-// New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) New() protoreflect.Message {
-	return new(fastReflection_MsgUnlinkAuthenticationResponse)
-}
-
-// Interface unwraps the message reflection interface and
-// returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) Interface() protoreflect.ProtoMessage {
-	return (*MsgUnlinkAuthenticationResponse)(x)
-}
-
-// Range iterates over every populated field in an undefined order,
-// calling f for each field descriptor and value encountered.
-// Range returns immediately if f returns false.
-// While iterating, mutating operations may only be performed
-// on the current field descriptor.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Success != false {
-		value := protoreflect.ValueOfBool(x.Success)
-		if !f(fd_MsgUnlinkAuthenticationResponse_success, value) {
-			return
-		}
-	}
-	if x.Did != "" {
-		value := protoreflect.ValueOfString(x.Did)
-		if !f(fd_MsgUnlinkAuthenticationResponse_did, value) {
-			return
-		}
-	}
-}
-
-// Has reports whether a field is populated.
-//
-// Some fields have the property of nullability where it is possible to
-// distinguish between the default value of a field and whether the field
-// was explicitly populated with the default value. Singular message fields,
-// member fields of a oneof, and proto2 scalar fields are nullable. Such
-// fields are populated only if explicitly set.
-//
-// In other cases (aside from the nullable cases above),
-// a proto3 scalar field is populated if it contains a non-zero value, and
-// a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) Has(fd protoreflect.FieldDescriptor) bool {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAuthenticationResponse.success":
-		return x.Success != false
-	case "did.v1.MsgUnlinkAuthenticationResponse.did":
-		return x.Did != ""
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAuthenticationResponse"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAuthenticationResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// Clear clears the field such that a subsequent Has call reports false.
-//
-// Clearing an extension field clears both the extension type and value
-// associated with the given field number.
-//
-// Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) Clear(fd protoreflect.FieldDescriptor) {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAuthenticationResponse.success":
-		x.Success = false
-	case "did.v1.MsgUnlinkAuthenticationResponse.did":
-		x.Did = ""
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAuthenticationResponse"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAuthenticationResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// Get retrieves the value for a field.
-//
-// For unpopulated scalars, it returns the default value, where
-// the default value of a bytes scalar is guaranteed to be a copy.
-// For unpopulated composite types, it returns an empty, read-only view
-// of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
-	switch descriptor.FullName() {
-	case "did.v1.MsgUnlinkAuthenticationResponse.success":
-		value := x.Success
-		return protoreflect.ValueOfBool(value)
-	case "did.v1.MsgUnlinkAuthenticationResponse.did":
-		value := x.Did
-		return protoreflect.ValueOfString(value)
-	default:
-		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAuthenticationResponse"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAuthenticationResponse does not contain field %s", descriptor.FullName()))
-	}
-}
-
-// Set stores the value for a field.
-//
-// For a field belonging to a oneof, it implicitly clears any other field
-// that may be currently set within the same oneof.
-// For extension fields, it implicitly stores the provided ExtensionType.
-// When setting a composite type, it is unspecified whether the stored value
-// aliases the source's memory in any way. If the composite value is an
-// empty, read-only value, then it panics.
-//
-// Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAuthenticationResponse.success":
-		x.Success = value.Bool()
-	case "did.v1.MsgUnlinkAuthenticationResponse.did":
-		x.Did = value.Interface().(string)
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAuthenticationResponse"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAuthenticationResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// Mutable returns a mutable reference to a composite type.
-//
-// If the field is unpopulated, it may allocate a composite value.
-// For a field belonging to a oneof, it implicitly clears any other field
-// that may be currently set within the same oneof.
-// For extension fields, it implicitly stores the provided ExtensionType
-// if not already stored.
-// It panics if the field does not contain a composite type.
-//
-// Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAuthenticationResponse.success":
-		panic(fmt.Errorf("field success of message did.v1.MsgUnlinkAuthenticationResponse is not mutable"))
-	case "did.v1.MsgUnlinkAuthenticationResponse.did":
-		panic(fmt.Errorf("field did of message did.v1.MsgUnlinkAuthenticationResponse is not mutable"))
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAuthenticationResponse"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAuthenticationResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// NewField returns a new value that is assignable to the field
-// for the given descriptor. For scalars, this returns the default value.
-// For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
-	switch fd.FullName() {
-	case "did.v1.MsgUnlinkAuthenticationResponse.success":
-		return protoreflect.ValueOfBool(false)
-	case "did.v1.MsgUnlinkAuthenticationResponse.did":
-		return protoreflect.ValueOfString("")
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: did.v1.MsgUnlinkAuthenticationResponse"))
-		}
-		panic(fmt.Errorf("message did.v1.MsgUnlinkAuthenticationResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// WhichOneof reports which field within the oneof is populated,
-// returning nil if none are populated.
-// It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
-	switch d.FullName() {
-	default:
-		panic(fmt.Errorf("%s is not a oneof field in did.v1.MsgUnlinkAuthenticationResponse", d.FullName()))
-	}
-	panic("unreachable")
-}
-
-// GetUnknown retrieves the entire list of unknown fields.
-// The caller may only mutate the contents of the RawFields
-// if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) GetUnknown() protoreflect.RawFields {
-	return x.unknownFields
-}
-
-// SetUnknown stores an entire list of unknown fields.
-// The raw fields must be syntactically valid according to the wire format.
-// An implementation may panic if this is not the case.
-// Once stored, the caller must not mutate the content of the RawFields.
-// An empty RawFields may be passed to clear the fields.
-//
-// SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) SetUnknown(fields protoreflect.RawFields) {
-	x.unknownFields = fields
-}
-
-// IsValid reports whether the message is valid.
-//
-// An invalid message is an empty, read-only value.
-//
-// An invalid message often corresponds to a nil pointer of the concrete
-// message type, but the details are implementation dependent.
-// Validity is not part of the protobuf data model, and may not
-// be preserved in marshaling or other operations.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) IsValid() bool {
-	return x != nil
-}
-
-// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
-// This method may return nil.
-//
-// The returned methods type is identical to
-// "google.golang.org/protobuf/runtime/protoiface".Methods.
-// Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgUnlinkAuthenticationResponse) ProtoMethods() *protoiface.Methods {
-	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgUnlinkAuthenticationResponse)
-		if x == nil {
-			return protoiface.SizeOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Size:              0,
-			}
-		}
-		options := runtime.SizeInputToOptions(input)
-		_ = options
-		var n int
-		var l int
-		_ = l
-		if x.Success {
-			n += 2
-		}
-		l = len(x.Did)
-		if l > 0 {
-			n += 1 + l + runtime.Sov(uint64(l))
-		}
-		if x.unknownFields != nil {
-			n += len(x.unknownFields)
-		}
-		return protoiface.SizeOutput{
-			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-			Size:              n,
-		}
-	}
-
-	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgUnlinkAuthenticationResponse)
-		if x == nil {
-			return protoiface.MarshalOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Buf:               input.Buf,
-			}, nil
-		}
-		options := runtime.MarshalInputToOptions(input)
-		_ = options
-		size := options.Size(x)
-		dAtA := make([]byte, size)
-		i := len(dAtA)
-		_ = i
-		var l int
-		_ = l
-		if x.unknownFields != nil {
-			i -= len(x.unknownFields)
-			copy(dAtA[i:], x.unknownFields)
-		}
-		if len(x.Did) > 0 {
-			i -= len(x.Did)
-			copy(dAtA[i:], x.Did)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Did)))
-			i--
-			dAtA[i] = 0x12
-		}
-		if x.Success {
-			i--
-			if x.Success {
-				dAtA[i] = 1
-			} else {
-				dAtA[i] = 0
-			}
-			i--
-			dAtA[i] = 0x8
-		}
-		if input.Buf != nil {
-			input.Buf = append(input.Buf, dAtA...)
-		} else {
-			input.Buf = dAtA
-		}
-		return protoiface.MarshalOutput{
-			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-			Buf:               input.Buf,
-		}, nil
-	}
-	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgUnlinkAuthenticationResponse)
-		if x == nil {
-			return protoiface.UnmarshalOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Flags:             input.Flags,
-			}, nil
-		}
-		options := runtime.UnmarshalInputToOptions(input)
-		_ = options
-		dAtA := input.Buf
-		l := len(dAtA)
-		iNdEx := 0
-		for iNdEx < l {
-			preIndex := iNdEx
-			var wire uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-				}
-				if iNdEx >= l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				wire |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			fieldNum := int32(wire >> 3)
-			wireType := int(wire & 0x7)
-			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUnlinkAuthenticationResponse: wiretype end group for non-group")
-			}
-			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUnlinkAuthenticationResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-			}
-			switch fieldNum {
-			case 1:
-				if wireType != 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Success", wireType)
-				}
-				var v int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				x.Success = bool(v != 0)
-			case 2:
-				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Did", wireType)
-				}
-				var stringLen uint64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-					}
-					if iNdEx >= l {
-						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					stringLen |= uint64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				intStringLen := int(stringLen)
-				if intStringLen < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				postIndex := iNdEx + intStringLen
-				if postIndex < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if postIndex > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				x.Did = string(dAtA[iNdEx:postIndex])
-				iNdEx = postIndex
 			default:
 				iNdEx = preIndex
 				skippy, err := runtime.Skip(dAtA[iNdEx:])
@@ -5586,7 +5743,7 @@ func (x *MsgUpdateParams) ProtoReflect() protoreflect.Message {
 }
 
 func (x *MsgUpdateParams) slowProtoReflect() protoreflect.Message {
-	mi := &file_did_v1_tx_proto_msgTypes[10]
+	mi := &file_did_v1_tx_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6143,7 +6300,7 @@ func (x *MsgUpdateParamsResponse) ProtoReflect() protoreflect.Message {
 }
 
 func (x *MsgUpdateParamsResponse) slowProtoReflect() protoreflect.Message {
-	mi := &file_did_v1_tx_proto_msgTypes[11]
+	mi := &file_did_v1_tx_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6494,26 +6651,20 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// MsgLinkAuthentication is the message type for the LinkAuthentication RPC.
-type MsgLinkAuthentication struct {
+// MsgRegisterController is the message type for the RegisterController RPC.
+type MsgRegisterController struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Controller is the address of the controller to authenticate.
-	Controller string `protobuf:"bytes,1,opt,name=controller,proto3" json:"controller,omitempty"`
-	// Subject is the subject of the authentication.
-	Subject string `protobuf:"bytes,2,opt,name=subject,proto3" json:"subject,omitempty"`
-	// Assertion is the assertion of the authentication.
-	Assertion string `protobuf:"bytes,3,opt,name=assertion,proto3" json:"assertion,omitempty"`
-	// Authentication is the authentication of the authentication.
-	CredentialId []byte `protobuf:"bytes,4,opt,name=credential_id,json=credentialId,proto3" json:"credential_id,omitempty"`
-	// token is the macron token to authenticate the operation.
-	MacaroonToken string `protobuf:"bytes,5,opt,name=macaroon_token,json=macaroonToken,proto3" json:"macaroon_token,omitempty"`
+	Sender                   string              `protobuf:"bytes,1,opt,name=sender,proto3" json:"sender,omitempty"`
+	AuthenticationCredential *VerificationMethod `protobuf:"bytes,2,opt,name=authentication_credential,json=authenticationCredential,proto3" json:"authentication_credential,omitempty"`
+	AssertionDwn             *VerificationMethod `protobuf:"bytes,3,opt,name=assertion_dwn,json=assertionDwn,proto3" json:"assertion_dwn,omitempty"`
+	InvocationDwn            *VerificationMethod `protobuf:"bytes,4,opt,name=invocation_dwn,json=invocationDwn,proto3" json:"invocation_dwn,omitempty"`
 }
 
-func (x *MsgLinkAuthentication) Reset() {
-	*x = MsgLinkAuthentication{}
+func (x *MsgRegisterController) Reset() {
+	*x = MsgRegisterController{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_did_v1_tx_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -6521,68 +6672,59 @@ func (x *MsgLinkAuthentication) Reset() {
 	}
 }
 
-func (x *MsgLinkAuthentication) String() string {
+func (x *MsgRegisterController) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MsgLinkAuthentication) ProtoMessage() {}
+func (*MsgRegisterController) ProtoMessage() {}
 
-// Deprecated: Use MsgLinkAuthentication.ProtoReflect.Descriptor instead.
-func (*MsgLinkAuthentication) Descriptor() ([]byte, []int) {
+// Deprecated: Use MsgRegisterController.ProtoReflect.Descriptor instead.
+func (*MsgRegisterController) Descriptor() ([]byte, []int) {
 	return file_did_v1_tx_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *MsgLinkAuthentication) GetController() string {
+func (x *MsgRegisterController) GetSender() string {
 	if x != nil {
-		return x.Controller
+		return x.Sender
 	}
 	return ""
 }
 
-func (x *MsgLinkAuthentication) GetSubject() string {
+func (x *MsgRegisterController) GetAuthenticationCredential() *VerificationMethod {
 	if x != nil {
-		return x.Subject
-	}
-	return ""
-}
-
-func (x *MsgLinkAuthentication) GetAssertion() string {
-	if x != nil {
-		return x.Assertion
-	}
-	return ""
-}
-
-func (x *MsgLinkAuthentication) GetCredentialId() []byte {
-	if x != nil {
-		return x.CredentialId
+		return x.AuthenticationCredential
 	}
 	return nil
 }
 
-func (x *MsgLinkAuthentication) GetMacaroonToken() string {
+func (x *MsgRegisterController) GetAssertionDwn() *VerificationMethod {
 	if x != nil {
-		return x.MacaroonToken
+		return x.AssertionDwn
 	}
-	return ""
+	return nil
 }
 
-// MsgLinkAuthenticationResponse is the response type for the
-// LinkAuthentication RPC.
-type MsgLinkAuthenticationResponse struct {
+func (x *MsgRegisterController) GetInvocationDwn() *VerificationMethod {
+	if x != nil {
+		return x.InvocationDwn
+	}
+	return nil
+}
+
+// MsgRegisterControllerResponse is the response type for the
+// RegisterController RPC.
+type MsgRegisterControllerResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Success returns true if the specified cid is valid and not already
-	// encrypted.
-	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	// Controller is the address of the initialized controller.
-	Did string `protobuf:"bytes,2,opt,name=did,proto3" json:"did,omitempty"`
+	Cid      string            `protobuf:"bytes,1,opt,name=cid,proto3" json:"cid,omitempty"`
+	Did      string            `protobuf:"bytes,2,opt,name=did,proto3" json:"did,omitempty"`
+	Accounts map[string]string `protobuf:"bytes,3,rep,name=accounts,proto3" json:"accounts,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
-func (x *MsgLinkAuthenticationResponse) Reset() {
-	*x = MsgLinkAuthenticationResponse{}
+func (x *MsgRegisterControllerResponse) Reset() {
+	*x = MsgRegisterControllerResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_did_v1_tx_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -6590,49 +6732,54 @@ func (x *MsgLinkAuthenticationResponse) Reset() {
 	}
 }
 
-func (x *MsgLinkAuthenticationResponse) String() string {
+func (x *MsgRegisterControllerResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MsgLinkAuthenticationResponse) ProtoMessage() {}
+func (*MsgRegisterControllerResponse) ProtoMessage() {}
 
-// Deprecated: Use MsgLinkAuthenticationResponse.ProtoReflect.Descriptor instead.
-func (*MsgLinkAuthenticationResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use MsgRegisterControllerResponse.ProtoReflect.Descriptor instead.
+func (*MsgRegisterControllerResponse) Descriptor() ([]byte, []int) {
 	return file_did_v1_tx_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *MsgLinkAuthenticationResponse) GetSuccess() bool {
+func (x *MsgRegisterControllerResponse) GetCid() string {
 	if x != nil {
-		return x.Success
+		return x.Cid
 	}
-	return false
+	return ""
 }
 
-func (x *MsgLinkAuthenticationResponse) GetDid() string {
+func (x *MsgRegisterControllerResponse) GetDid() string {
 	if x != nil {
 		return x.Did
 	}
 	return ""
 }
 
-// MsgLinkAssertion is the message type for the LinkAssertion RPC.
-type MsgLinkAssertion struct {
+func (x *MsgRegisterControllerResponse) GetAccounts() map[string]string {
+	if x != nil {
+		return x.Accounts
+	}
+	return nil
+}
+
+// MsgLinkVerificationMethod is the message type for the LinkVerificationMethod RPC.
+type MsgLinkVerificationMethod struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Controller is the address of the controller to authenticate.
-	Controller string `protobuf:"bytes,1,opt,name=controller,proto3" json:"controller,omitempty"`
-	// Subject is the subject of the authentication.
-	Subject string `protobuf:"bytes,2,opt,name=subject,proto3" json:"subject,omitempty"`
-	// Assertion is the assertion of the authentication.
-	Assertion string `protobuf:"bytes,3,opt,name=assertion,proto3" json:"assertion,omitempty"`
-	// token is the macron token to authenticate the operation.
-	MacaroonToken string `protobuf:"bytes,4,opt,name=macaroon_token,json=macaroonToken,proto3" json:"macaroon_token,omitempty"`
+	Sender         string                `protobuf:"bytes,1,opt,name=sender,proto3" json:"sender,omitempty"`
+	Controller     string                `protobuf:"bytes,2,opt,name=controller,proto3" json:"controller,omitempty"`
+	Authentication []*VerificationMethod `protobuf:"bytes,3,rep,name=authentication,proto3" json:"authentication,omitempty"`
+	Assertion      []*VerificationMethod `protobuf:"bytes,4,rep,name=assertion,proto3" json:"assertion,omitempty"`
+	Delegation     []*VerificationMethod `protobuf:"bytes,5,rep,name=delegation,proto3" json:"delegation,omitempty"`
+	Invocation     []*VerificationMethod `protobuf:"bytes,6,rep,name=invocation,proto3" json:"invocation,omitempty"`
 }
 
-func (x *MsgLinkAssertion) Reset() {
-	*x = MsgLinkAssertion{}
+func (x *MsgLinkVerificationMethod) Reset() {
+	*x = MsgLinkVerificationMethod{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_did_v1_tx_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -6640,61 +6787,72 @@ func (x *MsgLinkAssertion) Reset() {
 	}
 }
 
-func (x *MsgLinkAssertion) String() string {
+func (x *MsgLinkVerificationMethod) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MsgLinkAssertion) ProtoMessage() {}
+func (*MsgLinkVerificationMethod) ProtoMessage() {}
 
-// Deprecated: Use MsgLinkAssertion.ProtoReflect.Descriptor instead.
-func (*MsgLinkAssertion) Descriptor() ([]byte, []int) {
+// Deprecated: Use MsgLinkVerificationMethod.ProtoReflect.Descriptor instead.
+func (*MsgLinkVerificationMethod) Descriptor() ([]byte, []int) {
 	return file_did_v1_tx_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *MsgLinkAssertion) GetController() string {
+func (x *MsgLinkVerificationMethod) GetSender() string {
+	if x != nil {
+		return x.Sender
+	}
+	return ""
+}
+
+func (x *MsgLinkVerificationMethod) GetController() string {
 	if x != nil {
 		return x.Controller
 	}
 	return ""
 }
 
-func (x *MsgLinkAssertion) GetSubject() string {
+func (x *MsgLinkVerificationMethod) GetAuthentication() []*VerificationMethod {
 	if x != nil {
-		return x.Subject
+		return x.Authentication
 	}
-	return ""
+	return nil
 }
 
-func (x *MsgLinkAssertion) GetAssertion() string {
+func (x *MsgLinkVerificationMethod) GetAssertion() []*VerificationMethod {
 	if x != nil {
 		return x.Assertion
 	}
-	return ""
+	return nil
 }
 
-func (x *MsgLinkAssertion) GetMacaroonToken() string {
+func (x *MsgLinkVerificationMethod) GetDelegation() []*VerificationMethod {
 	if x != nil {
-		return x.MacaroonToken
+		return x.Delegation
 	}
-	return ""
+	return nil
 }
 
-// MsgLinkAssertionResponse is the response type for the
-// LinkAssertion RPC.
-type MsgLinkAssertionResponse struct {
+func (x *MsgLinkVerificationMethod) GetInvocation() []*VerificationMethod {
+	if x != nil {
+		return x.Invocation
+	}
+	return nil
+}
+
+// MsgLinkVerificationMethodResponse is the response type for the
+// LinkVerificationMethod RPC.
+type MsgLinkVerificationMethodResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Success returns true if the specified cid is valid and not already
-	// encrypted.
-	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	// Controller is the address of the initialized controller.
-	Did string `protobuf:"bytes,2,opt,name=did,proto3" json:"did,omitempty"`
+	Success  bool      `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	Document *Document `protobuf:"bytes,2,opt,name=document,proto3" json:"document,omitempty"`
 }
 
-func (x *MsgLinkAssertionResponse) Reset() {
-	*x = MsgLinkAssertionResponse{}
+func (x *MsgLinkVerificationMethodResponse) Reset() {
+	*x = MsgLinkVerificationMethodResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_did_v1_tx_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -6702,29 +6860,150 @@ func (x *MsgLinkAssertionResponse) Reset() {
 	}
 }
 
-func (x *MsgLinkAssertionResponse) String() string {
+func (x *MsgLinkVerificationMethodResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MsgLinkAssertionResponse) ProtoMessage() {}
+func (*MsgLinkVerificationMethodResponse) ProtoMessage() {}
 
-// Deprecated: Use MsgLinkAssertionResponse.ProtoReflect.Descriptor instead.
-func (*MsgLinkAssertionResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use MsgLinkVerificationMethodResponse.ProtoReflect.Descriptor instead.
+func (*MsgLinkVerificationMethodResponse) Descriptor() ([]byte, []int) {
 	return file_did_v1_tx_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *MsgLinkAssertionResponse) GetSuccess() bool {
+func (x *MsgLinkVerificationMethodResponse) GetSuccess() bool {
 	if x != nil {
 		return x.Success
 	}
 	return false
 }
 
-func (x *MsgLinkAssertionResponse) GetDid() string {
+func (x *MsgLinkVerificationMethodResponse) GetDocument() *Document {
 	if x != nil {
-		return x.Did
+		return x.Document
+	}
+	return nil
+}
+
+// MsgUnlinkVerificationMethod is the message type for the UnlinkVerificationMethod RPC.
+type MsgUnlinkVerificationMethod struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Sender         string   `protobuf:"bytes,1,opt,name=sender,proto3" json:"sender,omitempty"`
+	Controller     string   `protobuf:"bytes,2,opt,name=controller,proto3" json:"controller,omitempty"`
+	Authentication []string `protobuf:"bytes,3,rep,name=authentication,proto3" json:"authentication,omitempty"`
+	Assertion      []string `protobuf:"bytes,4,rep,name=assertion,proto3" json:"assertion,omitempty"`
+	Delegation     []string `protobuf:"bytes,5,rep,name=delegation,proto3" json:"delegation,omitempty"`
+	Invocation     []string `protobuf:"bytes,6,rep,name=invocation,proto3" json:"invocation,omitempty"`
+}
+
+func (x *MsgUnlinkVerificationMethod) Reset() {
+	*x = MsgUnlinkVerificationMethod{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_did_v1_tx_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MsgUnlinkVerificationMethod) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MsgUnlinkVerificationMethod) ProtoMessage() {}
+
+// Deprecated: Use MsgUnlinkVerificationMethod.ProtoReflect.Descriptor instead.
+func (*MsgUnlinkVerificationMethod) Descriptor() ([]byte, []int) {
+	return file_did_v1_tx_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *MsgUnlinkVerificationMethod) GetSender() string {
+	if x != nil {
+		return x.Sender
 	}
 	return ""
+}
+
+func (x *MsgUnlinkVerificationMethod) GetController() string {
+	if x != nil {
+		return x.Controller
+	}
+	return ""
+}
+
+func (x *MsgUnlinkVerificationMethod) GetAuthentication() []string {
+	if x != nil {
+		return x.Authentication
+	}
+	return nil
+}
+
+func (x *MsgUnlinkVerificationMethod) GetAssertion() []string {
+	if x != nil {
+		return x.Assertion
+	}
+	return nil
+}
+
+func (x *MsgUnlinkVerificationMethod) GetDelegation() []string {
+	if x != nil {
+		return x.Delegation
+	}
+	return nil
+}
+
+func (x *MsgUnlinkVerificationMethod) GetInvocation() []string {
+	if x != nil {
+		return x.Invocation
+	}
+	return nil
+}
+
+// MsgUnlinkVerificationMethodResponse is the response type for the
+// UnlinkVerificationMethod RPC.
+type MsgUnlinkVerificationMethodResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Success  bool      `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	Document *Document `protobuf:"bytes,2,opt,name=document,proto3" json:"document,omitempty"`
+}
+
+func (x *MsgUnlinkVerificationMethodResponse) Reset() {
+	*x = MsgUnlinkVerificationMethodResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_did_v1_tx_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MsgUnlinkVerificationMethodResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MsgUnlinkVerificationMethodResponse) ProtoMessage() {}
+
+// Deprecated: Use MsgUnlinkVerificationMethodResponse.ProtoReflect.Descriptor instead.
+func (*MsgUnlinkVerificationMethodResponse) Descriptor() ([]byte, []int) {
+	return file_did_v1_tx_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *MsgUnlinkVerificationMethodResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+func (x *MsgUnlinkVerificationMethodResponse) GetDocument() *Document {
+	if x != nil {
+		return x.Document
+	}
+	return nil
 }
 
 // MsgExecuteTx is the message type for the ExecuteTx RPC.
@@ -6733,18 +7012,15 @@ type MsgExecuteTx struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Controller is the address of the controller to authenticate.
-	Controller string `protobuf:"bytes,1,opt,name=controller,proto3" json:"controller,omitempty"`
-	// Messages is the list of messages to execute.
-	Messages map[string][]byte `protobuf:"bytes,2,rep,name=messages,proto3" json:"messages,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	// MacaroonToken is the macaroon token to authenticate the operation.
-	MacaroonToken string `protobuf:"bytes,3,opt,name=macaroon_token,json=macaroonToken,proto3" json:"macaroon_token,omitempty"`
+	Sender        string            `protobuf:"bytes,1,opt,name=sender,proto3" json:"sender,omitempty"`
+	Messages      map[string][]byte `protobuf:"bytes,2,rep,name=messages,proto3" json:"messages,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	MacaroonToken string            `protobuf:"bytes,3,opt,name=macaroon_token,json=macaroonToken,proto3" json:"macaroon_token,omitempty"`
 }
 
 func (x *MsgExecuteTx) Reset() {
 	*x = MsgExecuteTx{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_did_v1_tx_proto_msgTypes[4]
+		mi := &file_did_v1_tx_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6758,12 +7034,12 @@ func (*MsgExecuteTx) ProtoMessage() {}
 
 // Deprecated: Use MsgExecuteTx.ProtoReflect.Descriptor instead.
 func (*MsgExecuteTx) Descriptor() ([]byte, []int) {
-	return file_did_v1_tx_proto_rawDescGZIP(), []int{4}
+	return file_did_v1_tx_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *MsgExecuteTx) GetController() string {
+func (x *MsgExecuteTx) GetSender() string {
 	if x != nil {
-		return x.Controller
+		return x.Sender
 	}
 	return ""
 }
@@ -6788,14 +7064,14 @@ type MsgExecuteTxResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Success bool   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	TxHash  string `protobuf:"bytes,2,opt,name=tx_hash,json=txHash,proto3" json:"tx_hash,omitempty"`
+	TxHash  string `protobuf:"bytes,1,opt,name=tx_hash,json=txHash,proto3" json:"tx_hash,omitempty"`
+	Success bool   `protobuf:"varint,2,opt,name=success,proto3" json:"success,omitempty"`
 }
 
 func (x *MsgExecuteTxResponse) Reset() {
 	*x = MsgExecuteTxResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_did_v1_tx_proto_msgTypes[5]
+		mi := &file_did_v1_tx_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6809,14 +7085,7 @@ func (*MsgExecuteTxResponse) ProtoMessage() {}
 
 // Deprecated: Use MsgExecuteTxResponse.ProtoReflect.Descriptor instead.
 func (*MsgExecuteTxResponse) Descriptor() ([]byte, []int) {
-	return file_did_v1_tx_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *MsgExecuteTxResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
+	return file_did_v1_tx_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *MsgExecuteTxResponse) GetTxHash() string {
@@ -6826,210 +7095,11 @@ func (x *MsgExecuteTxResponse) GetTxHash() string {
 	return ""
 }
 
-// MsgUnlinkAssertion is the message type for the UnlinkAssertion RPC.
-type MsgUnlinkAssertion struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// Controller is the address of the controller to authenticate.
-	Controller string `protobuf:"bytes,1,opt,name=controller,proto3" json:"controller,omitempty"`
-	// Assertion is the assertion of the authentication.
-	AssertionDid string `protobuf:"bytes,2,opt,name=assertion_did,json=assertionDid,proto3" json:"assertion_did,omitempty"`
-	// token is the macron token to authenticate the operation.
-	MacaroonToken string `protobuf:"bytes,3,opt,name=macaroon_token,json=macaroonToken,proto3" json:"macaroon_token,omitempty"`
-}
-
-func (x *MsgUnlinkAssertion) Reset() {
-	*x = MsgUnlinkAssertion{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_did_v1_tx_proto_msgTypes[6]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *MsgUnlinkAssertion) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MsgUnlinkAssertion) ProtoMessage() {}
-
-// Deprecated: Use MsgUnlinkAssertion.ProtoReflect.Descriptor instead.
-func (*MsgUnlinkAssertion) Descriptor() ([]byte, []int) {
-	return file_did_v1_tx_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *MsgUnlinkAssertion) GetController() string {
-	if x != nil {
-		return x.Controller
-	}
-	return ""
-}
-
-func (x *MsgUnlinkAssertion) GetAssertionDid() string {
-	if x != nil {
-		return x.AssertionDid
-	}
-	return ""
-}
-
-func (x *MsgUnlinkAssertion) GetMacaroonToken() string {
-	if x != nil {
-		return x.MacaroonToken
-	}
-	return ""
-}
-
-// MsgUnlinkAssertionResponse is the response type for the
-// UnlinkAssertion RPC.
-type MsgUnlinkAssertionResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// Success returns true if the specified cid is valid and not already
-	// encrypted.
-	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	// Controller is the address of the initialized controller.
-	Did string `protobuf:"bytes,2,opt,name=did,proto3" json:"did,omitempty"`
-}
-
-func (x *MsgUnlinkAssertionResponse) Reset() {
-	*x = MsgUnlinkAssertionResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_did_v1_tx_proto_msgTypes[7]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *MsgUnlinkAssertionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MsgUnlinkAssertionResponse) ProtoMessage() {}
-
-// Deprecated: Use MsgUnlinkAssertionResponse.ProtoReflect.Descriptor instead.
-func (*MsgUnlinkAssertionResponse) Descriptor() ([]byte, []int) {
-	return file_did_v1_tx_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *MsgUnlinkAssertionResponse) GetSuccess() bool {
+func (x *MsgExecuteTxResponse) GetSuccess() bool {
 	if x != nil {
 		return x.Success
 	}
 	return false
-}
-
-func (x *MsgUnlinkAssertionResponse) GetDid() string {
-	if x != nil {
-		return x.Did
-	}
-	return ""
-}
-
-// MsgUnlinkAuthentication is the message type for the UnlinkAuthentication RPC.
-type MsgUnlinkAuthentication struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// Controller is the address of the controller to authenticate.
-	Controller string `protobuf:"bytes,1,opt,name=controller,proto3" json:"controller,omitempty"`
-	// Subject is the subject of the authentication.
-	AuthenticationDid string `protobuf:"bytes,2,opt,name=authentication_did,json=authenticationDid,proto3" json:"authentication_did,omitempty"`
-	// token is the macron token to authenticate the operation.
-	MacaroonToken string `protobuf:"bytes,3,opt,name=macaroon_token,json=macaroonToken,proto3" json:"macaroon_token,omitempty"`
-}
-
-func (x *MsgUnlinkAuthentication) Reset() {
-	*x = MsgUnlinkAuthentication{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_did_v1_tx_proto_msgTypes[8]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *MsgUnlinkAuthentication) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MsgUnlinkAuthentication) ProtoMessage() {}
-
-// Deprecated: Use MsgUnlinkAuthentication.ProtoReflect.Descriptor instead.
-func (*MsgUnlinkAuthentication) Descriptor() ([]byte, []int) {
-	return file_did_v1_tx_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *MsgUnlinkAuthentication) GetController() string {
-	if x != nil {
-		return x.Controller
-	}
-	return ""
-}
-
-func (x *MsgUnlinkAuthentication) GetAuthenticationDid() string {
-	if x != nil {
-		return x.AuthenticationDid
-	}
-	return ""
-}
-
-func (x *MsgUnlinkAuthentication) GetMacaroonToken() string {
-	if x != nil {
-		return x.MacaroonToken
-	}
-	return ""
-}
-
-// MsgUnlinkAuthenticationResponse is the response type for the
-// UnlinkAuthentication RPC.
-type MsgUnlinkAuthenticationResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// Success returns true if the specified cid is valid and not already
-	// encrypted.
-	Success bool `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	// Controller is the address of the initialized controller.
-	Did string `protobuf:"bytes,2,opt,name=did,proto3" json:"did,omitempty"`
-}
-
-func (x *MsgUnlinkAuthenticationResponse) Reset() {
-	*x = MsgUnlinkAuthenticationResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_did_v1_tx_proto_msgTypes[9]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *MsgUnlinkAuthenticationResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MsgUnlinkAuthenticationResponse) ProtoMessage() {}
-
-// Deprecated: Use MsgUnlinkAuthenticationResponse.ProtoReflect.Descriptor instead.
-func (*MsgUnlinkAuthenticationResponse) Descriptor() ([]byte, []int) {
-	return file_did_v1_tx_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *MsgUnlinkAuthenticationResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-func (x *MsgUnlinkAuthenticationResponse) GetDid() string {
-	if x != nil {
-		return x.Did
-	}
-	return ""
 }
 
 // MsgUpdateParams is the Msg/UpdateParams request type.
@@ -7051,7 +7121,7 @@ type MsgUpdateParams struct {
 func (x *MsgUpdateParams) Reset() {
 	*x = MsgUpdateParams{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_did_v1_tx_proto_msgTypes[10]
+		mi := &file_did_v1_tx_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7065,7 +7135,7 @@ func (*MsgUpdateParams) ProtoMessage() {}
 
 // Deprecated: Use MsgUpdateParams.ProtoReflect.Descriptor instead.
 func (*MsgUpdateParams) Descriptor() ([]byte, []int) {
-	return file_did_v1_tx_proto_rawDescGZIP(), []int{10}
+	return file_did_v1_tx_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *MsgUpdateParams) GetAuthority() string {
@@ -7102,7 +7172,7 @@ type MsgUpdateParamsResponse struct {
 func (x *MsgUpdateParamsResponse) Reset() {
 	*x = MsgUpdateParamsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_did_v1_tx_proto_msgTypes[11]
+		mi := &file_did_v1_tx_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7116,7 +7186,7 @@ func (*MsgUpdateParamsResponse) ProtoMessage() {}
 
 // Deprecated: Use MsgUpdateParamsResponse.ProtoReflect.Descriptor instead.
 func (*MsgUpdateParamsResponse) Descriptor() ([]byte, []int) {
-	return file_did_v1_tx_proto_rawDescGZIP(), []int{11}
+	return file_did_v1_tx_proto_rawDescGZIP(), []int{9}
 }
 
 var File_did_v1_tx_proto protoreflect.FileDescriptor
@@ -7129,147 +7199,164 @@ var file_did_v1_tx_proto_rawDesc = []byte{
 	0x2f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x14, 0x64,
 	0x69, 0x64, 0x2f, 0x76, 0x31, 0x2f, 0x67, 0x65, 0x6e, 0x65, 0x73, 0x69, 0x73, 0x2e, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x1a, 0x14, 0x67, 0x6f, 0x67, 0x6f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67,
-	0x6f, 0x67, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xe6, 0x01, 0x0a, 0x15, 0x4d, 0x73,
-	0x67, 0x4c, 0x69, 0x6e, 0x6b, 0x41, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74,
-	0x69, 0x6f, 0x6e, 0x12, 0x38, 0x0a, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65,
-	0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73,
-	0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e,
-	0x67, 0x52, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x12, 0x18, 0x0a,
-	0x07, 0x73, 0x75, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
-	0x73, 0x75, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x12, 0x1c, 0x0a, 0x09, 0x61, 0x73, 0x73, 0x65, 0x72,
-	0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x61, 0x73, 0x73, 0x65,
-	0x72, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x23, 0x0a, 0x0d, 0x63, 0x72, 0x65, 0x64, 0x65, 0x6e, 0x74,
-	0x69, 0x61, 0x6c, 0x5f, 0x69, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x0c, 0x63, 0x72,
-	0x65, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x61, 0x6c, 0x49, 0x64, 0x12, 0x25, 0x0a, 0x0e, 0x6d, 0x61,
-	0x63, 0x61, 0x72, 0x6f, 0x6f, 0x6e, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x05, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x0d, 0x6d, 0x61, 0x63, 0x61, 0x72, 0x6f, 0x6f, 0x6e, 0x54, 0x6f, 0x6b, 0x65,
-	0x6e, 0x3a, 0x0f, 0x82, 0xe7, 0xb0, 0x2a, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c,
-	0x65, 0x72, 0x22, 0x4b, 0x0a, 0x1d, 0x4d, 0x73, 0x67, 0x4c, 0x69, 0x6e, 0x6b, 0x41, 0x75, 0x74,
-	0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x12, 0x10, 0x0a,
-	0x03, 0x64, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x64, 0x69, 0x64, 0x22,
-	0xbc, 0x01, 0x0a, 0x10, 0x4d, 0x73, 0x67, 0x4c, 0x69, 0x6e, 0x6b, 0x41, 0x73, 0x73, 0x65, 0x72,
-	0x74, 0x69, 0x6f, 0x6e, 0x12, 0x38, 0x0a, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c,
-	0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f,
-	0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69,
-	0x6e, 0x67, 0x52, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x12, 0x18,
-	0x0a, 0x07, 0x73, 0x75, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x07, 0x73, 0x75, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x12, 0x1c, 0x0a, 0x09, 0x61, 0x73, 0x73, 0x65,
-	0x72, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x61, 0x73, 0x73,
-	0x65, 0x72, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x25, 0x0a, 0x0e, 0x6d, 0x61, 0x63, 0x61, 0x72, 0x6f,
-	0x6f, 0x6e, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d,
-	0x6d, 0x61, 0x63, 0x61, 0x72, 0x6f, 0x6f, 0x6e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x3a, 0x0f, 0x82,
-	0xe7, 0xb0, 0x2a, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x22, 0x46,
-	0x0a, 0x18, 0x4d, 0x73, 0x67, 0x4c, 0x69, 0x6e, 0x6b, 0x41, 0x73, 0x73, 0x65, 0x72, 0x74, 0x69,
-	0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x75,
-	0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x73, 0x75, 0x63,
-	0x63, 0x65, 0x73, 0x73, 0x12, 0x10, 0x0a, 0x03, 0x64, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x03, 0x64, 0x69, 0x64, 0x22, 0xfd, 0x01, 0x0a, 0x0c, 0x4d, 0x73, 0x67, 0x45, 0x78,
-	0x65, 0x63, 0x75, 0x74, 0x65, 0x54, 0x78, 0x12, 0x38, 0x0a, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72,
-	0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d,
+	0x6f, 0x67, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xb7, 0x02, 0x0a, 0x15, 0x4d, 0x73,
+	0x67, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c,
+	0x6c, 0x65, 0x72, 0x12, 0x30, 0x0a, 0x06, 0x73, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e,
+	0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x06, 0x73,
+	0x65, 0x6e, 0x64, 0x65, 0x72, 0x12, 0x57, 0x0a, 0x19, 0x61, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74,
+	0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x63, 0x72, 0x65, 0x64, 0x65, 0x6e, 0x74, 0x69,
+	0x61, 0x6c, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76,
+	0x31, 0x2e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65,
+	0x74, 0x68, 0x6f, 0x64, 0x52, 0x18, 0x61, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x43, 0x72, 0x65, 0x64, 0x65, 0x6e, 0x74, 0x69, 0x61, 0x6c, 0x12, 0x3f,
+	0x0a, 0x0d, 0x61, 0x73, 0x73, 0x65, 0x72, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x64, 0x77, 0x6e, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x56,
+	0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x68, 0x6f,
+	0x64, 0x52, 0x0c, 0x61, 0x73, 0x73, 0x65, 0x72, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x77, 0x6e, 0x12,
+	0x41, 0x0a, 0x0e, 0x69, 0x6e, 0x76, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x64, 0x77,
+	0x6e, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31,
+	0x2e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74,
+	0x68, 0x6f, 0x64, 0x52, 0x0d, 0x69, 0x6e, 0x76, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x44,
+	0x77, 0x6e, 0x3a, 0x0f, 0x82, 0xe7, 0xb0, 0x2a, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c,
+	0x6c, 0x65, 0x72, 0x22, 0xd1, 0x01, 0x0a, 0x1d, 0x4d, 0x73, 0x67, 0x52, 0x65, 0x67, 0x69, 0x73,
+	0x74, 0x65, 0x72, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x63, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x03, 0x63, 0x69, 0x64, 0x12, 0x10, 0x0a, 0x03, 0x64, 0x69, 0x64, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x64, 0x69, 0x64, 0x12, 0x4f, 0x0a, 0x08, 0x61, 0x63, 0x63,
+	0x6f, 0x75, 0x6e, 0x74, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x33, 0x2e, 0x64, 0x69,
+	0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72,
+	0x43, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x2e, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79,
+	0x52, 0x08, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x73, 0x1a, 0x3b, 0x0a, 0x0d, 0x41, 0x63,
+	0x63, 0x6f, 0x75, 0x6e, 0x74, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b,
+	0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a,
+	0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61,
+	0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0xfd, 0x02, 0x0a, 0x19, 0x4d, 0x73, 0x67, 0x4c,
+	0x69, 0x6e, 0x6b, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d,
+	0x65, 0x74, 0x68, 0x6f, 0x64, 0x12, 0x30, 0x0a, 0x06, 0x73, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f,
+	0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52,
+	0x06, 0x73, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x12, 0x38, 0x0a, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72,
+	0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d,
 	0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53,
 	0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65,
-	0x72, 0x12, 0x3e, 0x0a, 0x08, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x18, 0x02, 0x20,
-	0x03, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67,
-	0x45, 0x78, 0x65, 0x63, 0x75, 0x74, 0x65, 0x54, 0x78, 0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67,
-	0x65, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x08, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
-	0x73, 0x12, 0x25, 0x0a, 0x0e, 0x6d, 0x61, 0x63, 0x61, 0x72, 0x6f, 0x6f, 0x6e, 0x5f, 0x74, 0x6f,
-	0x6b, 0x65, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x6d, 0x61, 0x63, 0x61, 0x72,
-	0x6f, 0x6f, 0x6e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x1a, 0x3b, 0x0a, 0x0d, 0x4d, 0x65, 0x73, 0x73,
-	0x61, 0x67, 0x65, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76,
-	0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0c, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75,
-	0x65, 0x3a, 0x02, 0x38, 0x01, 0x3a, 0x0f, 0x82, 0xe7, 0xb0, 0x2a, 0x0a, 0x63, 0x6f, 0x6e, 0x74,
-	0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x22, 0x49, 0x0a, 0x14, 0x4d, 0x73, 0x67, 0x45, 0x78, 0x65,
-	0x63, 0x75, 0x74, 0x65, 0x54, 0x78, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18,
-	0x0a, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52,
-	0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x12, 0x17, 0x0a, 0x07, 0x74, 0x78, 0x5f, 0x68,
-	0x61, 0x73, 0x68, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x74, 0x78, 0x48, 0x61, 0x73,
-	0x68, 0x22, 0xab, 0x01, 0x0a, 0x12, 0x4d, 0x73, 0x67, 0x55, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x41,
-	0x73, 0x73, 0x65, 0x72, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x38, 0x0a, 0x0a, 0x63, 0x6f, 0x6e, 0x74,
-	0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4,
-	0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73,
-	0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c,
-	0x65, 0x72, 0x12, 0x23, 0x0a, 0x0d, 0x61, 0x73, 0x73, 0x65, 0x72, 0x74, 0x69, 0x6f, 0x6e, 0x5f,
-	0x64, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x61, 0x73, 0x73, 0x65, 0x72,
-	0x74, 0x69, 0x6f, 0x6e, 0x44, 0x69, 0x64, 0x12, 0x25, 0x0a, 0x0e, 0x6d, 0x61, 0x63, 0x61, 0x72,
-	0x6f, 0x6f, 0x6e, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0d, 0x6d, 0x61, 0x63, 0x61, 0x72, 0x6f, 0x6f, 0x6e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x3a, 0x0f,
-	0x82, 0xe7, 0xb0, 0x2a, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x22,
-	0x48, 0x0a, 0x1a, 0x4d, 0x73, 0x67, 0x55, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x41, 0x73, 0x73, 0x65,
-	0x72, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a,
+	0x72, 0x12, 0x42, 0x0a, 0x0e, 0x61, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x64, 0x69, 0x64, 0x2e,
+	0x76, 0x31, 0x2e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d,
+	0x65, 0x74, 0x68, 0x6f, 0x64, 0x52, 0x0e, 0x61, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x38, 0x0a, 0x09, 0x61, 0x73, 0x73, 0x65, 0x72, 0x74, 0x69,
+	0x6f, 0x6e, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76,
+	0x31, 0x2e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65,
+	0x74, 0x68, 0x6f, 0x64, 0x52, 0x09, 0x61, 0x73, 0x73, 0x65, 0x72, 0x74, 0x69, 0x6f, 0x6e, 0x12,
+	0x3a, 0x0a, 0x0a, 0x64, 0x65, 0x6c, 0x65, 0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x05, 0x20,
+	0x03, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x56, 0x65, 0x72,
+	0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x52,
+	0x0a, 0x64, 0x65, 0x6c, 0x65, 0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x3a, 0x0a, 0x0a, 0x69,
+	0x6e, 0x76, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x06, 0x20, 0x03, 0x28, 0x0b, 0x32,
+	0x1a, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x52, 0x0a, 0x69, 0x6e, 0x76,
+	0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x6b, 0x0a, 0x21, 0x4d, 0x73, 0x67, 0x4c, 0x69,
+	0x6e, 0x6b, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65,
+	0x74, 0x68, 0x6f, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07,
+	0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x73,
+	0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x12, 0x2c, 0x0a, 0x08, 0x64, 0x6f, 0x63, 0x75, 0x6d, 0x65,
+	0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x10, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76,
+	0x31, 0x2e, 0x44, 0x6f, 0x63, 0x75, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x08, 0x64, 0x6f, 0x63, 0x75,
+	0x6d, 0x65, 0x6e, 0x74, 0x22, 0x8f, 0x02, 0x0a, 0x1b, 0x4d, 0x73, 0x67, 0x55, 0x6e, 0x6c, 0x69,
+	0x6e, 0x6b, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65,
+	0x74, 0x68, 0x6f, 0x64, 0x12, 0x30, 0x0a, 0x06, 0x73, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73,
+	0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x06,
+	0x73, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x12, 0x38, 0x0a, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f,
+	0x6c, 0x6c, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14,
+	0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74,
+	0x72, 0x69, 0x6e, 0x67, 0x52, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72,
+	0x12, 0x26, 0x0a, 0x0e, 0x61, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x0e, 0x61, 0x75, 0x74, 0x68, 0x65, 0x6e,
+	0x74, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1c, 0x0a, 0x09, 0x61, 0x73, 0x73, 0x65,
+	0x72, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x04, 0x20, 0x03, 0x28, 0x09, 0x52, 0x09, 0x61, 0x73, 0x73,
+	0x65, 0x72, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1e, 0x0a, 0x0a, 0x64, 0x65, 0x6c, 0x65, 0x67, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x18, 0x05, 0x20, 0x03, 0x28, 0x09, 0x52, 0x0a, 0x64, 0x65, 0x6c, 0x65,
+	0x67, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1e, 0x0a, 0x0a, 0x69, 0x6e, 0x76, 0x6f, 0x63, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x18, 0x06, 0x20, 0x03, 0x28, 0x09, 0x52, 0x0a, 0x69, 0x6e, 0x76, 0x6f,
+	0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0x6d, 0x0a, 0x23, 0x4d, 0x73, 0x67, 0x55, 0x6e, 0x6c,
+	0x69, 0x6e, 0x6b, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d,
+	0x65, 0x74, 0x68, 0x6f, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a,
 	0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07,
-	0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x12, 0x10, 0x0a, 0x03, 0x64, 0x69, 0x64, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x64, 0x69, 0x64, 0x22, 0xba, 0x01, 0x0a, 0x17, 0x4d, 0x73,
-	0x67, 0x55, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x41, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x38, 0x0a, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c,
-	0x6c, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63,
-	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72,
-	0x69, 0x6e, 0x67, 0x52, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x12,
-	0x2d, 0x0a, 0x12, 0x61, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f,
-	0x6e, 0x5f, 0x64, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x11, 0x61, 0x75, 0x74,
-	0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x69, 0x64, 0x12, 0x25,
-	0x0a, 0x0e, 0x6d, 0x61, 0x63, 0x61, 0x72, 0x6f, 0x6f, 0x6e, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e,
-	0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x6d, 0x61, 0x63, 0x61, 0x72, 0x6f, 0x6f, 0x6e,
-	0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x3a, 0x0f, 0x82, 0xe7, 0xb0, 0x2a, 0x0a, 0x63, 0x6f, 0x6e, 0x74,
-	0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x22, 0x4d, 0x0a, 0x1f, 0x4d, 0x73, 0x67, 0x55, 0x6e, 0x6c,
-	0x69, 0x6e, 0x6b, 0x41, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f,
-	0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x75, 0x63,
-	0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x73, 0x75, 0x63, 0x63,
-	0x65, 0x73, 0x73, 0x12, 0x10, 0x0a, 0x03, 0x64, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x03, 0x64, 0x69, 0x64, 0x22, 0x9d, 0x01, 0x0a, 0x0f, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x36, 0x0a, 0x09, 0x61, 0x75, 0x74,
-	0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4,
-	0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73,
-	0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x09, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74,
-	0x79, 0x12, 0x2c, 0x0a, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x0b, 0x32, 0x0e, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x72, 0x61, 0x6d,
-	0x73, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12,
-	0x14, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05,
-	0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x3a, 0x0e, 0x82, 0xe7, 0xb0, 0x2a, 0x09, 0x61, 0x75, 0x74, 0x68,
-	0x6f, 0x72, 0x69, 0x74, 0x79, 0x22, 0x19, 0x0a, 0x17, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x32, 0xf5, 0x03, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x12, 0x3f, 0x0a, 0x09, 0x45, 0x78, 0x65, 0x63,
-	0x75, 0x74, 0x65, 0x54, 0x78, 0x12, 0x14, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d,
-	0x73, 0x67, 0x45, 0x78, 0x65, 0x63, 0x75, 0x74, 0x65, 0x54, 0x78, 0x1a, 0x1c, 0x2e, 0x64, 0x69,
-	0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x45, 0x78, 0x65, 0x63, 0x75, 0x74, 0x65, 0x54,
-	0x78, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4b, 0x0a, 0x0d, 0x4c, 0x69, 0x6e,
-	0x6b, 0x41, 0x73, 0x73, 0x65, 0x72, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x18, 0x2e, 0x64, 0x69, 0x64,
-	0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x4c, 0x69, 0x6e, 0x6b, 0x41, 0x73, 0x73, 0x65, 0x72,
-	0x74, 0x69, 0x6f, 0x6e, 0x1a, 0x20, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73,
-	0x67, 0x4c, 0x69, 0x6e, 0x6b, 0x41, 0x73, 0x73, 0x65, 0x72, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x5a, 0x0a, 0x12, 0x4c, 0x69, 0x6e, 0x6b, 0x41, 0x75,
-	0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1d, 0x2e, 0x64,
-	0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x4c, 0x69, 0x6e, 0x6b, 0x41, 0x75, 0x74,
-	0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x1a, 0x25, 0x2e, 0x64, 0x69,
-	0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x4c, 0x69, 0x6e, 0x6b, 0x41, 0x75, 0x74, 0x68,
-	0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x12, 0x51, 0x0a, 0x0f, 0x55, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x41, 0x73, 0x73, 0x65,
-	0x72, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1a, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d,
-	0x73, 0x67, 0x55, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x41, 0x73, 0x73, 0x65, 0x72, 0x74, 0x69, 0x6f,
-	0x6e, 0x1a, 0x22, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x6e,
-	0x6c, 0x69, 0x6e, 0x6b, 0x41, 0x73, 0x73, 0x65, 0x72, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x60, 0x0a, 0x14, 0x55, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x41,
-	0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1f, 0x2e,
-	0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x6e, 0x6c, 0x69, 0x6e, 0x6b,
-	0x41, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x1a, 0x27,
-	0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x6e, 0x6c, 0x69, 0x6e,
-	0x6b, 0x41, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x48, 0x0a, 0x0c, 0x55, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x17, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31,
+	0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x12, 0x2c, 0x0a, 0x08, 0x64, 0x6f, 0x63, 0x75, 0x6d,
+	0x65, 0x6e, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x10, 0x2e, 0x64, 0x69, 0x64, 0x2e,
+	0x76, 0x31, 0x2e, 0x44, 0x6f, 0x63, 0x75, 0x6d, 0x65, 0x6e, 0x74, 0x52, 0x08, 0x64, 0x6f, 0x63,
+	0x75, 0x6d, 0x65, 0x6e, 0x74, 0x22, 0xf5, 0x01, 0x0a, 0x0c, 0x4d, 0x73, 0x67, 0x45, 0x78, 0x65,
+	0x63, 0x75, 0x74, 0x65, 0x54, 0x78, 0x12, 0x30, 0x0a, 0x06, 0x73, 0x65, 0x6e, 0x64, 0x65, 0x72,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d,
+	0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67,
+	0x52, 0x06, 0x73, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x12, 0x3e, 0x0a, 0x08, 0x6d, 0x65, 0x73, 0x73,
+	0x61, 0x67, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x64, 0x69, 0x64,
+	0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x45, 0x78, 0x65, 0x63, 0x75, 0x74, 0x65, 0x54, 0x78,
+	0x2e, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x08,
+	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x12, 0x25, 0x0a, 0x0e, 0x6d, 0x61, 0x63, 0x61,
+	0x72, 0x6f, 0x6f, 0x6e, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x0d, 0x6d, 0x61, 0x63, 0x61, 0x72, 0x6f, 0x6f, 0x6e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x1a,
+	0x3b, 0x0a, 0x0d, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79,
+	0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b,
+	0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x0c, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x3a, 0x0f, 0x82, 0xe7,
+	0xb0, 0x2a, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72, 0x22, 0x49, 0x0a,
+	0x14, 0x4d, 0x73, 0x67, 0x45, 0x78, 0x65, 0x63, 0x75, 0x74, 0x65, 0x54, 0x78, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x74, 0x78, 0x5f, 0x68, 0x61, 0x73, 0x68,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x74, 0x78, 0x48, 0x61, 0x73, 0x68, 0x12, 0x18,
+	0x0a, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52,
+	0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x22, 0x9d, 0x01, 0x0a, 0x0f, 0x4d, 0x73, 0x67,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x36, 0x0a, 0x09,
+	0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42,
+	0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72,
+	0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x09, 0x61, 0x75, 0x74, 0x68, 0x6f,
+	0x72, 0x69, 0x74, 0x79, 0x12, 0x2c, 0x0a, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x18, 0x02,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61,
+	0x72, 0x61, 0x6d, 0x73, 0x42, 0x04, 0xc8, 0xde, 0x1f, 0x00, 0x52, 0x06, 0x70, 0x61, 0x72, 0x61,
+	0x6d, 0x73, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x3a, 0x0e, 0x82, 0xe7, 0xb0, 0x2a, 0x09, 0x61,
+	0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x22, 0x19, 0x0a, 0x17, 0x4d, 0x73, 0x67, 0x55,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x32, 0xc9, 0x03, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x12, 0x3f, 0x0a, 0x09, 0x45,
+	0x78, 0x65, 0x63, 0x75, 0x74, 0x65, 0x54, 0x78, 0x12, 0x14, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76,
+	0x31, 0x2e, 0x4d, 0x73, 0x67, 0x45, 0x78, 0x65, 0x63, 0x75, 0x74, 0x65, 0x54, 0x78, 0x1a, 0x1c,
+	0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x45, 0x78, 0x65, 0x63, 0x75,
+	0x74, 0x65, 0x54, 0x78, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x5a, 0x0a, 0x12,
+	0x52, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c,
+	0x65, 0x72, 0x12, 0x1d, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x52,
+	0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65,
+	0x72, 0x1a, 0x25, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x52, 0x65,
+	0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x43, 0x6f, 0x6e, 0x74, 0x72, 0x6f, 0x6c, 0x6c, 0x65, 0x72,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x66, 0x0a, 0x16, 0x4c, 0x69, 0x6e, 0x6b,
+	0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x68,
+	0x6f, 0x64, 0x12, 0x21, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x4c,
+	0x69, 0x6e, 0x6b, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d,
+	0x65, 0x74, 0x68, 0x6f, 0x64, 0x1a, 0x29, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d,
+	0x73, 0x67, 0x4c, 0x69, 0x6e, 0x6b, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x6c, 0x0a, 0x18, 0x55, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69,
+	0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x12, 0x23, 0x2e, 0x64,
+	0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x6e, 0x6c, 0x69, 0x6e, 0x6b, 0x56,
+	0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x68, 0x6f,
+	0x64, 0x1a, 0x2b, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x6e,
+	0x6c, 0x69, 0x6e, 0x6b, 0x56, 0x65, 0x72, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e,
+	0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x48,
+	0x0a, 0x0c, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x17,
+	0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x1a, 0x1f, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31,
 	0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73,
-	0x1a, 0x1f, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x1a, 0x05, 0x80, 0xe7, 0xb0, 0x2a, 0x01, 0x42, 0x78, 0x0a, 0x0a, 0x63, 0x6f, 0x6d, 0x2e,
-	0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x42, 0x07, 0x54, 0x78, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50,
-	0x01, 0x5a, 0x28, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6f,
-	0x6e, 0x72, 0x2d, 0x69, 0x6f, 0x2f, 0x73, 0x6e, 0x72, 0x64, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64,
-	0x69, 0x64, 0x2f, 0x76, 0x31, 0x3b, 0x64, 0x69, 0x64, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x44, 0x58,
-	0x58, 0xaa, 0x02, 0x06, 0x44, 0x69, 0x64, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x06, 0x44, 0x69, 0x64,
-	0x5c, 0x56, 0x31, 0xe2, 0x02, 0x12, 0x44, 0x69, 0x64, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42,
-	0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x07, 0x44, 0x69, 0x64, 0x3a, 0x3a,
-	0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x1a, 0x05, 0x80, 0xe7, 0xb0, 0x2a, 0x01, 0x42,
+	0x78, 0x0a, 0x0a, 0x63, 0x6f, 0x6d, 0x2e, 0x64, 0x69, 0x64, 0x2e, 0x76, 0x31, 0x42, 0x07, 0x54,
+	0x78, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x28, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62,
+	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x73, 0x6f, 0x6e, 0x72, 0x2d, 0x69, 0x6f, 0x2f, 0x63, 0x6f, 0x72,
+	0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x64, 0x69, 0x64, 0x2f, 0x76, 0x31, 0x3b, 0x64, 0x69, 0x64,
+	0x76, 0x31, 0xa2, 0x02, 0x03, 0x44, 0x58, 0x58, 0xaa, 0x02, 0x06, 0x44, 0x69, 0x64, 0x2e, 0x56,
+	0x31, 0xca, 0x02, 0x06, 0x44, 0x69, 0x64, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x12, 0x44, 0x69, 0x64,
+	0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea,
+	0x02, 0x07, 0x44, 0x69, 0x64, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -7284,43 +7371,52 @@ func file_did_v1_tx_proto_rawDescGZIP() []byte {
 	return file_did_v1_tx_proto_rawDescData
 }
 
-var file_did_v1_tx_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_did_v1_tx_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_did_v1_tx_proto_goTypes = []interface{}{
-	(*MsgLinkAuthentication)(nil),           // 0: did.v1.MsgLinkAuthentication
-	(*MsgLinkAuthenticationResponse)(nil),   // 1: did.v1.MsgLinkAuthenticationResponse
-	(*MsgLinkAssertion)(nil),                // 2: did.v1.MsgLinkAssertion
-	(*MsgLinkAssertionResponse)(nil),        // 3: did.v1.MsgLinkAssertionResponse
-	(*MsgExecuteTx)(nil),                    // 4: did.v1.MsgExecuteTx
-	(*MsgExecuteTxResponse)(nil),            // 5: did.v1.MsgExecuteTxResponse
-	(*MsgUnlinkAssertion)(nil),              // 6: did.v1.MsgUnlinkAssertion
-	(*MsgUnlinkAssertionResponse)(nil),      // 7: did.v1.MsgUnlinkAssertionResponse
-	(*MsgUnlinkAuthentication)(nil),         // 8: did.v1.MsgUnlinkAuthentication
-	(*MsgUnlinkAuthenticationResponse)(nil), // 9: did.v1.MsgUnlinkAuthenticationResponse
-	(*MsgUpdateParams)(nil),                 // 10: did.v1.MsgUpdateParams
-	(*MsgUpdateParamsResponse)(nil),         // 11: did.v1.MsgUpdateParamsResponse
-	nil,                                     // 12: did.v1.MsgExecuteTx.MessagesEntry
-	(*Params)(nil),                          // 13: did.v1.Params
+	(*MsgRegisterController)(nil),               // 0: did.v1.MsgRegisterController
+	(*MsgRegisterControllerResponse)(nil),       // 1: did.v1.MsgRegisterControllerResponse
+	(*MsgLinkVerificationMethod)(nil),           // 2: did.v1.MsgLinkVerificationMethod
+	(*MsgLinkVerificationMethodResponse)(nil),   // 3: did.v1.MsgLinkVerificationMethodResponse
+	(*MsgUnlinkVerificationMethod)(nil),         // 4: did.v1.MsgUnlinkVerificationMethod
+	(*MsgUnlinkVerificationMethodResponse)(nil), // 5: did.v1.MsgUnlinkVerificationMethodResponse
+	(*MsgExecuteTx)(nil),                        // 6: did.v1.MsgExecuteTx
+	(*MsgExecuteTxResponse)(nil),                // 7: did.v1.MsgExecuteTxResponse
+	(*MsgUpdateParams)(nil),                     // 8: did.v1.MsgUpdateParams
+	(*MsgUpdateParamsResponse)(nil),             // 9: did.v1.MsgUpdateParamsResponse
+	nil,                                         // 10: did.v1.MsgRegisterControllerResponse.AccountsEntry
+	nil,                                         // 11: did.v1.MsgExecuteTx.MessagesEntry
+	(*VerificationMethod)(nil),                  // 12: did.v1.VerificationMethod
+	(*Document)(nil),                            // 13: did.v1.Document
+	(*Params)(nil),                              // 14: did.v1.Params
 }
 var file_did_v1_tx_proto_depIdxs = []int32{
-	12, // 0: did.v1.MsgExecuteTx.messages:type_name -> did.v1.MsgExecuteTx.MessagesEntry
-	13, // 1: did.v1.MsgUpdateParams.params:type_name -> did.v1.Params
-	4,  // 2: did.v1.Msg.ExecuteTx:input_type -> did.v1.MsgExecuteTx
-	2,  // 3: did.v1.Msg.LinkAssertion:input_type -> did.v1.MsgLinkAssertion
-	0,  // 4: did.v1.Msg.LinkAuthentication:input_type -> did.v1.MsgLinkAuthentication
-	6,  // 5: did.v1.Msg.UnlinkAssertion:input_type -> did.v1.MsgUnlinkAssertion
-	8,  // 6: did.v1.Msg.UnlinkAuthentication:input_type -> did.v1.MsgUnlinkAuthentication
-	10, // 7: did.v1.Msg.UpdateParams:input_type -> did.v1.MsgUpdateParams
-	5,  // 8: did.v1.Msg.ExecuteTx:output_type -> did.v1.MsgExecuteTxResponse
-	3,  // 9: did.v1.Msg.LinkAssertion:output_type -> did.v1.MsgLinkAssertionResponse
-	1,  // 10: did.v1.Msg.LinkAuthentication:output_type -> did.v1.MsgLinkAuthenticationResponse
-	7,  // 11: did.v1.Msg.UnlinkAssertion:output_type -> did.v1.MsgUnlinkAssertionResponse
-	9,  // 12: did.v1.Msg.UnlinkAuthentication:output_type -> did.v1.MsgUnlinkAuthenticationResponse
-	11, // 13: did.v1.Msg.UpdateParams:output_type -> did.v1.MsgUpdateParamsResponse
-	8,  // [8:14] is the sub-list for method output_type
-	2,  // [2:8] is the sub-list for method input_type
-	2,  // [2:2] is the sub-list for extension type_name
-	2,  // [2:2] is the sub-list for extension extendee
-	0,  // [0:2] is the sub-list for field type_name
+	12, // 0: did.v1.MsgRegisterController.authentication_credential:type_name -> did.v1.VerificationMethod
+	12, // 1: did.v1.MsgRegisterController.assertion_dwn:type_name -> did.v1.VerificationMethod
+	12, // 2: did.v1.MsgRegisterController.invocation_dwn:type_name -> did.v1.VerificationMethod
+	10, // 3: did.v1.MsgRegisterControllerResponse.accounts:type_name -> did.v1.MsgRegisterControllerResponse.AccountsEntry
+	12, // 4: did.v1.MsgLinkVerificationMethod.authentication:type_name -> did.v1.VerificationMethod
+	12, // 5: did.v1.MsgLinkVerificationMethod.assertion:type_name -> did.v1.VerificationMethod
+	12, // 6: did.v1.MsgLinkVerificationMethod.delegation:type_name -> did.v1.VerificationMethod
+	12, // 7: did.v1.MsgLinkVerificationMethod.invocation:type_name -> did.v1.VerificationMethod
+	13, // 8: did.v1.MsgLinkVerificationMethodResponse.document:type_name -> did.v1.Document
+	13, // 9: did.v1.MsgUnlinkVerificationMethodResponse.document:type_name -> did.v1.Document
+	11, // 10: did.v1.MsgExecuteTx.messages:type_name -> did.v1.MsgExecuteTx.MessagesEntry
+	14, // 11: did.v1.MsgUpdateParams.params:type_name -> did.v1.Params
+	6,  // 12: did.v1.Msg.ExecuteTx:input_type -> did.v1.MsgExecuteTx
+	0,  // 13: did.v1.Msg.RegisterController:input_type -> did.v1.MsgRegisterController
+	2,  // 14: did.v1.Msg.LinkVerificationMethod:input_type -> did.v1.MsgLinkVerificationMethod
+	4,  // 15: did.v1.Msg.UnlinkVerificationMethod:input_type -> did.v1.MsgUnlinkVerificationMethod
+	8,  // 16: did.v1.Msg.UpdateParams:input_type -> did.v1.MsgUpdateParams
+	7,  // 17: did.v1.Msg.ExecuteTx:output_type -> did.v1.MsgExecuteTxResponse
+	1,  // 18: did.v1.Msg.RegisterController:output_type -> did.v1.MsgRegisterControllerResponse
+	3,  // 19: did.v1.Msg.LinkVerificationMethod:output_type -> did.v1.MsgLinkVerificationMethodResponse
+	5,  // 20: did.v1.Msg.UnlinkVerificationMethod:output_type -> did.v1.MsgUnlinkVerificationMethodResponse
+	9,  // 21: did.v1.Msg.UpdateParams:output_type -> did.v1.MsgUpdateParamsResponse
+	17, // [17:22] is the sub-list for method output_type
+	12, // [12:17] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_did_v1_tx_proto_init() }
@@ -7331,7 +7427,7 @@ func file_did_v1_tx_proto_init() {
 	file_did_v1_genesis_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_did_v1_tx_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgLinkAuthentication); i {
+			switch v := v.(*MsgRegisterController); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -7343,7 +7439,7 @@ func file_did_v1_tx_proto_init() {
 			}
 		}
 		file_did_v1_tx_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgLinkAuthenticationResponse); i {
+			switch v := v.(*MsgRegisterControllerResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -7355,7 +7451,7 @@ func file_did_v1_tx_proto_init() {
 			}
 		}
 		file_did_v1_tx_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgLinkAssertion); i {
+			switch v := v.(*MsgLinkVerificationMethod); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -7367,7 +7463,7 @@ func file_did_v1_tx_proto_init() {
 			}
 		}
 		file_did_v1_tx_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgLinkAssertionResponse); i {
+			switch v := v.(*MsgLinkVerificationMethodResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -7379,7 +7475,7 @@ func file_did_v1_tx_proto_init() {
 			}
 		}
 		file_did_v1_tx_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgExecuteTx); i {
+			switch v := v.(*MsgUnlinkVerificationMethod); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -7391,7 +7487,7 @@ func file_did_v1_tx_proto_init() {
 			}
 		}
 		file_did_v1_tx_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgExecuteTxResponse); i {
+			switch v := v.(*MsgUnlinkVerificationMethodResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -7403,7 +7499,7 @@ func file_did_v1_tx_proto_init() {
 			}
 		}
 		file_did_v1_tx_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgUnlinkAssertion); i {
+			switch v := v.(*MsgExecuteTx); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -7415,7 +7511,7 @@ func file_did_v1_tx_proto_init() {
 			}
 		}
 		file_did_v1_tx_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgUnlinkAssertionResponse); i {
+			switch v := v.(*MsgExecuteTxResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -7427,30 +7523,6 @@ func file_did_v1_tx_proto_init() {
 			}
 		}
 		file_did_v1_tx_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgUnlinkAuthentication); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_did_v1_tx_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgUnlinkAuthenticationResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_did_v1_tx_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MsgUpdateParams); i {
 			case 0:
 				return &v.state
@@ -7462,7 +7534,7 @@ func file_did_v1_tx_proto_init() {
 				return nil
 			}
 		}
-		file_did_v1_tx_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+		file_did_v1_tx_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MsgUpdateParamsResponse); i {
 			case 0:
 				return &v.state
@@ -7481,7 +7553,7 @@ func file_did_v1_tx_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_did_v1_tx_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

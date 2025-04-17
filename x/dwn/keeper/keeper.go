@@ -13,8 +13,8 @@ import (
 	"cosmossdk.io/log"
 	"cosmossdk.io/orm/model/ormdb"
 
-	apiv1 "github.com/sonr-io/snrd/api/dwn/v1"
-	"github.com/sonr-io/snrd/x/dwn/types"
+	apiv1 "github.com/sonr-io/core/api/dwn/v1"
+	"github.com/sonr-io/core/x/dwn/types"
 )
 
 type Keeper struct {

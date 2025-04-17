@@ -2,7 +2,7 @@
 
 set -e
 
-GO_MOD_PACKAGE="github.com/sonr-io/snrd"
+GO_MOD_PACKAGE="github.com/sonr-io/core"
 ROOT_DIR=$(git rev-parse --show-toplevel)
 
 echo "Generating gogo proto code"

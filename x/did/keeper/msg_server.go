@@ -6,7 +6,7 @@ import (
 	"cosmossdk.io/errors"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	"github.com/sonr-io/snrd/x/did/types"
+	"github.com/sonr-io/core/x/did/types"
 )
 
 type msgServer struct {
@@ -39,26 +39,23 @@ func (ms msgServer) ExecuteTx(ctx context.Context, msg *types.MsgExecuteTx) (*ty
 	return &types.MsgExecuteTxResponse{}, nil
 }
 
-// LinkAssertion implements types.MsgServer.
-func (ms msgServer) LinkAssertion(ctx context.Context, msg *types.MsgLinkAssertion) (*types.MsgLinkAssertionResponse, error) {
+// RegisterController implements types.MsgServer.
+func (ms msgServer) RegisterController(ctx context.Context, msg *types.MsgRegisterController) (*types.MsgRegisterControllerResponse, error) {
 	// ctx := sdk.UnwrapSDKContext(goCtx)
-	return &types.MsgLinkAssertionResponse{}, nil
+	panic("RegisterController is unimplemented")
+	return &types.MsgRegisterControllerResponse{}, nil
 }
 
-// LinkAuthentication implements types.MsgServer.
-func (ms msgServer) LinkAuthentication(ctx context.Context, msg *types.MsgLinkAuthentication) (*types.MsgLinkAuthenticationResponse, error) {
+// LinkVerificationMethod implements types.MsgServer.
+func (ms msgServer) LinkVerificationMethod(ctx context.Context, msg *types.MsgLinkVerificationMethod) (*types.MsgLinkVerificationMethodResponse, error) {
 	// ctx := sdk.UnwrapSDKContext(goCtx)
-	return &types.MsgLinkAuthenticationResponse{}, nil
+	panic("LinkVerificationMethod is unimplemented")
+	return &types.MsgLinkVerificationMethodResponse{}, nil
 }
 
-// UnlinkAssertion implements types.MsgServer.
-func (ms msgServer) UnlinkAssertion(ctx context.Context, msg *types.MsgUnlinkAssertion) (*types.MsgUnlinkAssertionResponse, error) {
+// UnlinkVerificationMethod implements types.MsgServer.
+func (ms msgServer) UnlinkVerificationMethod(ctx context.Context, msg *types.MsgUnlinkVerificationMethod) (*types.MsgUnlinkVerificationMethodResponse, error) {
 	// ctx := sdk.UnwrapSDKContext(goCtx)
-	return &types.MsgUnlinkAssertionResponse{}, nil
-}
-
-// UnlinkAuthentication implements types.MsgServer.
-func (ms msgServer) UnlinkAuthentication(ctx context.Context, msg *types.MsgUnlinkAuthentication) (*types.MsgUnlinkAuthenticationResponse, error) {
-	// ctx := sdk.UnwrapSDKContext(goCtx)
-	return &types.MsgUnlinkAuthenticationResponse{}, nil
+	panic("UnlinkVerificationMethod is unimplemented")
+	return &types.MsgUnlinkVerificationMethodResponse{}, nil
 }

@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/sonr-io/snrd/internal/transaction"
+	"github.com/sonr-io/core/internal/transaction"
 )
 
 var (
