@@ -44,8 +44,7 @@ func (k Querier) Spawn(goCtx context.Context, req *types.QuerySpawnRequest) (*ty
 	}
 	cid, err := client.AddFile(file)
 	if err != nil {
-		panic(err)
-		// return nil, err
+		return nil, err
 	}
 	return &types.QuerySpawnResponse{
 		Address:  enc.Addr,
