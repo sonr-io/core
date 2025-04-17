@@ -17,150 +17,77 @@ service Msg {
   // Macaroon for verification.
   rpc ExecuteTx(MsgExecuteTx) returns (MsgExecuteTxResponse);
 
-  // LinkAssertion links an assertion to a controller.
-  rpc LinkAssertion(MsgLinkAssertion) returns (MsgLinkAssertionResponse);
+  // RegisterController registers a controller.
+  rpc RegisterController(MsgRegisterController) returns (MsgRegisterControllerResponse);
 
-  // LinkAuthentication links an authentication to a controller.
-  rpc LinkAuthentication(MsgLinkAuthentication) returns (MsgLinkAuthenticationResponse);
+  // LinkAssertion links an assertion to a controller.
+  rpc LinkVerificationMethod(MsgLinkVerificationMethod) returns (MsgLinkVerificationMethodResponse);
 
   // UnlinkAssertion unlinks an assertion from a controller.
-  rpc UnlinkAssertion(MsgUnlinkAssertion) returns (MsgUnlinkAssertionResponse);
-
-  // UnlinkAuthentication unlinks an authentication from a controller.
-  rpc UnlinkAuthentication(MsgUnlinkAuthentication) returns (MsgUnlinkAuthenticationResponse);
+  rpc UnlinkVerificationMethod(MsgUnlinkVerificationMethod) returns (MsgUnlinkVerificationMethodResponse);
 
   // UpdateParams defines a governance operation for updating the parameters.
   rpc UpdateParams(MsgUpdateParams) returns (MsgUpdateParamsResponse);
 }
 
-// MsgLinkAuthentication is the message type for the LinkAuthentication RPC.
-message MsgLinkAuthentication {
+
+// MsgRegisterController is the message type for the RegisterController RPC.
+message MsgRegisterController {
   option (cosmos.msg.v1.signer) = "controller";
-
-  // Controller is the address of the controller to authenticate.
-  string controller = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-
-  // Subject is the subject of the authentication.
-  string subject = 2;
-
-  // Assertion is the assertion of the authentication.
-  string assertion = 3;
-
-  // Authentication is the authentication of the authentication.
-  bytes credential_id = 4;
-
-  // token is the macron token to authenticate the operation.
-  string macaroon_token = 5;
+  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string controller = 2 [(cosmos_proto.scalar) = "cosmos.AddressString"];
 }
 
-// MsgLinkAuthenticationResponse is the response type for the
-// LinkAuthentication RPC.
-message MsgLinkAuthenticationResponse {
-  // Success returns true if the specified cid is valid and not already
-  // encrypted.
-  bool success = 1;
 
-  // Controller is the address of the initialized controller.
-  string did = 2;
+// MsgRegisterControllerResponse is the response type for the
+// RegisterController RPC.
+message MsgRegisterControllerResponse {
+  string did = 1;
 }
 
-// MsgLinkAssertion is the message type for the LinkAssertion RPC.
-message MsgLinkAssertion {
-  option (cosmos.msg.v1.signer) = "controller";
-
-  // Controller is the address of the controller to authenticate.
-  string controller = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-
-  // Subject is the subject of the authentication.
-  string subject = 2;
-
-  // Assertion is the assertion of the authentication.
-  string assertion = 3;
-
-  // token is the macron token to authenticate the operation.
-  string macaroon_token = 4;
+// MsgLinkVerificationMethod is the message type for the LinkVerificationMethod RPC.
+message MsgLinkVerificationMethod {
+  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string controller = 2 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string verification_method = 3;
+  bytes key = 4;
+  string key_type = 5;
 }
 
-// MsgLinkAssertionResponse is the response type for the
-// LinkAssertion RPC.
-message MsgLinkAssertionResponse {
-  // Success returns true if the specified cid is valid and not already
-  // encrypted.
-  bool success = 1;
-
-  // Controller is the address of the initialized controller.
-  string did = 2;
+// MsgLinkVerificationMethodResponse is the response type for the
+// LinkVerificationMethod RPC.
+message MsgLinkVerificationMethodResponse {
 }
+
+
+// MsgUnlinkVerificationMethod is the message type for the UnlinkVerificationMethod RPC.
+message MsgUnlinkVerificationMethod {
+  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string controller = 2 [(cosmos_proto.scalar) = "cosmos.AddressString"];
+  string verification_method = 3;
+}
+
+
+// MsgUnlinkVerificationMethodResponse is the response type for the
+// UnlinkVerificationMethod RPC.
+message MsgUnlinkVerificationMethodResponse {
+} 
 
 // MsgExecuteTx is the message type for the ExecuteTx RPC.
 message MsgExecuteTx {
   option (cosmos.msg.v1.signer) = "controller";
-
-  // Controller is the address of the controller to authenticate.
-  string controller = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-
-  // Messages is the list of messages to execute.
+  string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
   map<string, bytes> messages = 2;
-
-  // MacaroonToken is the macaroon token to authenticate the operation.
   string macaroon_token = 3;
 }
+
 
 // MsgExecuteTxResponse is the response type for the ExecuteTx RPC.
 message MsgExecuteTxResponse {
-  bool success = 1;
-  string tx_hash = 2;
+  string tx_hash = 1;
+  bool success = 2;
 }
 
-// MsgUnlinkAssertion is the message type for the UnlinkAssertion RPC.
-message MsgUnlinkAssertion {
-  option (cosmos.msg.v1.signer) = "controller";
-
-  // Controller is the address of the controller to authenticate.
-  string controller = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-
-  // Assertion is the assertion of the authentication.
-  string assertion_did = 2;
-
-  // token is the macron token to authenticate the operation.
-  string macaroon_token = 3;
-}
-
-// MsgUnlinkAssertionResponse is the response type for the
-// UnlinkAssertion RPC.
-message MsgUnlinkAssertionResponse {
-  // Success returns true if the specified cid is valid and not already
-  // encrypted.
-  bool success = 1;
-
-  // Controller is the address of the initialized controller.
-  string did = 2;
-}
-
-// MsgUnlinkAuthentication is the message type for the UnlinkAuthentication RPC.
-message MsgUnlinkAuthentication {
-  option (cosmos.msg.v1.signer) = "controller";
-
-  // Controller is the address of the controller to authenticate.
-  string controller = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
-
-  // Subject is the subject of the authentication.
-  string authentication_did = 2;
-
-  // token is the macron token to authenticate the operation.
-  string macaroon_token = 3;
-}
-
-// MsgUnlinkAuthenticationResponse is the response type for the
-// UnlinkAuthentication RPC.
-message MsgUnlinkAuthenticationResponse {
-  // Success returns true if the specified cid is valid and not already
-  // encrypted.
-  bool success = 1;
-
-  // Controller is the address of the initialized controller.
-  string did = 2;
-}
 
 // MsgUpdateParams is the Msg/UpdateParams request type.
 //
