@@ -21,7 +21,7 @@
 
 # Stats
 
-![Alt](https://repobeats.axiom.co/api/embed/e9ae6be710ea5dc1624753dc1d5edb1ffbc0fcf0.svg "Repobeats analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/17c1b90877885d1928407c176bcdc9072722bfbf.svg "Repobeats analytics image")
 
 # Acknowledgements
 
