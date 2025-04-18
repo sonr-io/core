@@ -66,7 +66,6 @@ message MsgLinkVerificationMethodResponse {
   Document document = 2;
 }
 
-
 // MsgUnlinkVerificationMethod is the message type for the UnlinkVerificationMethod RPC.
 message MsgUnlinkVerificationMethod {
   string sender = 1 [(cosmos_proto.scalar) = "cosmos.AddressString"];
@@ -76,7 +75,6 @@ message MsgUnlinkVerificationMethod {
   repeated string delegation = 5;
   repeated string invocation = 6;
 }
-
 
 // MsgUnlinkVerificationMethodResponse is the response type for the
 // UnlinkVerificationMethod RPC.
@@ -93,17 +91,13 @@ message MsgExecuteTx {
   string macaroon_token = 3;
 }
 
-
 // MsgExecuteTxResponse is the response type for the ExecuteTx RPC.
 message MsgExecuteTxResponse {
   string tx_hash = 1;
   bool success = 2;
 }
 
-
 // MsgUpdateParams is the Msg/UpdateParams request type.
-//
-// Since: cosmos-sdk 0.47
 message MsgUpdateParams {
   option (cosmos.msg.v1.signer) = "authority";
 
@@ -119,6 +113,4 @@ message MsgUpdateParams {
 
 // MsgUpdateParamsResponse defines the response structure for executing a
 // MsgUpdateParams message.
-//
-// Since: cosmos-sdk 0.47
 message MsgUpdateParamsResponse {}

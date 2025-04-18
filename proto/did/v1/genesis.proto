@@ -41,7 +41,6 @@ message Resource {
   string template = 2;
 }
 
-
 // Document defines a DID document
 message Document {
   string id = 1;
@@ -51,6 +50,12 @@ message Document {
   repeated string capability_delegation = 5;
   repeated string capability_invocation = 6;
   repeated string service = 7;
+}
+
+// PublicKey defines a public key
+message PublicKey {
+  string key_type = 1;
+  bytes key_value = 2;
 }
 
 // VerificationMethod defines a verification method
