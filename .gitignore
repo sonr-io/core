@@ -96,9 +96,9 @@ cmd/gateway/node_modules
 pkg/nebula/node_modules
 configs/logs.json
 
-mprocs.yaml
 build
 sonr.wiki
+mprocs.log
 
 !devbox.lock
 !buf.lock

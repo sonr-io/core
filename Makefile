@@ -342,6 +342,11 @@ status:
 	@gum log --level info --time kitchen "[STATUS] Status check completed."
 	@sleep 3
 
+dev:
+	@gum log --level info --time kitchen "[DEV] Starting dev environment..."
+	@sleep 1
+	tmux_start mprocs "bunx mprocs"
+
 push-docker:
 	@gum spin --show-error --title "[DOCKER] Building Docker image..." -- docker build -t ghcr.io/onsonr/sonr:$(VERSION) .
 	@gum spin --show-error --title "[DOCKER] Tagging latest image..." -- docker tag ghcr.io/onsonr/sonr:$(VERSION) ghcr.io/onsonr/sonr:latest
