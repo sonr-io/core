@@ -323,163 +323,6 @@ func NewAssertionTable(db ormtable.Schema) (AssertionTable, error) {
 	return assertionTable{table}, nil
 }
 
-type AuthorizationTable interface {
-	Insert(ctx context.Context, authorization *Authorization) error
-	Update(ctx context.Context, authorization *Authorization) error
-	Save(ctx context.Context, authorization *Authorization) error
-	Delete(ctx context.Context, authorization *Authorization) error
-	Has(ctx context.Context, did string) (found bool, err error)
-	// Get returns nil and an error which responds true to ormerrors.IsNotFound() if the record was not found.
-	Get(ctx context.Context, did string) (*Authorization, error)
-	HasByControllerSubject(ctx context.Context, controller string, subject string) (found bool, err error)
-	// GetByControllerSubject returns nil and an error which responds true to ormerrors.IsNotFound() if the record was not found.
-	GetByControllerSubject(ctx context.Context, controller string, subject string) (*Authorization, error)
-	List(ctx context.Context, prefixKey AuthorizationIndexKey, opts ...ormlist.Option) (AuthorizationIterator, error)
-	ListRange(ctx context.Context, from, to AuthorizationIndexKey, opts ...ormlist.Option) (AuthorizationIterator, error)
-	DeleteBy(ctx context.Context, prefixKey AuthorizationIndexKey) error
-	DeleteRange(ctx context.Context, from, to AuthorizationIndexKey) error
-
-	doNotImplement()
-}
-
-type AuthorizationIterator struct {
-	ormtable.Iterator
-}
-
-func (i AuthorizationIterator) Value() (*Authorization, error) {
-	var authorization Authorization
-	err := i.UnmarshalMessage(&authorization)
-	return &authorization, err
-}
-
-type AuthorizationIndexKey interface {
-	id() uint32
-	values() []interface{}
-	authorizationIndexKey()
-}
-
-// primary key starting index..
-type AuthorizationPrimaryKey = AuthorizationDidIndexKey
-
-type AuthorizationDidIndexKey struct {
-	vs []interface{}
-}
-
-func (x AuthorizationDidIndexKey) id() uint32             { return 0 }
-func (x AuthorizationDidIndexKey) values() []interface{}  { return x.vs }
-func (x AuthorizationDidIndexKey) authorizationIndexKey() {}
-
-func (this AuthorizationDidIndexKey) WithDid(did string) AuthorizationDidIndexKey {
-	this.vs = []interface{}{did}
-	return this
-}
-
-type AuthorizationControllerSubjectIndexKey struct {
-	vs []interface{}
-}
-
-func (x AuthorizationControllerSubjectIndexKey) id() uint32             { return 1 }
-func (x AuthorizationControllerSubjectIndexKey) values() []interface{}  { return x.vs }
-func (x AuthorizationControllerSubjectIndexKey) authorizationIndexKey() {}
-
-func (this AuthorizationControllerSubjectIndexKey) WithController(controller string) AuthorizationControllerSubjectIndexKey {
-	this.vs = []interface{}{controller}
-	return this
-}
-
-func (this AuthorizationControllerSubjectIndexKey) WithControllerSubject(controller string, subject string) AuthorizationControllerSubjectIndexKey {
-	this.vs = []interface{}{controller, subject}
-	return this
-}
-
-type authorizationTable struct {
-	table ormtable.Table
-}
-
-func (this authorizationTable) Insert(ctx context.Context, authorization *Authorization) error {
-	return this.table.Insert(ctx, authorization)
-}
-
-func (this authorizationTable) Update(ctx context.Context, authorization *Authorization) error {
-	return this.table.Update(ctx, authorization)
-}
-
-func (this authorizationTable) Save(ctx context.Context, authorization *Authorization) error {
-	return this.table.Save(ctx, authorization)
-}
-
-func (this authorizationTable) Delete(ctx context.Context, authorization *Authorization) error {
-	return this.table.Delete(ctx, authorization)
-}
-
-func (this authorizationTable) Has(ctx context.Context, did string) (found bool, err error) {
-	return this.table.PrimaryKey().Has(ctx, did)
-}
-
-func (this authorizationTable) Get(ctx context.Context, did string) (*Authorization, error) {
-	var authorization Authorization
-	found, err := this.table.PrimaryKey().Get(ctx, &authorization, did)
-	if err != nil {
-		return nil, err
-	}
-	if !found {
-		return nil, ormerrors.NotFound
-	}
-	return &authorization, nil
-}
-
-func (this authorizationTable) HasByControllerSubject(ctx context.Context, controller string, subject string) (found bool, err error) {
-	return this.table.GetIndexByID(1).(ormtable.UniqueIndex).Has(ctx,
-		controller,
-		subject,
-	)
-}
-
-func (this authorizationTable) GetByControllerSubject(ctx context.Context, controller string, subject string) (*Authorization, error) {
-	var authorization Authorization
-	found, err := this.table.GetIndexByID(1).(ormtable.UniqueIndex).Get(ctx, &authorization,
-		controller,
-		subject,
-	)
-	if err != nil {
-		return nil, err
-	}
-	if !found {
-		return nil, ormerrors.NotFound
-	}
-	return &authorization, nil
-}
-
-func (this authorizationTable) List(ctx context.Context, prefixKey AuthorizationIndexKey, opts ...ormlist.Option) (AuthorizationIterator, error) {
-	it, err := this.table.GetIndexByID(prefixKey.id()).List(ctx, prefixKey.values(), opts...)
-	return AuthorizationIterator{it}, err
-}
-
-func (this authorizationTable) ListRange(ctx context.Context, from, to AuthorizationIndexKey, opts ...ormlist.Option) (AuthorizationIterator, error) {
-	it, err := this.table.GetIndexByID(from.id()).ListRange(ctx, from.values(), to.values(), opts...)
-	return AuthorizationIterator{it}, err
-}
-
-func (this authorizationTable) DeleteBy(ctx context.Context, prefixKey AuthorizationIndexKey) error {
-	return this.table.GetIndexByID(prefixKey.id()).DeleteBy(ctx, prefixKey.values()...)
-}
-
-func (this authorizationTable) DeleteRange(ctx context.Context, from, to AuthorizationIndexKey) error {
-	return this.table.GetIndexByID(from.id()).DeleteRange(ctx, from.values(), to.values())
-}
-
-func (this authorizationTable) doNotImplement() {}
-
-var _ AuthorizationTable = authorizationTable{}
-
-func NewAuthorizationTable(db ormtable.Schema) (AuthorizationTable, error) {
-	table := db.GetTable(&Authorization{})
-	if table == nil {
-		return nil, ormerrors.TableNotFound.Wrap(string((&Authorization{}).ProtoReflect().Descriptor().FullName()))
-	}
-	return authorizationTable{table}, nil
-}
-
 type ControllerTable interface {
 	Insert(ctx context.Context, controller *Controller) error
 	Update(ctx context.Context, controller *Controller) error
@@ -488,9 +331,15 @@ type ControllerTable interface {
 	Has(ctx context.Context, did string) (found bool, err error)
 	// Get returns nil and an error which responds true to ormerrors.IsNotFound() if the record was not found.
 	Get(ctx context.Context, did string) (*Controller, error)
-	HasByControllerSubject(ctx context.Context, controller string, subject string) (found bool, err error)
-	// GetByControllerSubject returns nil and an error which responds true to ormerrors.IsNotFound() if the record was not found.
-	GetByControllerSubject(ctx context.Context, controller string, subject string) (*Controller, error)
+	HasByAddress(ctx context.Context, address string) (found bool, err error)
+	// GetByAddress returns nil and an error which responds true to ormerrors.IsNotFound() if the record was not found.
+	GetByAddress(ctx context.Context, address string) (*Controller, error)
+	HasBySubject(ctx context.Context, subject string) (found bool, err error)
+	// GetBySubject returns nil and an error which responds true to ormerrors.IsNotFound() if the record was not found.
+	GetBySubject(ctx context.Context, subject string) (*Controller, error)
+	HasByPublicKeyBase64(ctx context.Context, public_key_base64 string) (found bool, err error)
+	// GetByPublicKeyBase64 returns nil and an error which responds true to ormerrors.IsNotFound() if the record was not found.
+	GetByPublicKeyBase64(ctx context.Context, public_key_base64 string) (*Controller, error)
 	List(ctx context.Context, prefixKey ControllerIndexKey, opts ...ormlist.Option) (ControllerIterator, error)
 	ListRange(ctx context.Context, from, to ControllerIndexKey, opts ...ormlist.Option) (ControllerIterator, error)
 	DeleteBy(ctx context.Context, prefixKey ControllerIndexKey) error
@@ -531,21 +380,42 @@ func (this ControllerDidIndexKey) WithDid(did string) ControllerDidIndexKey {
 	return this
 }
 
-type ControllerControllerSubjectIndexKey struct {
+type ControllerAddressIndexKey struct {
 	vs []interface{}
 }
 
-func (x ControllerControllerSubjectIndexKey) id() uint32            { return 1 }
-func (x ControllerControllerSubjectIndexKey) values() []interface{} { return x.vs }
-func (x ControllerControllerSubjectIndexKey) controllerIndexKey()   {}
+func (x ControllerAddressIndexKey) id() uint32            { return 1 }
+func (x ControllerAddressIndexKey) values() []interface{} { return x.vs }
+func (x ControllerAddressIndexKey) controllerIndexKey()   {}
 
-func (this ControllerControllerSubjectIndexKey) WithController(controller string) ControllerControllerSubjectIndexKey {
-	this.vs = []interface{}{controller}
+func (this ControllerAddressIndexKey) WithAddress(address string) ControllerAddressIndexKey {
+	this.vs = []interface{}{address}
 	return this
 }
 
-func (this ControllerControllerSubjectIndexKey) WithControllerSubject(controller string, subject string) ControllerControllerSubjectIndexKey {
-	this.vs = []interface{}{controller, subject}
+type ControllerSubjectIndexKey struct {
+	vs []interface{}
+}
+
+func (x ControllerSubjectIndexKey) id() uint32            { return 2 }
+func (x ControllerSubjectIndexKey) values() []interface{} { return x.vs }
+func (x ControllerSubjectIndexKey) controllerIndexKey()   {}
+
+func (this ControllerSubjectIndexKey) WithSubject(subject string) ControllerSubjectIndexKey {
+	this.vs = []interface{}{subject}
+	return this
+}
+
+type ControllerPublicKeyBase64IndexKey struct {
+	vs []interface{}
+}
+
+func (x ControllerPublicKeyBase64IndexKey) id() uint32            { return 3 }
+func (x ControllerPublicKeyBase64IndexKey) values() []interface{} { return x.vs }
+func (x ControllerPublicKeyBase64IndexKey) controllerIndexKey()   {}
+
+func (this ControllerPublicKeyBase64IndexKey) WithPublicKeyBase64(public_key_base64 string) ControllerPublicKeyBase64IndexKey {
+	this.vs = []interface{}{public_key_base64}
 	return this
 }
 
@@ -585,18 +455,56 @@ func (this controllerTable) Get(ctx context.Context, did string) (*Controller, e
 	return &controller, nil
 }
 
-func (this controllerTable) HasByControllerSubject(ctx context.Context, controller string, subject string) (found bool, err error) {
+func (this controllerTable) HasByAddress(ctx context.Context, address string) (found bool, err error) {
 	return this.table.GetIndexByID(1).(ormtable.UniqueIndex).Has(ctx,
-		controller,
+		address,
+	)
+}
+
+func (this controllerTable) GetByAddress(ctx context.Context, address string) (*Controller, error) {
+	var controller Controller
+	found, err := this.table.GetIndexByID(1).(ormtable.UniqueIndex).Get(ctx, &controller,
+		address,
+	)
+	if err != nil {
+		return nil, err
+	}
+	if !found {
+		return nil, ormerrors.NotFound
+	}
+	return &controller, nil
+}
+
+func (this controllerTable) HasBySubject(ctx context.Context, subject string) (found bool, err error) {
+	return this.table.GetIndexByID(2).(ormtable.UniqueIndex).Has(ctx,
 		subject,
 	)
 }
 
-func (this controllerTable) GetByControllerSubject(ctx context.Context, controller string, subject string) (*Controller, error) {
+func (this controllerTable) GetBySubject(ctx context.Context, subject string) (*Controller, error) {
 	var controller Controller
-	found, err := this.table.GetIndexByID(1).(ormtable.UniqueIndex).Get(ctx, &controller,
-		controller,
+	found, err := this.table.GetIndexByID(2).(ormtable.UniqueIndex).Get(ctx, &controller,
 		subject,
+	)
+	if err != nil {
+		return nil, err
+	}
+	if !found {
+		return nil, ormerrors.NotFound
+	}
+	return &controller, nil
+}
+
+func (this controllerTable) HasByPublicKeyBase64(ctx context.Context, public_key_base64 string) (found bool, err error) {
+	return this.table.GetIndexByID(3).(ormtable.UniqueIndex).Has(ctx,
+		public_key_base64,
+	)
+}
+
+func (this controllerTable) GetByPublicKeyBase64(ctx context.Context, public_key_base64 string) (*Controller, error) {
+	var controller Controller
+	found, err := this.table.GetIndexByID(3).(ormtable.UniqueIndex).Get(ctx, &controller,
+		public_key_base64,
 	)
 	if err != nil {
 		return nil, err
@@ -954,7 +862,6 @@ func NewInvocationTable(db ormtable.Schema) (InvocationTable, error) {
 type StateStore interface {
 	AuthenticationTable() AuthenticationTable
 	AssertionTable() AssertionTable
-	AuthorizationTable() AuthorizationTable
 	ControllerTable() ControllerTable
 	DelegationTable() DelegationTable
 	InvocationTable() InvocationTable
@@ -965,7 +872,6 @@ type StateStore interface {
 type stateStore struct {
 	authentication AuthenticationTable
 	assertion      AssertionTable
-	authorization  AuthorizationTable
 	controller     ControllerTable
 	delegation     DelegationTable
 	invocation     InvocationTable
@@ -977,10 +883,6 @@ func (x stateStore) AuthenticationTable() AuthenticationTable {
 
 func (x stateStore) AssertionTable() AssertionTable {
 	return x.assertion
-}
-
-func (x stateStore) AuthorizationTable() AuthorizationTable {
-	return x.authorization
 }
 
 func (x stateStore) ControllerTable() ControllerTable {
@@ -1010,11 +912,6 @@ func NewStateStore(db ormtable.Schema) (StateStore, error) {
 		return nil, err
 	}
 
-	authorizationTable, err := NewAuthorizationTable(db)
-	if err != nil {
-		return nil, err
-	}
-
 	controllerTable, err := NewControllerTable(db)
 	if err != nil {
 		return nil, err
@@ -1033,7 +930,6 @@ func NewStateStore(db ormtable.Schema) (StateStore, error) {
 	return stateStore{
 		authenticationTable,
 		assertionTable,
-		authorizationTable,
 		controllerTable,
 		delegationTable,
 		invocationTable,

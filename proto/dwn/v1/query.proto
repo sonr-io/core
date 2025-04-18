@@ -14,7 +14,7 @@ option go_package = "github.com/sonr-io/core/x/dwn/types";
 service Query {
   // Params queries all parameters of the module.
   rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
-    option (google.api.http).get = "/vault/v1/params";
+    option (google.api.http).get = "/dwn/v1/params";
   }
 
   // Spawn is a rate-limited query that spawns a new vault with unclaimed state.

@@ -69,45 +69,24 @@ message Assertion {
   int64 creation_block = 6;
 }
 
-// Authorization is a relationship between a Service and a Resource with UCAN
-message Authorization {
+// Controller is the controller method to be used by the DID.
+message Controller {
   option (cosmos.orm.v1.table) = {
     id: 3
     primary_key: {fields: "did"}
     index: {
       id: 1
-      fields: "controller,subject"
+      fields: "address"
       unique: true
     }
-  };
-
-  // The unique identifier of the assertion
-  string did = 1;
-
-  // The authentication of the DID
-  string controller = 2;
-
-  // Origin of the authentication
-  string subject = 3;
-
-  // string is the verification method
-  string public_key_base64 = 4;
-
-  // DIDType is the DID type
-  string origin = 5;
-
-  // CreationBlock is the block number of the creation of the authentication
-  int64 creation_block = 6;
-}
-
-// Controller is the controller method to be used by the DID.
-message Controller {
-  option (cosmos.orm.v1.table) = {
-    id: 4
-    primary_key: {fields: "did"}
     index: {
-      id: 1
-      fields: "controller,subject"
+      id: 2
+      fields: "subject"
+      unique: true
+    }
+    index: {
+      id: 3
+      fields: "public_key_base64"
       unique: true
     }
   };
@@ -116,7 +95,7 @@ message Controller {
   string did = 1;
 
   // The authentication of the DID
-  string controller = 2;
+  string address = 2;
 
   // Origin of the authentication
   string subject = 3;
@@ -135,7 +114,7 @@ message Controller {
 // transactions on behalf of the DID
 message Delegation {
   option (cosmos.orm.v1.table) = {
-    id: 5
+    id: 4
     primary_key: {fields: "did"}
     index: {
       id: 1
@@ -167,7 +146,7 @@ message Delegation {
 // behalf of the DID
 message Invocation {
   option (cosmos.orm.v1.table) = {
-    id: 6
+    id: 5
     primary_key: {fields: "did"}
     index: {
       id: 1

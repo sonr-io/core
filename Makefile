@@ -328,7 +328,7 @@ testnet-basic: setup-testnet
 	@gum log --level info --time kitchen "[TESTNET] Basic testnet started successfully."
 
 sh-testnet: mod-tidy
-	@gum spin --show-error --title "[TESTNET] Starting shell testnet..." -- CHAIN_ID="sonr-testnet-1" BLOCK_TIME="1000ms" CLEAN=true sh scripts/test_node.sh
+	@CHAIN_ID='sonr-testnet-1' BLOCK_TIME='1000ms' CLEAN=true sh scripts/test_node.sh
 	@gum log --level info --time kitchen "[TESTNET] Shell testnet completed."
 
 .PHONY: setup-testnet set-testnet-configs testnet testnet-basic sh-testnet dop-testnet

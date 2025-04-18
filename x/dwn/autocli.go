@@ -16,6 +16,16 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 					Use:       "params",
 					Short:     "Query the current consensus parameters",
 				},
+				{
+					RpcMethod: "Spawn",
+					Use:       "spawn",
+					Short:     "Spawn a new vault",
+				},
+				{
+					RpcMethod: "Check",
+					Use:       "check [cid]",
+					Short:     "Check if a vault exists",
+				},
 			},
 		},
 		Tx: &autocliv1.ServiceCommandDescriptor{

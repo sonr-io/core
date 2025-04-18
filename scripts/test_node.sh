@@ -162,4 +162,4 @@ sed -i 's/indexer = "kv"/indexer = "'$TX_INDEX_INDEXER'"/g' $HOME_DIR/config/con
 
 
 # Start the node with 0 gas fees
-BINARY start --pruning=nothing  --minimum-gas-prices=0$DENOM --rpc.laddr="tcp://0.0.0.0:$RPC" --grpc.address="0.0.0.0:$GRPC" --grpc-web.enable=true 
+BINARY start --pruning=nothing  --minimum-gas-prices=0$DENOM --rpc.laddr="tcp://0.0.0.0:$RPC" --grpc.address="0.0.0.0:$GRPC" --grpc-web.enable=true  --api.enable=true --api.swagger=true --api.address "tcp://localhost:1317"
